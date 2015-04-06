@@ -1,0 +1,119 @@
+edgy()
+  body
+    theme_dark()
+    ::selection
+      theme_highlight()
+    
+    *
+      font-family 'misaki_gothic',monospace
+    pre
+    textarea
+      font-family 'PixelMplus10',monospace
+
+    @media (orientation:portrait)
+      font-size 5vw
+    @media (orientation:landscape)
+      font-size 5vh
+
+  [disabled]
+    opacity .5
+    
+  ui-view
+  [ui-view]
+    display block
+    size 100%
+
+  [ui-view].ng-enter
+  body ui-view.ng-enter
+    animation fadeIn .5s
+  [ui-view].ng-leave
+  body ui-view.ng-leave
+    absolute 0
+    animation fadeOut .5s
+  
+  h1
+    font-size 200%
+  h2
+    font-size 150%
+  h3
+    font-size 100%
+  h4
+    font-size 80%
+  h5
+    font-size 60%
+  p
+    font-size smaller
+    
+  pre
+    white-space pre-line
+    padding .5em 0
+    
+  // main
+  //   width 100%
+  //   overflow-x hidden
+  
+  section
+    padding 0 1em
+    img
+      width 2em
+      margin-right .5em
+      vertical-align middle
+      
+  dl
+    theme_light()
+    
+    padding .5em
+    
+    dt
+      svg
+        size 2em
+
+    dd
+      display block
+      font-size 300%
+      text-align right
+      
+  a
+    color inherit
+    text-decoration none
+    
+    &:hover
+      cursor pointer
+      transition opacity .5s linear
+      opacity .5
+  
+  svg
+    size 100%
+  
+  label
+  input
+  button
+  textarea
+    font-size inherit
+  
+  label
+  input
+  button
+  textarea
+    box-sizing-reset()
+    display block
+    width 100%
+    border 0
+    padding 0
+    
+    &:focus
+      theme_sepia()
+    
+  label
+    display flex
+    > *
+      display block
+    
+  textarea
+    width 100%
+    min-height 5em
+    
+  button
+    display inline-block
+    width auto
+    theme_sepia()

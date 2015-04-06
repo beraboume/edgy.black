@@ -1,0 +1,25 @@
+.artwork_add
+  form(name="artwork" ng-submit="submit()")
+    figure(ng-model="files" accept="image/*" ng-file-select ng-file-drop)
+      a
+        | ここに画像をとうろく
+    figcaption
+      h2: input(
+        ng-model="artwork.title"
+        required
+        placeholder="だいめい"
+        ng-maxlength="{{fields.title._length}}"
+      )
+      textarea(
+        ng-model="artwork.description"
+        required
+        placeholder="いいのこしたいこと"
+        ng-maxlength="{{fields.description._length}}"
+      )
+
+      footer(ng-show="artwork.$invalid || files.length==0")
+        p くうらんをにゅうりょくしてね
+      footer(ng-hide="artwork.$invalid || files.length==0")
+        p これでよいですか？
+        button はい
+        button(type="button" ng-click="back()") いいえ

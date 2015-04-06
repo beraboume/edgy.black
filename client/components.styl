@@ -1,0 +1,296 @@
+.error
+  display block
+  
+  h1
+    central()
+    size false 1em
+    font-size xx-large
+    
+    color white
+
+.front
+  >ui-view
+    overflow-x hidden
+    padding-bottom menu_height
+  >header
+    display none
+    fixed false 0 false false
+    opacity .25
+  >.menu
+    fixed false false 0 false
+    width 100%
+    height menu_height
+    white-space nowrap
+    overflow hidden
+    
+    background-color alpha(#333,.75)
+    a
+      size item_height - .5em
+      line-height item_height - .5em
+      padding .25em
+      
+      svg
+        size item_height - .5em
+        vertical-align middle
+        margin-right .5em
+      
+      display inline-block
+      overflow hidden
+      
+    a
+      transition all .5s
+      
+      ng-hide('fade')
+      &.ng-hide-add
+        width 0
+        padding .25em 0
+      
+    a:hover
+      active()
+    
+    &:not(:hover)
+      a.active
+        active()
+    
+    span
+      z-index 10
+
+main.mypage
+  @extend .front
+  
+  .artworks
+    width 100%
+    fig()
+
+.artworks
+  .logo
+    fixed 0
+    margin auto
+    
+    opacity .75
+    
+    font-size 2em
+    width 80vw
+    height 1em
+    z-index 100
+    
+    input
+      box-sizing-reset()
+      size 100%
+      // padding .25em 0
+      font-size 1em
+      text-align center
+    footer
+      position absolute
+      font-size 80%
+      top 1.25em
+      right 0
+      padding 0 1em
+      theme_sepia()
+  
+  footer
+    text-align center
+  
+  nav
+    [ng-repeat].ng-enter
+      animation fadeIn .5s
+    
+    // layout for tile
+    
+    volume= 15
+
+    tile()
+    @media (orientation: portrait)
+      margin unit(volume/6,'vw')
+    @media (orientation: landscape)
+      margin unit(volume/6,'vh')
+      
+    a
+      margin unit(volume/3*0.1,'rem')
+      
+      position relative
+      svg
+      img
+        central()
+        object-fit contain
+    
+    @media (orientation: portrait)
+      a
+        size unit(volume,'vw')
+        svg
+        img
+          width unit(volume,'vw')
+          max-height unit(volume,'vw')
+      
+    @media (orientation: landscape)
+      a
+        size unit(volume,'vh')
+        svg
+        img
+          width unit(volume,'vh')
+          max-height unit(volume,'vh')
+
+.artwork_add
+  form
+    form()
+    
+    textarea
+      min-height 40vh
+
+.artwork_view
+  figcaption
+    theme_light()
+  
+  figure
+    a
+      display block
+      cursor pointer
+  
+  pre
+    padding 0
+    
+  section
+    margin 1em 0
+    
+    h2
+      margin-bottom .5em
+
+    >footer
+      text-align right
+      font-size .8em
+    
+    time
+      margin-right .5em
+      
+    ul
+      chat()
+        
+  @media (orientation: portrait)
+    figure
+      size 100vw
+      max-height calc(100vh \- menu_height)
+      a
+        size 100%
+    figcaption
+      padding .5em 0
+
+  @media (orientation: landscape)
+    fig()
+    figure
+      a
+      svg
+        max-height calc(100vh \- menu_height)
+      a
+        relative 0
+    figcaption
+      flex 2
+      
+  .shares
+    nav
+      text-align right
+      a
+        font-size 150%
+        font-family 'BMplamo',monospace
+  
+  .comments
+    figure
+      size auto
+    input
+      padding .25em .5em
+      
+    form
+      footer_height= .5rem
+      button_fontsize= 50%
+      button_width= 5em
+      fig()
+      
+      pre
+        theme_light()
+      
+      button
+        font-size button_fontsize
+        min-width button_width
+        
+      relative 0
+      padding-bottom footer_height
+      footer
+        absolute false button_width 0 false
+        height footer_height
+        
+        font-size button_fontsize
+
+  .notify
+    a
+      theme_sepia()
+      display block
+      margin 1em
+      padding .5em
+
+.artwork_remove
+  @extend .artwork_view
+  
+  figcaption
+    header
+    footer
+      padding .5em 1em
+      padding-bottom 1em
+    
+    section
+      theme_sepia()
+      
+      padding 1em
+    
+.mypage
+  >*
+    fig()
+  figcaption
+    header
+      padding 1em
+    
+  .stats
+    dd
+      font-family 'PixelMplus10',monospace
+  
+  .danger
+    a
+      theme_highlight()
+      
+  figure
+    font-size inherit
+    
+    nav
+      a
+        size 100%
+        padding .5em
+        theme_light()
+
+.mypage_edit
+  overlay()
+  
+  form
+    form()
+
+    .mypage_id
+      input
+        max-width 8em
+    textarea
+      margin-bottom 1em
+      
+.mypage_quit
+  @extend .mypage_edit
+  
+  form
+    figure
+      theme_highlight()
+    figcaption
+      theme_dark()
+    h2
+      padding .5em
+    p
+    label
+      text-align left
+      padding-left 1em
+    
+    footer
+      p
+        text-align center

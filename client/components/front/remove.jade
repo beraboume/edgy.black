@@ -1,0 +1,23 @@
+.artwork_remove
+  figure
+    a(ng-click="location(artwork.Storage.url)" ng-style="{'top':scrollY+'px'}")
+      img(ng-src="{{artwork.Storage.url}}" jaggy)
+  figcaption
+    form(ng-submit="remove()")
+      header
+        h2 コレほんま削除してええん？
+      
+      section
+        h2 {{artwork.title}}
+        pre {{artwork.description}}
+        footer
+          a(href="#" ng-click="location('http://'+artwork.User.name+'.localhost:59798/')")
+            img(ng-src="{{artwork.Face.url}}")
+            | {{artwork.User.name}}
+          time(am-time-ago="artwork.created_at")
+
+      footer
+        h2 削除しても
+
+        button() ええよ
+        button(type="button" ng-click="back()") あかん

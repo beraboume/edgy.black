@@ -1,0 +1,14 @@
+main.mypage
+  ui-view
+
+  footer.menu
+    nav
+      a(
+        ng-repeat="(stateName,state) in states"
+
+        ng-click="goto(stateName,state) || location(stateName)"
+        ng-class="{'active':(stateName == $state.current.name)}"
+        ng-hide="{{state['ng-hide']}}"
+      )
+        img(ng-src="{{state.icon}}" jaggy)
+        | {{state.title}}

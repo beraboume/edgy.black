@@ -1,0 +1,128 @@
+// themes
+theme_light()
+  color #333
+  background-color whitesmoke
+theme_dark()
+  color #ccc
+  background-color #333
+theme_sepia()
+  color #596256
+  background-color #e0dbda
+theme_highlight()
+  color maroon
+  background-color cornsilk
+
+// keyframes
+ng-hide(name='fade',time=.5s)
+  &.ng-hide-remove
+    animation name+'In' time
+  &.ng-hide-add
+    animation name+'Out' time
+
+// display width height margin padding
+central()
+  absolute 0 0 0 0
+  margin auto
+  text-align center
+
+tile()
+  font-size 0
+  a
+    display inline-block
+    font-size initial
+    
+fig(contentFlex=2)
+  display flex
+  
+  figure
+    flex 1
+    img
+    svg
+      size 100%
+  figcaption
+    flex contentFlex
+    
+form()
+  central()
+  size 90vw 56vh
+  min-height 14em
+  
+  h1
+  h2
+  h3
+  h4
+  h5
+    text-align left
+
+  fig()
+  
+  theme_light()
+  figure
+    theme_sepia()
+    a
+      display block
+      font-size .5em
+      line-height @height
+      svg
+        size 100%
+        max-height 50vh
+  figcaption
+    padding 0!important
+    
+    >footer
+      padding 1em 0
+      
+      text-align center
+
+chat()
+  >*
+    &:nth-child(even)
+      theme_sepia()
+      figcaption
+        background-color inherit
+    
+    a
+      padding .5em 0
+      
+      fig()
+      figure
+      figcaption
+        padding 0 .5em
+        
+        footer
+          text-align right
+          
+      .from
+      .to
+        padding 0 .5em
+        display block
+        flex .5
+        svg
+          height 1%
+      
+      time
+        font-size xx-small
+        
+      h3
+        font-size 50%
+        width 100%
+        overflow hidden
+        white-space nowrap
+        // overflow ellipsis
+
+overlay()
+  fixed 0
+  margin auto
+  background-color alpha(#333,.50)
+
+
+active()
+  theme_light()
+  
+  overflow ellipsis
+  width 8em
+  opacity 1
+
+hostname()
+  display inline-block
+  min-width 12em

@@ -1,0 +1,16 @@
+.artworks
+  article
+    form.logo(ng-submit="find(words)")
+      input(placeholder="E D G Y" ng-model="words")
+      footer(ng-show="words.length")
+        p(ng-show="filtered.length")
+          | {{filtered.length}} 件
+        p(ng-show="!filtered.length")
+          | …存在しない
+    nav
+      a(
+        ng-repeat="artwork in filtered= (artworks|filter:words)"
+
+        ui-sref="^.view({id:artwork.id})"
+      )
+        img(ng-src="{{artwork.Storage.url}}" jaggy)

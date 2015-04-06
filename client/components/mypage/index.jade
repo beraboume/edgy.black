@@ -1,0 +1,17 @@
+.artworks
+  figcaption
+    article
+      nav
+        a(
+          ng-repeat="artwork in filtered= (artworks|filter:words)"
+
+          ng-click="location('#{process.env.PUBLIC_URL}'+artwork.id)"
+        )
+          img(ng-src="{{artwork.Storage.url}}" jaggy)
+  
+  figure
+    img(ng-show="!user.Storage" src="{{notfoundSVG}}")
+    a(href="#" ng-click="location(user.Storage.url)")
+      img(ng-show="user.Storage.url" ng-src="{{user.Storage.url}}" jaggy)
+    h2 {{user.name}}
+    pre {{user.bio}}

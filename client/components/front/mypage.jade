@@ -1,0 +1,55 @@
+.mypage
+
+  .artworks(ng-show="user")
+    figcaption
+      header
+        h2 やうこそ、{{user.name}}氏…
+      
+      section
+        h2 実績
+        dl.stats
+          dt
+            img(ng-src="icons/add.gif" jaggy)
+            | 累積とうこう
+          dd {{stats.artworks | number:0}}
+
+          dt
+            img(ng-src="icons/comment.gif" jaggy)
+            | 累積コメント
+          dd {{stats.comments | number:0}}
+
+          dt
+            img(ng-src="icons/view.gif" jaggy)
+            | 累積えつらん
+          dd {{stats.views | number:0}}
+
+    figure
+      a(ui-sref=".edit")
+        img(ng-src="{{user.Storage.url}}" jaggy)
+
+      seciton(ng-show="user")
+        h2 {{user.name}}
+        pre {{user.bio}}
+
+        nav
+          a(ui-sref=".edit") プロフィール
+          a(href="#" ng-click="logout()") ログアウト
+          
+        nav.danger
+          a(ui-sref=".quit") 退会する
+
+  .artworks(ng-show="!user")
+    figcaption
+      header
+        h2 ゲスト！
+
+      section
+        dl
+          dt EDGYをつかうためには、twitterIDがひつようです（今のところ）
+    figure
+      img(ng-show="!user.Storage" src="{{notfoundSVG}}")
+      nav
+        a(href="#" ng-click="location('/mypage/auth/')")
+          | twitterでログイン
+
+ui-view

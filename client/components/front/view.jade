@@ -1,0 +1,81 @@
+.artwork_view
+  figure
+    a(ng-click="location(artwork.Storage.url)" ng-style="{'top':scrollY+'px'}")
+      img(ng-src="{{artwork.Storage.url}}" jaggy)
+  figcaption
+    section
+      h2 {{artwork.title}}
+      pre {{artwork.description}}
+      footer
+        time(am-time-ago="artwork.created_at")
+        a(href="#" ng-click="location('http://'+artwork.User.mypage_id+'.#{process.env.MYPAGE_HOST}')")
+          | {{artwork.User.name}}
+          img(ng-src="{{artwork.Face.url}}")
+
+    section.shares
+      h2 シェア
+      nav
+        a(href="#" ng-click="share('http://twitter.com/share',{text:artwork.description})")
+          | T
+        a(href="#" ng-click="share('https://plus.google.com/share',{text:artwork.description})")
+          | G
+        a(href="#" ng-click="share('http://b.hatena.ne.jp/add',{title:artwork.description, mode:'confirm'})")
+          | H
+        a(href="#" ng-click="share('https://getpocket.com/edit')")
+          | P
+    
+    section.comments
+      h2
+        | コメント
+        span(ng-show="comment_count>0")
+          | ({{comment_count}})
+      
+      header
+        .notify(ng-show="!user")
+          a(href="#" ng-click="location('/mypage/auth/')")
+            | コメントにはログインが必要です
+        form(name="add" ng-show="user" ng-submit="comment(body)")
+          button(
+            ng-show="artwork.user_id != user.id"
+            ng-disabled="add.$invalid"
+          )
+            |コメント
+          input(
+            name="body"
+            ng-model="body"
+            ng-maxlength="{{fields.body._length}}"
+            required
+          )
+
+          button(
+            ng-show="artwork.user_id == user.id"
+            ng-disabled="add.$invalid"
+          )
+            |返信する
+
+          footer(ng-show="add.$valid")
+            | {{fields.body._length - body.length}} / {{fields.body._length}}
+
+      ul(ng-reel="/front/comments/{{artwork.id}} as comments" ng-reel-stack)
+        li(
+          ng-repeat="comment in comments"
+
+          href="#"
+          ng-click="location('http://'+comment.User.mypage_id+'.#{process.env.MYPAGE_HOST}/')"
+        )
+          a(ng-show="comment.user_id != artwork.user_id")
+            figure.from
+              storage(key="{{comment.User.storage_key}}")
+              h3 {{comment.User.name}}
+              time(am-time-ago="comment.created_at")
+            figcaption
+              pre {{comment.body}}
+            .to
+          a(ng-show="comment.user_id == artwork.user_id")
+            .to
+            figcaption
+              pre {{comment.body}}
+            figure.from
+              storage(key="{{comment.User.storage_key}}")
+              h3 {{comment.User.name}}
+              time(am-time-ago="comment.created_at")
