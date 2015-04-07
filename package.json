@@ -7,7 +7,7 @@
     "poststart": "pm2 list && pm2 logs",
 
     "watch":"abigail test/**/*.coffee:test -e",
-    "test": "jasminetea test --recursive --e2e '==baseUrl http://localhost:59798' --verbose --timeout 15000",
+    "test": "jasminetea test --recursive --e2e '==baseUrl http://localhost:59798' --verbose --timeout 20000",
 
     "stop": "pm2 stop edgy",
     "poststop": "pm2 kill && pm2 flush",
