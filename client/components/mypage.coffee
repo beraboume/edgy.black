@@ -8,7 +8,7 @@ module.exports.client= (
     'mypage.index':
       icon: 'icons/desk.gif'
       title: 'マイページ'
-    'http://localhost.com:59798':
+    "#{process.env.PUBLIC_URL}":
       icon: 'icons/search.gif'
       title: 'トップへ'
 
