@@ -20,6 +20,11 @@ app.use expressSession
 app.use passport.initialize()
 app.use passport.session()
 
+app.use (req,res,next)->
+  # edgy.website -> edgy.black
+  return res.redirect env.PUBLIC_URL if req.headers.host is env.MYPAGE_HOST
+  next()
+
 app.use express.static env.PUBLIC+'/public'
 app.use '/storage',express.static env.STORAGE
 

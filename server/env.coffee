@@ -13,7 +13,7 @@ env.DB_ROOT?= __dirname+'/db'
 
 env.PUBLIC?= 'client'
 env.PUBLIC_URL?= "http://localhost:#{process.env.PORT}/"
-env.MYPAGE_HOST?= "localhost.com:59798"
+env.MYPAGE_HOST?= "localhost.website:59798"
 
 env.STORAGE?= env.ROOT+'/storage'
 env.STORAGE_URL?= "#{env.PUBLIC_URL}storage/"

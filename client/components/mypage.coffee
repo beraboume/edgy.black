@@ -14,7 +14,6 @@ module.exports.client= (
 
 module.exports.resolve=
   user: (mypageId,$http,$state)->
-    return $state.go 'error' if location.hostname.split('.').length<= 2
     $http.get '/mypage/user/?mypage_id='+mypageId
 
   artworks: (user,$http)->
