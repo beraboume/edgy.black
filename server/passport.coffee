@@ -9,7 +9,7 @@ passportConfig=
   twitter:
     consumerKey: env.consumerKey
     consumerSecret: env.consumerSecret
-    callbackURL: "#{env.PUBLIC_URL}callback"
+    callbackURL: "#{env.PUBLIC_URL}mypage/auth/callback"
 TwitterStrategy= require('passport-twitter').Strategy
 
 crypto= require 'crypto'
