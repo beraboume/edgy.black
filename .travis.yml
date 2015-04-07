@@ -3,6 +3,7 @@ node_js:
   - '0.12'
 before_script:
   - mysql -uroot -e "create database edgy_test"
+
   - npm install bower --global
   - bower install
   - npm run build
