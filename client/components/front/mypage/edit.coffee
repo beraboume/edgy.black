@@ -91,7 +91,7 @@ module.exports.server= (app)->
 
       return user if not file
 
-      old_url= user.Storage.url
+      old_url= user.Storage?.url
       unlinkStorages user
 
       path= require 'path'
