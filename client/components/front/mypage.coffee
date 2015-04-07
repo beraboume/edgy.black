@@ -64,7 +64,7 @@ module.exports.server= (app)->
       throw error if error?
       next()
   app.get '/mypage/auth',passport.authenticate 'twitter'
-  app.get '/callback',passport.authenticate 'twitter',{
+  app.get '/mypage/auth/callback',passport.authenticate 'twitter',{
   # app.get '/mypage/auth/callback',passport.authenticate 'twitter',{
     successRedirect: '/mypage/auth/success/'
     failureRedirect: '/mypage/auth/failure/'
