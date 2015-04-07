@@ -3,7 +3,7 @@ env= require './env'
 Sequelize= require 'sequelize'
 
 # Setup sequelize
-db= new Sequelize 'edgy_test','root',null,
+db= new Sequelize env.DB_NAME,'root',null,
   host: env.DB.split(':')[0]
   port: env.DB.split(':')[1]
 

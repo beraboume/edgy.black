@@ -15,11 +15,10 @@
     "deploy": "curl -d key=$APPS_KEY -d sha1=$(git log --format=format:%H -1) -d host=$(jqn package name) http://travis.edgy.black",
     "deploy_local": "curl -d key=local -d sha1=$(git log --format=format:%H -1) -d host=$(jqn package name) -d force=true http://localhost:59999",
 
-    "build": "onefile --json --output client/public/pkgs"
+    "build": "onefile --json --output client/public/pkgs -cms"
   },
   "dependencies": {
     "browserify": "^9.0.3",
-    "coffee-script": "^1.9.1",
     "coffeeify": "^1.0.0",
     "debug": "^2.1.3",
     "express": "^4.12.3",
@@ -40,7 +39,7 @@
     "abigail": "0.0.7",
     "jasminetea": "^0.1.27",
     "jqn": "0.0.3",
-    "onefile": "^0.2.8",
+    "onefile": "^0.2.10",
     "pm2": "^0.12.9"
   },
   "repository": {

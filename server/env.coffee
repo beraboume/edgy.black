@@ -8,6 +8,7 @@ env.ROOT?= process.cwd()
 env.SERVER_ROOT?= __dirname
 
 env.DB?= '192.168.59.103:3306'
+env.DB_NAME?= 'edgy_test'
 env.DB_ROOT?= __dirname+'/db'
 
 env.PUBLIC?= 'client'

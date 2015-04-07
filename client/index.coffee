@@ -11,6 +11,21 @@ app= angular.module 'app',[
   'webcolor'
 ]
 
+app.constant 'components',
+  'front.index': '/'
+
+  'front.add': '/add'
+  'front.view': '/{id:[0-9]+}'
+  'front.edit': '/{id:[0-9]+}/edit'
+  'front.remove': '/{id:[0-9]+}/remove'
+  
+  'front.mypage': '/mypage'
+  'front.mypage.edit': '/edit'
+  'front.mypage.quit': '/quit'
+
+  'mypage.index': '/'
+app.constant 'mypageId',location.hostname.split('.')[0]
+
 (require './lib/storage').client app
 (require './lib/routes').client app
 

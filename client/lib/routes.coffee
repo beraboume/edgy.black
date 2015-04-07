@@ -42,21 +42,6 @@ module.exports.client= (app)->
       templateUrl: '/components/.error/index'
       controller: require('./components/.error/index').client
 
-  app.constant 'mypageId',location.hostname.split('.')[0]
-  app.constant 'components',
-    'front.index': '/'
-
-    'front.add': '/add'
-    'front.view': '/{id:[0-9]+}'
-    'front.edit': '/{id:[0-9]+}/edit'
-    'front.remove': '/{id:[0-9]+}/remove'
-    
-    'front.mypage': '/mypage'
-    'front.mypage.edit': '/edit'
-    'front.mypage.quit': '/quit'
-
-    'mypage.index': '/'
-
 module.exports.server= (app)->
   # Dependencies
   fs= require 'fs'
