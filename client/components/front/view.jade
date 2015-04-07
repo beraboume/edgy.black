@@ -15,11 +15,11 @@
     section.shares
       h2 シェア
       nav
-        a(href="#" ng-click="share('http://twitter.com/share',{text:artwork.description})")
+        a(href="#" ng-click="share('http://twitter.com/share',{text:artwork.title})")
           | T
-        a(href="#" ng-click="share('https://plus.google.com/share',{text:artwork.description})")
+        a(href="#" ng-click="share('https://plus.google.com/share',{text:artwork.title})")
           | G
-        a(href="#" ng-click="share('http://b.hatena.ne.jp/add',{title:artwork.description, mode:'confirm'})")
+        a(href="#" ng-click="share('http://b.hatena.ne.jp/add',{title:artwork.title, mode:'confirm'})")
           | H
         a(href="#" ng-click="share('https://getpocket.com/edit')")
           | P
