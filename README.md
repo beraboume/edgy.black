@@ -16,6 +16,7 @@ $ boot2docker start
 
 $ docker run --name edgy.black -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql
 $ docker exec -it edgy.black mysql -u root -p
+# root
 
 mysql $ create database edgy_test;
 # Query OK, 1 row affected (0.00 sec)

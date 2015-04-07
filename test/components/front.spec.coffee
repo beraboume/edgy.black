@@ -7,7 +7,7 @@ fs= require 'fs'
 path= require 'path'
 
 describe 'edgy.black',->
-  xdescribe 'guest',->
+  describe 'guest',->
     describe 'front.index',->
       beforeEach ->
         browser.get '/'
@@ -154,9 +154,10 @@ describe 'edgy.black',->
         browser.get '/1/remove'
         browser.waitForAngular()
 
-        submit= element By.buttonText 'ええよ'
-        browser.actions().mouseMove(submit).click().perform()
+        browser.executeScript "window.scrollTo(0,10000)"
         .then ->
+          submit= element By.buttonText 'ええよ'
+          submit.click()
           expect(browser.getCurrentUrl()).toEqual "#{edgy.black}"
 
           browser.get '/1'

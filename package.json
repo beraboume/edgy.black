@@ -42,5 +42,15 @@
     "jqn": "0.0.3",
     "onefile": "^0.2.8",
     "pm2": "^0.12.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/59naga/edgy.black.git"
+  },
+  "author": "59naga <i59naga@icloud.com> (http://berabou.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/59naga/edgy.black/issues"
+  },
+  "homepage": "https://github.com/59naga/edgy.black"
 }
