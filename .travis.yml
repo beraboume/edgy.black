@@ -12,7 +12,7 @@ after_success:
 
 env:
   global:
-    - secure: xTMGkIkNB5SAESEkKU+EChYHZqzkr9nOEzl0CP6aITKkT8OklwlKJKKa2jzSxgpUPjzTQub22lK1cBzeN2W5VUFiH+v7YakDx2Nfhk+1gZ/RlSUxy2ROkVecgpVAGcdHqM3in3tVbAdXhcNhGpRe9t/DDTNhk9sdEtllvUFhZC8=
+    - secure: Bww5OSgif6xBuH5cLLq6vJyRvF1PJkYHztYJ6dEpk8p6DJI6c1YAptrDKUCu1QL64HA85ODPpecq8jKzPAusCGOP9Pv8TeHNC7Bg97bVQ2cjpbP4oRTn9XOzEGAve4ARdKBo7ZHJK4jdCmAJABStK1AeEt5x5yvmPMjTkM7tQ/Q=
     - secure: bMQaC02GIre7uNf/tN3/0bzaRyz3lOeMup88bprzIoMAuU4oQD5aZc7Vj8uBi3fWLJDgMLAeu+tRep1LUf6RGJnrzry/9RBipn3QTl4PeoF6zUFBYZlId3SdDWcgx36sbN9i7va71/4VJWcbPv3NkfcoCsjoOL8Z9T/bDUUWN4U=
     - secure: hP+rl/qLfdsE/qgj8MvdzRfzTxs3p1UCqufnxRazRrh6BSkQRGjSNEn8f/+XcJHUopJk9YcPSzgiJHwPx6JtJK8FhryA5Obeg/hgmi0EJWAvDwm0wtKdXUq9oSXuasH+vw1bB3sFE9FHDCIJXyM/shAnCODrd0YCwqnY5+sQSHw=
 

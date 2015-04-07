@@ -40,3 +40,4 @@ $ npm test
 ```
 
 > https://registry.hub.docker.com/_/mysql/
+> https://docs.saucelabs.com/ci-integrations/travis-ci/
