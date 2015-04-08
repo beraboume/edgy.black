@@ -12,17 +12,19 @@ module.exports= (req,res,next)->
   return next() if not bot
 
   {id}= req.params
-  {Artwork,Storage}= db.models
+  {Artwork,Storage,User}= db.models
   Artwork.find
     where: {id}
-    include: [Storage]
+    include: [Storage,User]
   .then (artwork)->
     return res.status(404).json null if artwork is null
     res.render 'og',
       title_for_head: 'EDGY.BLACK'
-      card: 'photo'
+      card: 'summary_large_image'
       site: '@edgy_black'
+      creator: artwork.User.name
       title: artwork.title
+      description: artwork.description
       image: artwork.Storage.url
       url: "#{env.PUBLIC_URL}#{id}"
   .catch ->
