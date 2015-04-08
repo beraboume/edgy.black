@@ -11,10 +11,10 @@
         h2 {{artwork.title}}
         pre {{artwork.description}}
         footer
+          time(am-time-ago="artwork.created_at")
           a(href="#" ng-click="location('http://'+artwork.User.name+'.localhost:59798/')")
             img(ng-src="{{artwork.Face.url}}")
             | {{artwork.User.name}}
-          time(am-time-ago="artwork.created_at")
 
       footer
         h2 削除しても
