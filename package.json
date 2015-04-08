@@ -3,13 +3,13 @@
   "main": "edgy.black.coffee",
   "scripts": {
     "prestart": "pm2 kill",
-    "start": "pm2 start edgy.black.coffee --name edgy",
+    "start": "pm2 start edgy.black.coffee --name edgy.black",
     "poststart": "pm2 list && pm2 logs",
 
     "watch":"abigail test/**/*.coffee:test -e",
     "test": "jasminetea test --recursive --e2e '==baseUrl http://localhost:59798' --verbose --timeout 20000",
 
-    "stop": "pm2 stop edgy",
+    "stop": "pm2 stop edgy.black",
     "poststop": "pm2 kill && pm2 flush",
 
     "deploy": "curl -d key=$APPS_KEY -d sha1=$(git log --format=format:%H -1) -d host=$(jqn package name) http://travis.edgy.black",
@@ -25,6 +25,7 @@
     "express-session": "^1.10.4",
     "jade": "^1.9.2",
     "kouto-swiss": "^0.11.9",
+    "lwip": "0.0.6",
     "mime": "^1.3.4",
     "multer": "^0.1.8",
     "mysql": "^2.6.0",
