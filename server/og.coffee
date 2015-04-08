@@ -6,7 +6,6 @@ lwip= require 'lwip'
 path= require 'path'
 Promise= require 'sequelize/node_modules/bluebird'
 Promise.promisifyAll lwip
-console.log Object.keys lwip
 
 # Setup og
 module.exports.artwork_view= (req,res,next)->
