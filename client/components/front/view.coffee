@@ -17,6 +17,8 @@ module.exports.client= (
 
   $scope.share= (url,params={},name='share',featureString='width=465,height=465')->
     params.url= $window.location.href
+    params.via= 'edgy_black'
+    params.hashtags= 'pixelart'
 
     queries= []
     queries.push encodeURIComponent(key)+"="+encodeURIComponent(value) for key,value of params
