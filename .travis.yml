@@ -7,8 +7,6 @@ before_script:
   - npm install bower --global
   - bower install
   - npm run build
-after_success:
-  'npm run deploy'
 
 env:
   global:
