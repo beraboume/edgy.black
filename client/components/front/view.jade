@@ -10,7 +10,7 @@
         time(am-time-ago="artwork.created_at")
         a(href="#" ng-click="location('http://'+artwork.User.mypage_id+'.#{process.env.MYPAGE_HOST}')")
           | {{artwork.User.name}}
-          img(ng-src="{{comment.Face.url}}" jaggy)
+          img(ng-src="{{artwork.Face.url}}" jaggy)
 
     section.shares
       h2 {{'SHERE'| translate}}
