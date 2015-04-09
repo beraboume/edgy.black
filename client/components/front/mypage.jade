@@ -25,6 +25,7 @@
 
     figure
       a(ui-sref=".edit")
+        img(ng-show="!user.Storage" src="{{notfoundSVG}}")
         img(ng-src="{{user.Storage.url}}" jaggy)
 
       seciton(ng-show="user")
