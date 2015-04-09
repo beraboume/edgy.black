@@ -9,12 +9,12 @@
     "angular-reel": "~0.0.5",
     "angular-ui-router": "~0.2.13",
     "angular-webcolor": "~0.0.14",
-    "ng-file-upload": "~3.2.4",
-    "animate.css": "~3.2.5",
-    "jaggy": "~0.1.12",
     "angular-translate": "~2.6.1",
     "angular-translate-loader-static-files": "~2.6.1",
-    "ngstorage": "~0.3.0"
+    "ng-file-upload": "~3.2.4",
+    "ngstorage": "~0.3.0",
+    "animate.css": "~3.2.5",
+    "jaggy": "~0.1.13"
   },
   "overrides": {
     "moment": {

@@ -38,6 +38,10 @@ module.exports.client= ($scope,$state,user)->
       icon: 'icons/i18n.gif'
       title: 'I18N'
       'ng-hide':'!$state.is("front.index")'
+    "glitch":
+      icon: 'icons/glitch.gif'
+      title: 'GLITCH'
+      'ng-hide':'!$state.is("front.mypage.quit")'
 
 module.exports.resolve=
   fields: ($http)->

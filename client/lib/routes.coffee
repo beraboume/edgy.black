@@ -51,6 +51,23 @@ module.exports.client= (app)->
 
         $state.reload()
 
+    $stateProvider.state 'glitch',
+      templateProvider: (jaggyConfig)->
+        if jaggyConfig.glitch is 4
+          glitch= ~~(6*Math.random())+1
+          glitch= 3 if glitch is 4
+          jaggyConfig.glitch= glitch
+        else
+          jaggyConfig.glitch= 4
+        jaggyConfig.useCache= no
+
+        console.log jaggyConfig.glitch
+
+        for key in Object.keys localStorage when key.indexOf 'jaggy' is 0
+          localStorage.removeItem key
+
+        $state.reload()
+
     $stateProvider.state 'error',
       url: '*path'
       templateUrl: '/components/.error/index'
