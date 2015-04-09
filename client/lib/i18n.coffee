@@ -3,6 +3,8 @@ module.exports.client= (app)->
     $translateProvider.useStaticFilesLoader
       prefix: 'i18n/locale-'
       suffix: '.yml'
+    $translateProvider.preferredLanguage 'ja'
+    $translateProvider.fallbackLanguage 'en'
 
     {i18n}= $localStorageProvider.$get()
     i18n?= 'ja'
