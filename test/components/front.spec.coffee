@@ -114,8 +114,8 @@ describe 'edgy.black',->
         angular.element(document.querySelector('[ng-model=\"files\"]')).scope().$apply();
         """
 
-        title.sendKeys 'hogekosan'
-        description.sendKeys 'forever'
+        title.sendKeys 'The title'.slice(0,140)
+        description.sendKeys 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt iure officia tempora cum explicabo modi sit culpa totam, facere enim porro quia, laboriosam nam aut excepturi, consequatur magni assumenda, qui?'
         browser.executeScript uploadScript
 
         EC= protractor.ExpectedConditions

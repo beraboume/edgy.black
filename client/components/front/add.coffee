@@ -45,7 +45,16 @@ module.exports.server= (app)->
 
   mime= require 'mime'
 
-  OAuth= require 'oauth'
+  lwip= require 'lwip'
+  Promise= require 'sequelize/node_modules/bluebird'
+  OAuth= (require 'oauth').OAuth
+  oauth= new OAuth 'https://api.twitter.com/oauth/request_token',
+    'https://api.twitter.com/oauth/access_token',
+    process.env.consumerKey,
+    process.env.consumerSecret,
+    '1.0A',
+    null,
+    'HMAC-SHA1'
 
   app.post '/front/artworks/add/',(req,res)->
     {title,description,data,type,size}= req.body
@@ -55,6 +64,8 @@ module.exports.server= (app)->
     file= req.files.file
     fileData= fs.readFileSync(file.path).toString()
     sha1= crypto.createHash('sha1').update(fileData).digest('hex')
+
+    filePath= null
 
     {Storage,Artwork}= db.models
     Storage.find where: {sha1}
@@ -85,22 +96,50 @@ module.exports.server= (app)->
     .then (artwork)->
       res.json {artwork}
 
-      oauth= new OAuth.OAuth 'https://api.twitter.com/oauth/request_token',
-        'https://api.twitter.com/oauth/access_token',
-        process.env.consumerKey,
-        process.env.consumerSecret,
-        '1.0A',
-        null,
-        'HMAC-SHA1'
+      # Notify for @edgy_black
+      messageLimit= 140 - 40
+      message= " by #{user_name} #{process.env.PUBLIC_URL}#{artwork.id} #pixelart"
+      messageArtwork= "#{artwork.title} #{artwork.description}"
+      if messageArtwork.length+ message.length< messageLimit
+        message= messageArtwork + message
+      else
+        message= messageArtwork.slice(0,messageLimit-message.length-3)+'...' + message
 
-      body=
-        status:
-          "#{artwork.title} by #{user_name} #{process.env.PUBLIC_URL}#{artwork.id}"
-      oauth.post 'https://api.twitter.com/1.1/statuses/update.json',
-        process.env.accessToken,
-        process.env.accessSecret,
-        body,(error)->
-          console.error error if error?
+      lwip.openAsync filePath
+      .then (image)->
+        Promise.promisifyAll image
+        image.scaleAsync 10,'nearest-neighbor'
+      .then (image)->
+        Promise.promisifyAll image
+        image.toBufferAsync 'png'
+      .then (buffer)->
+        new Promise (resolve,reject)->
+          body=
+            media: buffer.toString 'base64'
+          oauth.post 'https://upload.twitter.com/1.1/media/upload.json',
+            process.env.accessToken,
+            process.env.accessSecret,
+            body,(error,json)->
+              resolve json if not error?
+              reject error if error?
+      .then (json)->
+        new Promise (resolve,reject)->
+          {media_id_string}= JSON.parse json
+          body=
+            media_ids:
+              [media_id_string]
+            status:
+              message
+
+          oauth.post 'https://api.twitter.com/1.1/statuses/update.json',
+            process.env.accessToken,
+            process.env.accessSecret,
+            body,(error,json)->
+              resolve json if not error?
+              reject error if error?
+      .catch (error)->
+        console.error 'failure update status(',message.length,'):'
+        console.error message,error
 
     .catch (error)->
       console.error error.stack

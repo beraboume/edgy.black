@@ -20,7 +20,7 @@ env.STORAGE_URL?= "#{env.PUBLIC_URL}storage/"
 
 env.consumerKey?= '2AuSobZWQOxAhECduhlpcQtgy'
 env.consumerSecret?= 'KNYGQ95VGmbJiXkZHbtKcwJp8gzhifLAoCr5sKUEiXKbsp98i0'
-env.accessToken?= '3139954207-gWTXspc8FejKnzMcny1dtqRQAVaSB3iynPkrH4t'
-env.accessSecret?= 'vigWSkGpFG4KJfQLtUoMkJkiSDwWfsDiV7GodDTdwTUNA'
+env.accessToken?= '3139954207-YgbSAg7B16mbRxyaAgkWHQoEw2ddDGwuPU25i70'
+env.accessSecret?= 'AwQPB93wb9ZYRLEBkDWuMezvJEFXdMk8ACbjuLtW5DDrI'
 
 module.exports= env
