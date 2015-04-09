@@ -5,7 +5,7 @@
   figcaption
     form(ng-submit="remove()")
       header
-        h2 コレほんま削除してええん？
+        h2 {{'DELETE_MSG'| translate}}
       
       section
         h2 {{artwork.title}}
@@ -17,7 +17,7 @@
             | {{artwork.User.name}}
 
       footer
-        h2 削除しても
+        h2 {{'DELETE_VALID'| translate}}
 
-        button() ええよ
-        button(type="button" ng-click="back()") あかん
+        button {{'DELETE_YES'| translate}}
+        button(type="button" ng-click="back()") {{'DELETE_NO'| translate}}

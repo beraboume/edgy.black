@@ -34,7 +34,8 @@
     "passport-twitter": "^1.0.3",
     "sequelize": "^2.0.5",
     "stylus": "^0.50.0",
-    "wanderer": "0.0.2"
+    "wanderer": "0.0.2",
+    "yamljs": "^0.2.1"
   },
   "devDependencies": {
     "abigail": "0.0.7",

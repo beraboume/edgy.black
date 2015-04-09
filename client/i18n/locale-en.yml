@@ -1,0 +1,88 @@
+# locale-en english
+
+TITLE:
+  'E D G Y'
+I18N:
+  '日本語'
+
+FOUND:
+  'found'
+NOT_FOUND:
+  '...Not found'
+YES:
+  'Yes'
+NO:
+  'No'
+DROP_HERE:
+  'Drop here.'
+FORM_INVALID:
+  'Please inputs'
+FORM_VALID:
+  'Looks goods?'
+
+TOP:
+  'Top'
+VIEW:
+  'Artwork'
+ADD:
+  'New'
+ADD_TITLE:
+  'Title'
+ADD_DESCRIPTION:
+  'Description'
+EDIT:
+  'Edit'
+EDIT_TITLE:
+  'Title'
+EDIT_DESCRIPTION:
+  'Description'
+DELETE:
+  'Delete'
+DELETE_MSG:
+  'There is no going back.'
+DELETE_VALID:
+  'Really?'
+DELETE_YES:
+  'Kaboom!'
+DELETE_NO:
+  'Cancel'
+
+SHERE:
+  'Shere'
+COMMENT:
+  'Comment'
+COMMENT_GUEST:
+  'To comment you must be logged.'
+
+MYPAGE:
+  'Account'
+MYPAGE_GUEST:
+  'Guset!'
+MYPAGE_GUEST_MSG:
+  'EDGY is Dependent to twitter-account.(at present)'
+MYPAGE_LOGIN_TWITTER:
+  'Login with twitter'
+MYPAGE_LOGOUT:
+  'Logout'
+MYPAGE_USER:
+  'Welcome! Dear '
+MYPAGE_USER_SUF:
+  '…'
+MYPAGE_STATS:
+  'Stats'
+MYPAGE_STATS_ADD:
+  'Total artwork'
+MYPAGE_STATS_COMMENT:
+  'Total comment'
+MYPAGE_STATS_VIEWS:
+  'Total view'
+MYPAGE_EDIT:
+  'Profile'
+MYPAGE_QUIT:
+  'Resign EDGY'
+MYPAGE_QUIT_MSG:
+  'Please type in the name of the Mypage-url to confirm.'
+MYPAGE_QUIT_CONFIRM:
+  'There is no going back.'
+MYPAGE_URL:
+  'Mypage-url'

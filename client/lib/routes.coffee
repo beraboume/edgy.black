@@ -33,9 +33,23 @@ module.exports.client= (app)->
         controller= undefined
         resolve= undefined
 
-      console.log stateName,url,templateUrl,typeof controller,typeof resolve
+      # console.log stateName,url,templateUrl,typeof controller,typeof resolve
 
       $stateProvider.state stateName,{url,controller,templateUrl,resolve}
+
+    $stateProvider.state 'i18n',
+      templateProvider: ($state,$translate,amMoment,$localStorage)->
+        i18n= $localStorage.i18n
+        if i18n isnt 'en'
+          i18n= 'en'
+        else
+          i18n= 'ja'
+        $localStorage.i18n= i18n
+        
+        $translate.use i18n
+        amMoment.changeLocale i18n
+
+        $state.reload()
 
     $stateProvider.state 'error',
       url: '*path'

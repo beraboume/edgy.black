@@ -1,12 +1,12 @@
 .artworks
   article
     form.logo(ng-submit="find(words)")
-      input(placeholder="E D G Y" ng-model="words")
+      input(placeholder="{{'TITLE' | translate}}" ng-model="words")
       footer(ng-show="words.length")
         p(ng-show="filtered.length")
-          | {{filtered.length}} 件
+          | {{filtered.length}} {{'FOUND'| translate}}
         p(ng-show="!filtered.length")
-          | …存在しない
+          | {{'NOT_FOUND'| translate}}
     nav
       a(
         ng-repeat="artwork in filtered= (artworks|filter:words)"

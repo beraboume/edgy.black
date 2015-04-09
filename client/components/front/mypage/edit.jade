@@ -14,25 +14,25 @@
         ng-maxlength="{{fields.bio._length}}"
       )
 
-      h2 マイページURL
+      h2 {{'MYPAGE_URL'| translate}}
       
       label.mypage_id
         input(
           ng-model="user.mypage_id"
           required
-          placeholder="マイページURL"
+          placeholder="{{'MYPAGE_URL'| translate}}"
           ng-maxlength="{{fields.mypage_id._length}}"
         )
         .hostname
           | .#{process.env.MYPAGE_HOST}
 
       footer(ng-show="edit.$invalid || (!user.Storage.url && files.length==0)")
-        p くうらんをにゅうりょくしてね
+        p {{'FORM_INVALID'| translate}}
       footer(ng-hide="edit.$invalid || (!user.Storage.url && files.length==0)")
-        p これでよいですか？
-        button はい
-        button(type="button" ng-click="back()") いいえ
+        p {{'FORM_VALID'| translate}}
+        button {{'YES'| translate}}
+        button(type="button" ng-click="back()") {{'NO'| translate}}
     figure(ng-model="files" accept="image/*" ng-file-select ng-file-drop)
       a
         img(ng-src="{{user.Storage.url}}" jaggy)
-        p ここに顔グラをとうろく
+        p {{'DROP_HERE'| translate}}

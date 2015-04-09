@@ -1,0 +1,88 @@
+# locale-ja japanese
+
+TITLE:
+  'E D G Y'
+I18N:
+  'ENGLISH'
+
+FOUND:
+  '件'
+NOT_FOUND:
+  '…存在しない'
+YES:
+  'はい'
+NO:
+  'いいえ'
+DROP_HERE:
+  'ここに画像をとうろく'
+FORM_INVALID:
+  'にゅうりょくしてね'
+FORM_VALID:
+  'これでよいですか？'
+
+TOP:
+  'トップ'
+VIEW:
+  'さくひん'
+ADD:
+  'とうこう'
+ADD_TITLE:
+  'だいめい'
+ADD_DESCRIPTION:
+  'いいのこしたいこと'
+EDIT:
+  'へんしゅう'
+EDIT_TITLE:
+  'だいめい'
+EDIT_DESCRIPTION:
+  'いいのこしたいこと'
+DELETE:
+  'さくじょ'
+DELETE_MSG:
+  'コレほんま削除してええん？'
+DELETE_VALID:
+  '削除しても'
+DELETE_YES:
+  'ええよ'
+DELETE_NO:
+  'あかん'
+
+SHERE:
+  'シェア'
+COMMENT:
+  'コメント'
+COMMENT_GUEST:
+  'コメントにはログインが必要です'
+
+MYPAGE:
+  'アカウント'
+MYPAGE_GUEST:
+  'ゲスト！'
+MYPAGE_GUEST_MSG:
+  'EDGYをつかうためには、twitterIDがひつようです（今のところ）'
+MYPAGE_LOGIN_TWITTER:
+  'twitterでログイン'
+MYPAGE_LOGOUT:
+  'ログアウト'
+MYPAGE_USER:
+  'やうこそ、'
+MYPAGE_USER_SUF:
+  '氏…'
+MYPAGE_STATS:
+  '実績'
+MYPAGE_STATS_ADD:
+  '累積とうこう'
+MYPAGE_STATS_COMMENT:
+  '累積コメント'
+MYPAGE_STATS_VIEWS:
+  '累積えつらん'
+MYPAGE_EDIT:
+  'プロフィール'
+MYPAGE_QUIT:
+  '退会する'
+MYPAGE_QUIT_MSG:
+  '退会するには、マイページURLを入力してください…'
+MYPAGE_QUIT_CONFIRM:
+  '元に戻りませんよ？'
+MYPAGE_URL:
+  'マイページURL'

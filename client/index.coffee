@@ -2,13 +2,15 @@ app= angular.module 'app',[
   'ui.router'
   
   'ngAnimate'
-  'ngReel'
-
   'angularFileUpload'
   'angularMoment'
 
+  'ngReel'
   'jaggy'
   'webcolor'
+
+  'ngStorage'
+  'pascalprecht.translate'
 ]
 
 app.constant 'components',
@@ -26,6 +28,7 @@ app.constant 'components',
   'mypage.index': '/'
 app.constant 'mypageId',location.hostname.split('.')[0]
 
+(require './lib/i18n').client app
 (require './lib/storage').client app
 (require './lib/routes').client app
 
@@ -38,9 +41,10 @@ app.run (
 
   $templateCache
 
+  $localStorage
   amMoment
 )->
-  amMoment.changeLocale 'ja'
+  amMoment.changeLocale $localStorage.i18n or 'ja'
 
   $rootScope.back= ->
     $window.history.back()

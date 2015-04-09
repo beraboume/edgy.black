@@ -11,13 +11,17 @@
     "angular-webcolor": "~0.0.14",
     "ng-file-upload": "~3.2.4",
     "animate.css": "~3.2.5",
-    "jaggy": "~0.1.11"
+    "jaggy": "~0.1.11",
+    "angular-translate": "~2.6.1",
+    "angular-translate-loader-static-files": "~2.6.1",
+    "ngstorage": "~0.3.0"
   },
   "overrides": {
     "moment": {
       "main": [
         "moment.js",
-        "./locale/ja.js"
+        "./locale/ja.js",
+        "./locale/en.js"
       ]
     }
   },

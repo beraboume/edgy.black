@@ -13,7 +13,7 @@
           img(ng-src="{{artwork.Face.url}}")
 
     section.shares
-      h2 シェア
+      h2 {{'SHERE'| translate}}
       nav
         a(href="#" ng-click="share('http://twitter.com/share',{text:'This is edge!!'})")
           | T
@@ -26,20 +26,20 @@
     
     section.comments
       h2
-        | コメント
+        | {{'COMMENT'| translate}}
         span(ng-show="comment_count>0")
           | ({{comment_count}})
       
       header
         .notify(ng-show="!user")
           a(href="#" ng-click="location('/mypage/auth/')")
-            | コメントにはログインが必要です
+            | {{'COMMENT_GUEST'| translate}}
         form(name="add" ng-show="user" ng-submit="comment(body)")
           button(
             ng-show="artwork.user_id != user.id"
             ng-disabled="add.$invalid"
           )
-            |コメント
+            | {{'COMMENT'| translate}}
           input(
             name="body"
             ng-model="body"
@@ -51,7 +51,7 @@
             ng-show="artwork.user_id == user.id"
             ng-disabled="add.$invalid"
           )
-            |返信する
+            | {{'COMMENT'| translate}}
 
           footer(ng-show="add.$valid")
             | {{fields.body._length - body.length}} / {{fields.body._length}}

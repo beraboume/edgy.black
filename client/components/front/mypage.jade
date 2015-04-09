@@ -3,24 +3,24 @@
   .artworks(ng-show="user")
     figcaption
       header
-        h2 やうこそ、{{user.name}}氏…
+        h2 {{'MYPAGE_USER'| translate}}{{user.name}}{{'MYPAGE_USER_SUF'| translate}}
       
       section
-        h2 実績
+        h2 {{'MYPAGE_STATS'| translate}}
         dl.stats
           dt
             img(ng-src="icons/add.gif" jaggy)
-            | 累積とうこう
+            | {{'MYPAGE_STATS_ADD'| translate}}
           dd {{stats.artworks | number:0}}
 
           dt
             img(ng-src="icons/comment.gif" jaggy)
-            | 累積コメント
+            | {{'MYPAGE_STATS_COMMENT'| translate}}
           dd {{stats.comments | number:0}}
 
           dt
             img(ng-src="icons/view.gif" jaggy)
-            | 累積えつらん
+            | {{'MYPAGE_STATS_VIEWS'| translate}}
           dd {{stats.views | number:0}}
 
     figure
@@ -32,24 +32,24 @@
         pre {{user.bio}}
 
         nav
-          a(ui-sref=".edit") プロフィール
-          a(href="#" ng-click="logout()") ログアウト
+          a(ui-sref=".edit") {{'MYPAGE_EDIT'| translate}}
+          a(href="#" ng-click="logout()") {{'MYPAGE_LOGOUT'| translate}}
           
         nav.danger
-          a(ui-sref=".quit") 退会する
+          a(ui-sref=".quit") {{'MYPAGE_QUIT'| translate}}
 
   .artworks(ng-show="!user")
     figcaption
       header
-        h2 ゲスト！
+        h2 {{'MYPAGE_GUEST'| translate}}
 
       section
         dl
-          dt EDGYをつかうためには、twitterIDがひつようです（今のところ）
+          dt {{'MYPAGE_GUEST_MSG'| translate}}
     figure
       img(ng-show="!user.Storage" src="{{notfoundSVG}}")
       nav
         a(href="#" ng-click="location('/mypage/auth/')")
-          | twitterでログイン
+          | {{'MYPAGE_LOGIN_TWITTER'| translate}}
 
 ui-view

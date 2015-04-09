@@ -7,19 +7,19 @@
       h2: input(
         ng-model="artwork.title"
         required
-        placeholder="だいめい"
+        placeholder="{{'EDIT_TITLE'| translate}}"
         ng-maxlength="{{fields.title._length}}"
       )
       textarea(
         ng-model="artwork.description"
         required
-        placeholder="いいのこしたいこと"
+        placeholder="{{'EDIT_DESCRIPTION'| translate}}"
         ng-maxlength="{{fields.description._length}}"
       )
 
       footer(ng-show="artwork.$invalid || files.length==0")
-        p くうらんをにゅうりょくしてね
+        p {{'FORM_INVALID'| translate}}
       footer(ng-hide="artwork.$invalid || files.length==0")
-        p これでよいですか？
-        button はい
-        button(type="button" ng-click="back()") いいえ
+        p {{'FORM_VALID'| translate}}
+        button {{'YES'| translate}}
+        button(type="button" ng-click="back()") {{'NO'| translate}}

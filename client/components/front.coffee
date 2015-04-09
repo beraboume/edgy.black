@@ -3,36 +3,41 @@ module.exports.client= ($scope,$state,user)->
   $scope.states= 
     'front.index':
       icon: 'icons/top.gif'
-      title: 'トップ'
+      title: 'TOP'
 
     'front.view':
       icon: 'icons/image.gif'
-      title: 'さくひん'
+      title: 'VIEW'
       'ng-hide':'!$state.params.id'
     'front.edit':
       icon: 'icons/edit.gif'
-      title: 'へんしゅう'
+      title: 'EDIT'
       'ng-hide':'!$state.params.id || isOtherPage'
     'front.remove':
       icon: 'icons/remove.gif'
-      title: 'さくじょ'
+      title: 'DELETE'
       'ng-hide':'!$state.params.id || isOtherPage'
     'front.add':
       icon: 'icons/add.gif'
-      title: 'とうこう'
+      title: 'ADD'
       'ng-hide':'!user.id || !$state.includes("front")'
 
     'front.mypage':
       icon: 'icons/authorize.gif'
-      title: 'アカウント'
+      title: 'MYPAGE'
     'front.mypage.edit':
       icon: 'icons/mypage.gif'
-      title: 'プロフィール'
+      title: 'MYPAGE_EDIT'
       'ng-hide':'!$state.is("front.mypage.edit")'
     'front.mypage.quit':
       icon: 'icons/quit.gif'
-      title: '退会する'
+      title: 'MYPAGE_QUIT'
       'ng-hide':'!$state.is("front.mypage.quit")'
+
+    "i18n":
+      icon: 'icons/i18n.gif'
+      title: 'I18N'
+      'ng-hide':'!$state.is("front.index")'
 
 module.exports.resolve=
   fields: ($http)->

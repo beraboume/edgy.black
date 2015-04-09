@@ -1,24 +1,24 @@
 .mypage_quit
   form(name="quit" ng-submit="quit.$valid && submit()")
     figcaption
-      h2 退会する
-      p 退会するには、マイページURLを入力してください…
+      h2 {{'MYPAGE_QUIT'| translate}}
+      p {{'MYPAGE_QUIT_MSG'| translate}}
 
       label.mypage_id
         input(
           ng-model="mypage_id"
           ng-pattern="mypage_id_confirm"
           required
-          placeholder="マイページURL"
+          placeholder="{{'MYPAGE_URL'| translate}}"
         )
         .hostname
           | .#{process.env.MYPAGE_HOST}
 
       footer(ng-show="quit.$invalid")
-        p にゅうりょくしてね
+        p {{'FORM_INVALID'| translate}}
       footer(ng-hide="quit.$invalid")
-        p 元に戻りませんよ？
-        button はい
-        button(type="button" ng-click="back()") いいえ
+        p {{'MYPAGE_QUIT_CONFIRM'| translate}}
+        button {{'YES'| translate}}
+        button(type="button" ng-click="back()") {{'NO'| translate}}
     figure
       img(ng-src="{{user.Storage.url}}" jaggy)
