@@ -39,8 +39,6 @@ app.run (
   $window
   $webcolorLoadingBar
 
-  $templateCache
-
   $localStorage
   amMoment
 )->
@@ -75,6 +73,3 @@ app.run (
   $rootScope.$on '$stateChangeError',(event,toState,toParams,fromState,fromParams,error)->
     $webcolorLoadingBar.complete()
     $state.go 'error' if error.status is 404
-
-  $rootScope.$on '$viewContentLoaded',->
-    $templateCache.removeAll()
