@@ -25,7 +25,6 @@
 
     figure
       a(ui-sref=".edit")
-        img(ng-show="!user.Storage" src="{{notfoundSVG}}")
         img(ng-src="{{user.Storage.url}}" jaggy)
 
       seciton(ng-show="user")
@@ -48,7 +47,7 @@
         dl
           dt {{'MYPAGE_GUEST_MSG'| translate}}
     figure
-      img(ng-show="!user.Storage" src="{{notfoundSVG}}")
+      img(jaggy)
       nav
         a(href="#" ng-click="location('/mypage/auth/')")
           | {{'MYPAGE_LOGIN_TWITTER'| translate}}

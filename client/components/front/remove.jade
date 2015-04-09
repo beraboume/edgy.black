@@ -13,7 +13,7 @@
         footer
           time(am-time-ago="artwork.created_at")
           a(href="#" ng-click="location('http://'+artwork.User.name+'.localhost:59798/')")
-            img(ng-src="{{artwork.Face.url}}")
+            img(ng-src="{{user.Storage.url}}" jaggy)
             | {{artwork.User.name}}
 
       footer

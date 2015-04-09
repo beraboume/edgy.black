@@ -56,7 +56,6 @@ app.run (
   $rootScope.location= (url)->
     $window.location.href= url
   $rootScope.$state= $state
-  $rootScope.notfoundSVG= 'data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMSAxIiBzaGFwZS1yZW5kZXJpbmc9ImNyaXNwRWRnZXMiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PHBhdGggZD0iTTAsMGgxdjFoLTFaIiBmaWxsPSJyZ2JhKDAsMCwwLDAuNTApIj48L3BhdGg+PC9zdmc+'
 
   pullToRefresh= no
   $window.addEventListener 'scroll',->
