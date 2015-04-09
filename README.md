@@ -1,3 +1,5 @@
+> [edgy.black](http://edgy.black/)
+
 # TODO
 * テストをていねいに書く
 * ng-messagesのインストールと実装
