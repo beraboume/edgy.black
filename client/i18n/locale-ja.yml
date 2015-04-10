@@ -16,7 +16,7 @@ YES:
 NO:
   'いいえ'
 DROP_HERE:
-  'ここに画像をとうろく'
+  'gif,png,jpgをとうろく'
 FORM_INVALID:
   'にゅうりょくしてね'
 FORM_VALID:

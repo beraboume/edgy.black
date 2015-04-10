@@ -16,7 +16,7 @@ YES:
 NO:
   'No'
 DROP_HERE:
-  'Drop here.'
+  'Drop here. (only gif,png,jpg)'
 FORM_INVALID:
   'Please inputs'
 FORM_VALID:

@@ -37,7 +37,9 @@ module.exports.client= (
     jaggy url,(error,svg)->
       throw error if error?
       a= document.querySelector('[ng-model="files"] a')
-      a.innerHTML= svg.outerHTML
+      a= angular.element a
+      a.empty()
+      a.append svg
 
   $scope.submit= ->
     {name,bio,mypage_id}= $scope.user
