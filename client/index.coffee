@@ -21,6 +21,8 @@ app.constant 'components',
   'front.edit': '/{id:[0-9]+}/edit'
   'front.remove': '/{id:[0-9]+}/remove'
   
+  'front.timeline': '/timeline'
+  
   'front.mypage': '/mypage'
   'front.mypage.stats': '/stats/:type'
   'front.mypage.edit': '/edit'

@@ -60,6 +60,8 @@ COMMENT_GUEST:
 
 WEBSITE:
   'Mypage'
+TIMELINE:
+  'Timeline'
 MYPAGE:
   'Account'
 MYPAGE_GUEST:
@@ -79,8 +81,8 @@ MYPAGE_STATS:
 MYPAGE_STATS_ADD:
   'Total artwork'
 MYPAGE_STATS_COMMENT:
-  'Total comment'
-MYPAGE_STATS_VIEWS:
+  'Total receive comment'
+MYPAGE_STATS_VIEW:
   'Total view'
 MYPAGE_EDIT:
   'Profile'

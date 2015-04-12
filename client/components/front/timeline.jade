@@ -1,0 +1,43 @@
+.timeline
+  figcaption
+    section.comments
+      header
+        .notify(ng-show="!user")
+          a(href="#" ng-click="location('/mypage/auth/')")
+            | {{'COMMENT_GUEST'| translate}}
+        form(name="add" ng-show="user" ng-submit="comment(body)")
+          input(
+            name="body"
+            ng-model="body"
+            ng-maxlength="{{fields.body._length}}"
+            required
+          )
+
+          button(
+            ng-disabled="add.$invalid"
+          )
+            | {{'COMMENT'| translate}}
+
+          footer(ng-show="add.$valid")
+            | {{fields.body._length - body.length}} / {{fields.body._length}}
+
+      ul(ng-reel="/front/timeline/ as comments" ng-reel-stack)
+        li(ng-repeat="comment in comments")
+          section(ng-show="comment.user_id != user.id")
+            figure.from
+              a(ng-click="location('http://'+comment.User.mypage_id+'.#{process.env.MYPAGE_HOST}/')")
+                storage(key="{{comment.User.storage_key}}")
+              h3 {{comment.User.name}}
+              time(am-time-ago="comment.created_at")
+            figcaption
+              pre {{comment.body}}
+            .to
+          section(ng-show="comment.user_id == user.id")
+            .to
+            figcaption
+              pre {{comment.body}}
+            figure.from
+              a(ng-click="location('http://'+comment.User.mypage_id+'.#{process.env.MYPAGE_HOST}/')")
+                storage(key="{{comment.User.storage_key}}")
+              h3 {{comment.User.name}}
+              time(am-time-ago="comment.created_at")

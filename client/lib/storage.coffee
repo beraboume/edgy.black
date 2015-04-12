@@ -8,8 +8,10 @@ module.exports.client= (app)->
       $http.get '/storage_url/'+key
       .then (result)->
         url= result.data
-        element.html '<img ng-src="'+url+'" jaggy>'
-        $compile(element.contents())(scope)
+
+        svg= angular.element '<img ng-src="'+url+'" jaggy>'
+        element.replaceWith svg 
+        $compile(svg)(scope)
       .catch (error)->
         console.log error
         element.replaceWith window.jaggy.emptySVG()

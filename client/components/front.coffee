@@ -4,6 +4,10 @@ module.exports.client= ($scope,$state,user)->
     'front.index':
       icon: 'icons/top.gif'
       title: 'TOP'
+      
+    'front.timeline':
+      icon: 'icons/comment.gif'
+      title: 'COMMENT'
 
     'front.view':
       icon: 'icons/image.gif'

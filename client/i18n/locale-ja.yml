@@ -60,6 +60,8 @@ COMMENT_GUEST:
 
 WEBSITE:
   'マイページ'
+TIMELINE:
+  'タイムライン'
 MYPAGE:
   'アカウント'
 MYPAGE_GUEST:
@@ -79,7 +81,7 @@ MYPAGE_STATS:
 MYPAGE_STATS_ADD:
   '累積とうこう'
 MYPAGE_STATS_COMMENT:
-  '累積コメント'
+  '累積被コメント'
 MYPAGE_STATS_VIEW:
   '累積えつらん'
 MYPAGE_EDIT:

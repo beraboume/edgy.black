@@ -101,7 +101,7 @@ module.exports.server= (app)->
       fileName= storage.key+'.'+(require('mime').extension type)
       filePath= path.join process.env.STORAGE,fileName
 
-      fs.renameSync file.path,filePath
+      fs.writeFileSync filePath,file.buffer
       
       storage.type= type
       storage.url= process.env.STORAGE_URL+fileName
