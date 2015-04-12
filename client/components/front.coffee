@@ -5,10 +5,6 @@ module.exports.client= ($scope,$state,user)->
       icon: 'icons/top.gif'
       title: 'TOP'
       
-    'front.timeline':
-      icon: 'icons/comment.gif'
-      title: 'COMMENT'
-
     'front.view':
       icon: 'icons/image.gif'
       title: 'VIEW'
@@ -42,10 +38,13 @@ module.exports.client= ($scope,$state,user)->
       title: 'MYPAGE_QUIT'
       'ng-hide':'!$state.is("front.mypage.quit")'
 
+    'front.timeline':
+      icon: 'icons/comment.gif'
+      title: 'COMMENT'
+
     "i18n":
       icon: 'icons/i18n.gif'
       title: 'I18N'
-      'ng-hide':'!$state.is("front.index")'
     "glitch":
       icon: 'icons/glitch.gif'
       title: 'GLITCH'
