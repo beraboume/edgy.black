@@ -2,10 +2,8 @@
 env= require './env'
 db= require env.DB_ROOT
 
-lwip= require 'lwip'
 path= require 'path'
-Promise= require 'sequelize/node_modules/bluebird'
-Promise.promisifyAll lwip
+execSync= (require 'child_process').execSync
 
 # Setup og
 module.exports.artwork_view= (req,res,next)->
@@ -47,16 +45,5 @@ module.exports.storage= (req,res,next)->
 
   {key}= req.params
   filePath= path.join env.STORAGE,key
-  lwip.openAsync filePath
-  .then (image)->
-    Promise.promisifyAll image
-    image.scaleAsync 10,'nearest-neighbor'
-  .then (image)->
-    Promise.promisifyAll image
-    image.toBufferAsync 'png'
-  .then (buffer)->
-    res.end buffer
-
-  .catch (error)->
-    res.status 400
-    res.end error.message
+  res.type 'png'
+  res.end execSync "cat #{filePath} | convert - -sample 1000% -format png -"

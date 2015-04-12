@@ -47,8 +47,6 @@ module.exports.server= (app)->
 
   mime= require 'mime'
 
-  lwip= require 'lwip'
-  Promise= require 'sequelize/node_modules/bluebird'
   OAuth= (require 'oauth').OAuth
   oauth= new OAuth 'https://api.twitter.com/oauth/request_token',
     'https://api.twitter.com/oauth/access_token',
@@ -57,6 +55,9 @@ module.exports.server= (app)->
     '1.0A',
     null,
     'HMAC-SHA1'
+
+  Promise= require 'sequelize/node_modules/bluebird'
+  execSync= (require 'child_process').execSync
 
   app.post '/front/artworks/add/',(req,res)->
     {title,description,data,type,size}= req.body
@@ -106,17 +107,12 @@ module.exports.server= (app)->
       else
         message= messageArtwork.slice(0,messageLimit-message.length-3)+'...' + message
 
-      lwip.openAsync filePath
-      .then (image)->
-        Promise.promisifyAll image
-        image.scaleAsync 10,'nearest-neighbor'
-      .then (image)->
-        Promise.promisifyAll image
-        image.toBufferAsync 'png'
-      .then (buffer)->
+      stdout= execSync "cat #{filePath} | convert - -sample 1000% -format png -"
+      Promise.resolve stdout
+      .then (stdout)->
         new Promise (resolve,reject)->
           body=
-            media: buffer.toString 'base64'
+            media: (new Buffer stdout,'binary').toString 'base64'
           oauth.post 'https://upload.twitter.com/1.1/media/upload.json',
             process.env.accessToken,
             process.env.accessSecret,
