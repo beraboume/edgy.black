@@ -62,6 +62,11 @@ WEBSITE:
   'Mypage'
 TIMELINE:
   'Timeline'
+FOR_ARTWORK:
+  'for Artwork "'
+FOR_ARTWORK_SUF:
+  '"'
+
 MYPAGE:
   'Account'
 MYPAGE_GUEST:
