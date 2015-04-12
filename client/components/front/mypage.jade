@@ -11,17 +11,23 @@
           dt
             img(ng-src="icons/add.gif" jaggy)
             | {{'MYPAGE_STATS_ADD'| translate}}
-          dd {{stats.artworks | number:0}}
+          dd
+            a(ui-sref=".stats({type:'add'})")
+              | {{stats.artworks | number:0}}
 
           dt
             img(ng-src="icons/comment.gif" jaggy)
             | {{'MYPAGE_STATS_COMMENT'| translate}}
-          dd {{stats.comments | number:0}}
+          dd
+            a(ui-sref=".stats({type:'comment'})")
+              | {{stats.comments | number:0}}
 
           dt
             img(ng-src="icons/view.gif" jaggy)
-            | {{'MYPAGE_STATS_VIEWS'| translate}}
-          dd {{stats.views | number:0}}
+            | {{'MYPAGE_STATS_VIEW'| translate}}
+          dd
+            a(ui-sref=".stats({type:'view'})")
+              | {{stats.views | number:0}}
 
     figure
       a(ui-sref=".edit")

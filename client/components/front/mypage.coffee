@@ -22,14 +22,14 @@ module.exports.server= (app)->
     artworks= views= comments= 0
 
     db= require process.env.DB_ROOT
-    {Artwork,Comment}= db.models
+    {Artwork,Comment,View}= db.models
     Artwork.count
       where:
         {user_id}
     .then (count)->
       artworks= count
 
-      Artwork.sum 'views',
+      View.sum 'count',
         where:
           {user_id}
     .then (result)->
@@ -48,7 +48,7 @@ module.exports.server= (app)->
       res.json {artworks,views,comments}
 
     .catch (error)->
-      console.error error
+      console.error error.stack
 
   passport= require process.env.SERVER_ROOT+'/passport'
 

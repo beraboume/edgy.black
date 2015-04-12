@@ -4,6 +4,7 @@
   "scripts": {
     "prestart": "pm2 kill",
     "start": "pm2 start edgy.black.coffee --name edgy.black",
+    "watchstart": "pm2 start edgy.black.coffee --name edgy.black --watch --ignore-watch node_modules",
     "poststart": "pm2 list && pm2 logs",
 
     "watch":"abigail test/**/*.coffee:test -e",

@@ -6,6 +6,8 @@ I18N:
   'To English'
 GLITCH:
   'グリッチ'
+TODAY:
+  '今日'
 
 FOUND:
   '件'
@@ -78,7 +80,7 @@ MYPAGE_STATS_ADD:
   '累積とうこう'
 MYPAGE_STATS_COMMENT:
   '累積コメント'
-MYPAGE_STATS_VIEWS:
+MYPAGE_STATS_VIEW:
   '累積えつらん'
 MYPAGE_EDIT:
   'プロフィール'

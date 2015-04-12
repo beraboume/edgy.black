@@ -11,10 +11,9 @@ Artwork= db.define 'Artwork',
     type: Sequelize.TEXT
     allowNull: no
 
-  views: Sequelize.INTEGER
-
   storage_key: Sequelize.UUID
 Artwork.belongsTo require './User'
 Artwork.belongsTo require './Storage'
+Artwork.hasMany require './View'
 
 module.exports= Artwork

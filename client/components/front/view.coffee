@@ -89,26 +89,42 @@ module.exports.server= (app)->
     
     artwork= null
 
-    {Artwork,Storage,User}= db.models
+    {id}= req.params
+
+    {Artwork,Storage,User,View}= db.models
     Artwork.find
-      where:
-        id: req.params.id
-      include:[Storage,User]
+      where: {id}
+      include: [Storage,User]
     .then (result)->
       throw new Error 'Notfound' if not result?
-
-      isVisit= not (result.id in req.session.views) and result.user_id isnt req.session.passport?.user?.id
-
       artwork= result
-      artwork.views++ if isVisit
 
-      req.session.views.push artwork.id if isVisit
+      # TODO testを書け
+      View.findOrCreate
+        where:[
+          ['date(`date`) = date(?)',new Date]
+          artwork_id: id
+        ]
+        defaults:
+          date: new Date
+          count: 0
+          user_id: artwork.user_id
+          artwork_id: artwork.id
+    .then (results)->
+      [view,created]= results
+      isOther= artwork.user_id isnt req.session.passport?.user?.id
+      isVisit= not (view.id in req.session.views)
+      if isOther and isVisit
+        view.count++ 
+        req.session.views.push view.id
 
-      artwork.save()
+      view.save()
+
     .then ->
       Storage.find
         where:
           key: artwork.User?.storage_key
+
     .then (face)->
       plainObject= artwork.get plain: yes
       plainObject.Face= face.get plain: yes if face?

@@ -1,0 +1,12 @@
+.mypage_stats
+  article
+    h3
+      img(ng-src="{{icon}}" jaggy)
+      | {{title| translate}}
+    
+    ol
+      li(ng-repeat="day in days")
+        h4
+          span(ng-show="day.title>0" am-time-ago="day.title")
+          span(ng-hide="day.title>0") {{'TODAY'| translate}}
+        p {{day.count | number:0}}

@@ -22,6 +22,7 @@ app.constant 'components',
   'front.remove': '/{id:[0-9]+}/remove'
   
   'front.mypage': '/mypage'
+  'front.mypage.stats': '/stats/:type'
   'front.mypage.edit': '/edit'
   'front.mypage.quit': '/quit'
 

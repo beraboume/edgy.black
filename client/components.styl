@@ -249,7 +249,11 @@ main.mypage
     
   .stats
     dd
+    a
       font-family 'PixelMplus10',monospace
+    
+    a
+      text-decoration underline
   
   .danger
     a
@@ -263,6 +267,46 @@ main.mypage
         size 100%
         padding .5em
         theme_light()
+        
+.mypage_stats
+  overlay()
+  > *
+    central()
+    size 80vw 56vh
+    min-height 12em
+    padding 1em
+    
+    text-align left
+
+    theme_light()
+    
+    svg
+      size 2em
+  
+  h3
+    margin-bottom .5em
+  
+  ol
+    li
+      display inline-block
+      width calc(100% \/ 4)
+      height calc(100% \/ 2 \- 3em)
+      
+      box-sizing-reset()
+      p
+        text-align right
+        font-size 150%
+        font-family 'PixelMplus10',monospace
+      
+      &:nth-of-type(2)
+      &:nth-of-type(4)
+      &:nth-of-type(5)
+      &:nth-of-type(7)
+      &:nth-of-type(10)
+      &:nth-of-type(12)
+      &:nth-of-type(13)
+      &:nth-of-type(15)
+        theme_sepia()
 
 .mypage_edit
   overlay()
