@@ -20,7 +20,7 @@ module.exports.client= ($scope,$state,user)->
     'front.add':
       icon: 'icons/add.gif'
       title: 'ADD'
-      'ng-hide':'!user.id || !$state.includes("front")'
+      'ng-hide':'!user.id || $stateParams.id'
 
     'front.mypage':
       icon: 'icons/authorize.gif'

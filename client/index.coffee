@@ -37,17 +37,18 @@ app.constant 'mypageId',location.hostname.split('.')[0]
 
 app.run (
   $rootScope
+
   $state
+  $stateParams
 
   $window
   $webcolorLoadingBar
 
-  $localStorage
   amMoment
+  $localStorage
 )->
-  locale= 'en'
-  locale= 'ja' if navigator.language.slice(0,2) is 'ja'
-  amMoment.changeLocale $localStorage.i18n or locale
+  $rootScope.$state= $state
+  $rootScope.$stateParams= $stateParams
 
   $rootScope.back= ->
     $window.history.back()
@@ -58,15 +59,14 @@ app.run (
       return
   $rootScope.location= (url)->
     $window.location.href= url
-  $rootScope.$state= $state
 
-  pullToRefresh= no
+  $rootScope.pullToRefresh= no
   $window.addEventListener 'scroll',->
     $rootScope.scrollY= $window.scrollY
     $rootScope.$apply()
 
-    if not pullToRefresh and $rootScope.scrollY < -60
-      pullToRefresh= yes
+    if not $rootScope.pullToRefresh and $rootScope.scrollY < -60
+      $rootScope.pullToRefresh= yes
 
       $state.reload()
   $rootScope.$on '$stateChangeStart',(event)->
@@ -78,3 +78,7 @@ app.run (
   $rootScope.$on '$stateChangeError',(event,toState,toParams,fromState,fromParams,error)->
     $webcolorLoadingBar.complete()
     $state.go 'error' if error.status is 404
+
+  locale= 'en'
+  locale= 'ja' if navigator.language.slice(0,2) is 'ja'
+  amMoment.changeLocale $localStorage.i18n or locale
