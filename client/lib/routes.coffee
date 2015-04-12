@@ -59,12 +59,8 @@ module.exports.client= (app)->
           jaggy.glitch= glitch
         else
           jaggy.glitch= 4
-        jaggy.useCache= no
 
         console.log jaggy.glitch
-
-        for key in Object.keys localStorage when key.indexOf 'jaggy' is 0
-          localStorage.removeItem key
 
         $state.reload()
 
