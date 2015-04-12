@@ -7,7 +7,7 @@ module.exports.client= (
   $scope.states= 
     'mypage.index':
       icon: 'icons/desk.gif'
-      title: 'MYPAGE'
+      title: 'WEBSITE'
     "#{process.env.PUBLIC_URL}":
       icon: 'icons/search.gif'
       title: 'TOP'
