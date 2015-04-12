@@ -11,6 +11,6 @@ db= new Sequelize env.DB_NAME,'root',null,
     charset:'utf8'
     collate:'utf8_general_ci'
     underscored: on
-  # logging: off
+  logging: off
 
 module.exports= db
