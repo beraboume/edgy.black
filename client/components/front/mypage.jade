@@ -33,6 +33,8 @@
 
         nav
           a(ui-sref=".edit") {{'MYPAGE_EDIT'| translate}}
+          a(href="#" ng-click="location('http://'+user.mypage_id+'.#{process.env.MYPAGE_HOST}')")
+            | {{'WEBSITE'| translate}} （α）
           a(href="#" ng-click="logout()") {{'MYPAGE_LOGOUT'| translate}}
           
         nav.danger

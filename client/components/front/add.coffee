@@ -7,7 +7,7 @@ module.exports.client= ($scope,$http,$state,fields)->
 
     url= URL.createObjectURL file if file instanceof File
     return if not url?
-    jaggy url,(error,svg)->
+    jaggy.createSVG url,(error,svg)->
       throw error if error?
       a= document.querySelector('[ng-model="files"] a')
       a= angular.element a

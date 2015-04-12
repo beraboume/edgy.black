@@ -56,6 +56,8 @@ COMMENT:
 COMMENT_GUEST:
   'コメントにはログインが必要です'
 
+WEBSITE:
+  'マイページ'
 MYPAGE:
   'アカウント'
 MYPAGE_GUEST:
