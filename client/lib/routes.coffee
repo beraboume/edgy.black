@@ -52,16 +52,16 @@ module.exports.client= (app)->
         $state.reload()
 
     $stateProvider.state 'glitch',
-      templateProvider: (jaggyConfig)->
-        if jaggyConfig.glitch is 4
+      templateProvider: (jaggy)->
+        if jaggy.glitch is 4
           glitch= ~~(6*Math.random())+1
           glitch= 3 if glitch is 4
-          jaggyConfig.glitch= glitch
+          jaggy.glitch= glitch
         else
-          jaggyConfig.glitch= 4
-        jaggyConfig.useCache= no
+          jaggy.glitch= 4
+        jaggy.useCache= no
 
-        console.log jaggyConfig.glitch
+        console.log jaggy.glitch
 
         for key in Object.keys localStorage when key.indexOf 'jaggy' is 0
           localStorage.removeItem key
