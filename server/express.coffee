@@ -10,7 +10,7 @@ og= require './og'
 
 # Setup express
 app= express()
-app.use multer()
+app.use multer inMemory:yes
 app.use expressSession
   store: expressSessionStore
   secret: 'keyboard cat'

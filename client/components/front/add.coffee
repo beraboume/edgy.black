@@ -64,8 +64,7 @@ module.exports.server= (app)->
     user_name= req.session.passport.user.name
     # file= new Buffer (data.slice 1+data.indexOf ','),'base64'# atob
     file= req.files.file
-    fileData= fs.readFileSync(file.path).toString()
-    sha1= crypto.createHash('sha1').update(fileData).digest('hex')
+    sha1= crypto.createHash('sha1').update(file.buffer.toString()).digest('hex')
 
     filePath= null
 
@@ -81,7 +80,7 @@ module.exports.server= (app)->
       fileName= storage.key+'.'+(mime.extension type)
       filePath= path.join process.env.STORAGE,fileName
 
-      fs.renameSync file.path,filePath
+      fs.writeFileSync filePath,file.buffer
       
       storage.sha1= sha1
       storage.url= process.env.STORAGE_URL+fileName
