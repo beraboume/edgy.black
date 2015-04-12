@@ -3,7 +3,7 @@ module.exports.client= (app)->
     replace: yes
     link: (scope,element,attrs)->
       {key}= attrs
-      return element.html jaggy.emptySVG() if key.length is 0
+      return element.html window.jaggy.emptySVG() if key.length is 0
 
       $http.get '/storage_url/'+key
       .then (result)->
@@ -12,7 +12,7 @@ module.exports.client= (app)->
         $compile(element.contents())(scope)
       .catch (error)->
         console.log error
-        element.html jaggy.emptySVG()
+        element.html window.jaggy.emptySVG()
 
 module.exports.server= (app)->
   db= require process.env.DB_ROOT
