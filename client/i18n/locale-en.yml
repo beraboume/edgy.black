@@ -82,6 +82,10 @@ MYPAGE_STATS_VIEWS:
   'Total view'
 MYPAGE_EDIT:
   'Profile'
+MYPAGE_NAME:
+  'Name'
+MYPAGE_BIO:
+  'Bio'
 MYPAGE_QUIT:
   'Resign EDGY'
 MYPAGE_QUIT_MSG:

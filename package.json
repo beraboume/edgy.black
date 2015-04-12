@@ -7,6 +7,7 @@
     "poststart": "pm2 list && pm2 logs",
 
     "watch":"abigail test/**/*.coffee:test -e",
+    "pretest": "npm run build",
     "test": "jasminetea test --recursive --e2e '==baseUrl http://localhost:59798' --verbose --timeout 20000",
 
     "stop": "pm2 stop edgy.black",
@@ -42,7 +43,7 @@
     "jasminetea": "^0.1.27",
     "jqn": "0.0.3",
     "onefile": "^0.2.11",
-    "pm2": "^0.12.9"
+    "pm2": "^0.12.10"
   },
   "repository": {
     "type": "git",

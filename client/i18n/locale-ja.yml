@@ -5,7 +5,7 @@ TITLE:
 I18N:
   'To English'
 GLITCH:
-  'こしょう'
+  'グリッチ'
 
 FOUND:
   '件'
@@ -82,6 +82,10 @@ MYPAGE_STATS_VIEWS:
   '累積えつらん'
 MYPAGE_EDIT:
   'プロフィール'
+MYPAGE_NAME:
+  'なまえ'
+MYPAGE_BIO:
+  'いいのこしたいこと'
 MYPAGE_QUIT:
   '退会する'
 MYPAGE_QUIT_MSG:

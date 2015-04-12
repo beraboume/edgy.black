@@ -1,9 +1,9 @@
 module.exports.client= (app)->
-  app.directive 'storage',($http,$compile,jaggyEmptyImage)->
+  app.directive 'storage',($http,$compile,jaggy)->
     replace: yes
     link: (scope,element,attrs)->
       {key}= attrs
-      return element.html jaggyEmptyImage if key.length is 0
+      return element.html jaggy.emptySVG() if key.length is 0
 
       $http.get '/storage_url/'+key
       .then (result)->
@@ -12,7 +12,7 @@ module.exports.client= (app)->
         $compile(element.contents())(scope)
       .catch (error)->
         console.log error
-        element.html jaggyEmptyImage
+        element.html jaggy.emptySVG()
 
 module.exports.server= (app)->
   db= require process.env.DB_ROOT

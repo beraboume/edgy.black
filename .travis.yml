@@ -4,10 +4,6 @@ node_js:
 before_script:
   - mysql -uroot -e "create database edgy_test"
 
-  - npm install bower --global
-  - bower install
-  - npm run build
-
 env:
   global:
     - DB=localhost:3306

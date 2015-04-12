@@ -4,13 +4,13 @@
       h2: input(
         ng-model="user.name"
         required
-        placeholder="なまえ"
+        placeholder="{{'MYPAGE_NAME'| translate}}"
         ng-maxlength="{{fields.name._length}}"
       )
       textarea(
         ng-model="user.bio"
         required
-        placeholder="いいのこしたいこと"
+        placeholder="{{'MYPAGE_BIO'| translate}}"
         ng-maxlength="{{fields.bio._length}}"
       )
 

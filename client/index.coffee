@@ -42,7 +42,9 @@ app.run (
   $localStorage
   amMoment
 )->
-  amMoment.changeLocale $localStorage.i18n or 'ja'
+  locale= 'en'
+  locale= 'ja' if navigator.language.slice(0,2) is 'ja'
+  amMoment.changeLocale $localStorage.i18n or locale
 
   $rootScope.back= ->
     $window.history.back()

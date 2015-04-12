@@ -1,5 +1,9 @@
 module.exports.client= (app)->
-  app.config ($localStorageProvider,$translateProvider)->
+  app.config (
+    $localStorageProvider
+    $translateProvider
+    $windowProvider
+  )->
     $translateProvider.useStaticFilesLoader
       prefix: 'i18n/locale-'
       suffix: '.yml'
@@ -7,7 +11,9 @@ module.exports.client= (app)->
     $translateProvider.fallbackLanguage 'en'
 
     {i18n}= $localStorageProvider.$get()
-    i18n?= 'ja'
+    if not i18n?
+      i18n= 'en'
+      i18n= 'ja' if $windowProvider.$get().navigator.language.slice(0,2) is 'ja'
     $translateProvider.use i18n
 
 module.exports.server= (app)->
