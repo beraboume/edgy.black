@@ -53,7 +53,7 @@ module.exports.client= (
     $http.post '/mypage/edit/',data,
       headers:'Content-type':undefined
     .then (xhrResult)->
-      localStorage.removeItem 'jaggy:'+xhrResult.data
+      localStorage.removeItem key for key of localStorage when key.indexOf('jaggy:'+xhrResult.data) is 0
       $state.transitionTo 'front.mypage',null,reload:yes
     .catch (error)->
       console.log error
