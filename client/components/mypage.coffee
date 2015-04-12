@@ -9,7 +9,7 @@ module.exports.client= (
       icon: 'icons/desk.gif'
       title: 'WEBSITE'
     "#{process.env.PUBLIC_URL}":
-      icon: 'icons/search.gif'
+      icon: 'icons/top.gif'
       title: 'TOP'
 
 module.exports.resolve=

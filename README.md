@@ -20,6 +20,8 @@ $ brew install boot2docker
 $ boot2docker init # may sudo
 $ boot2docker start
 
+$ docker run -d --name edgy.redis -p 6379:6379 dockerfile/redis
+
 $ docker run --name edgy.black -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql
 $ docker exec -it edgy.black mysql -u root -p
 # root

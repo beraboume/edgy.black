@@ -4,7 +4,7 @@ env= require './env'
 express= require 'express'
 multer= require 'multer'
 expressSession= require 'express-session'
-expressSessionStore= new expressSession.MemoryStore
+expressSessionStore= new (require('connect-redis') expressSession)
 passport= require './passport'
 og= require './og'
 
