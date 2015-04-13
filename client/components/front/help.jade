@@ -3,7 +3,7 @@
   p ドット絵を投稿・閲覧するための場を、深淵に作ろうとした結果できた、くどいほどジャギーに満ちあふれたWEBアプリケーションです
   p このサイトでは現在、以下の機能が提供されています
   
-  section
+  article
     h2
       img(ng-src="icons/mypage.gif" jaggy)
       | アカウント
@@ -41,21 +41,66 @@
       | 機能はエッジの効いた（EDGY）ものだけにするつもりで、実用性が薄いと感じたものは取り壊しが行われるかもしれません
       | 早い、安い、ウマい。そんな場を提供したいと思っています
 
-  section
+  article
     h2 やくそくごと
     p このサイトはドット絵が好きな人ならだれでも使用することができます（※ただしtwitterアカウントに限る）
     p でもあんまりエッチなやつとかグロテスクなやつは、検索避けを実装してインモラルな枠を設けると思いますが、現在は無法地帯のスラム街です
     p そうこの場はαテスト中。使用者の良心とやらに委ねられていますので、著作権的にアウトーッな奴は、勝手に消えてる場合があります。ご了承ください
 
-  section
+  article.license
+    h2 使用素材
+    
+    section
+      h3 BMrizer
+      site
+        a(href="http://bitmapmania.m78.com/") cooz(BitmapMania)
+
+    section
+      h3 美咲ゴシック
+      site
+        a(href="http://www.geocities.jp/littlimi/") 門真 なむ
+    
+    section
+      h3 PixelMplus10
+      site
+        a(href="http://profile.hatena.ne.jp/itouhiro/") itouhiro
+
+    section
+      h3
+        | アイコン
+        img(ng-src="icons/top.gif" jaggy)
+      site
+        a(href="http://neko.moo.jp/") 猫屋
+
+    h2 使用ライブラリ
+    section
+      h3 サーバー側
+      site
+        a(href="https://github.com/59naga/edgy.black/blob/master/package.json") package.json
+
+      h3 クライアント側
+      site
+        a(href="https://github.com/59naga/edgy.black/blob/master/bower.json") bower.json
+
+    footer
+      p …ありがとうございます
+
+  article
     h2
       | 不具合の報告
     p
-      a(href="#" ng-click="location('https://twitter.com/horse_n_deer')") {{'Author'| translate}}
+      a(href="https://twitter.com/horse_n_deer") {{'Author'| translate}}
       | か
-      a(href="#" ng-click="location('https://twitter.com/edgy_black')") @edgy_black
+      a(href="https://twitter.com/edgy_black") @edgy_black
       | までご連絡ください（中の人は同じです）
     p 致命的なものは７日以内に直ると思います
+
+    p
+      |戦闘力の高い人はissueとかpull-requestを
+      a(href="https://github.com/59naga/edgy.black/") 例の場所
+      | から行えます。ラ・ヨダソウ・スティアーナ…（別れの言葉）
+    p
+      | ただ、ドキュメントがかなり雑なので、「テスト書けハゲ！」ってリプライを送ると、開発の禿げみになります（うまい）
 
   footer
     p

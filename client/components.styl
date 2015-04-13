@@ -387,10 +387,30 @@ main.mypage
 .help
   margin 1em
   
-  section
+  article
     margin .5em
     padding .5em
     theme_light()
+  section
+    padding 0
+      margin-top 1em
+    +section
+      padding-top 1em
+    
+    site
+      display block
+      text-align right
+  .license
+    section
+      width 12em
+      margin 0 auto
+      
+      &:nth-of-type(1)
+        margin-top 1em
+    
+    footer
+      margin-top 1em
+  
   footer
     text-align right
   ul
