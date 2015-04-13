@@ -1,7 +1,7 @@
 .help
   h1 {{'HELP'| translate}}
-  p ドット絵を投稿・閲覧するための場を、深淵に作ろうとした結果できた、くどいほどジャギーに満ちあふれたWEBアプリケーションです
-  p このサイトでは現在、以下の機能が提供されています
+  p ドット絵を展示する場を深淵に作ろうとした結果できた、くどいほどジャギーに満ちあふれたWEBアプリケーションです
+  p このサイトでは現在、以下の機能を提供しています
   
   article
     h2
@@ -11,6 +11,9 @@
       li
         img(ng-src="icons/authorize.gif" jaggy)
         | ログイン・ログアウト（twitterアカウントによる）
+      li
+        img(ng-src="icons/comment.gif" jaggy)
+        | コメント
       li
         img(ng-src="icons/quit.gif" jaggy)
         | 即時退会・関連データの即時削除
@@ -32,14 +35,32 @@
         img(ng-src="icons/remove.gif" jaggy)
         | 削除
 
+    h2
+      img(ng-src="icons/setting.gif" jaggy)
+      | その他
+    ul
+      li
+        img(ng-src="icons/view.gif" jaggy)
+        a(href="https://twitter.com/edgy_black") BOT
+        | による宣伝
+      li
+        img(ng-src="icons/i18n.gif" jaggy)
+        | 日本語←→英語の切り替え
+      li
+        img(ng-src="icons/glitch.gif" jaggy)
+        | グリッチ（隠しメニュー）
+
     p 
       | ご覧のとおり、EDGY.BLACKは
       a(href="#" ng-click="location('https://github.com/59naga/edgy.black/commit/b944428fc22e808992b8008f710fef78ba540659')") 2015年4月6日
-      | に、世界を恨むように低い産声を上げて、この世に生を受けました
+      | に、世界を恨むように低く重い産声をあげて、この世に生を受けました
 
     p
       | 機能はエッジの効いた（EDGY）ものだけにするつもりで、実用性が薄いと感じたものは取り壊しが行われるかもしれません
       | 早い、安い、ウマい。そんな場を提供したいと思っています
+
+    p
+      | そろそろ英語書けなくなってきたので英語書けるすごい人いたら友達になりたい
 
   article
     h2 やくそくごと
@@ -66,9 +87,7 @@
         a(href="http://profile.hatena.ne.jp/itouhiro/") itouhiro
 
     section
-      h3
-        | アイコン
-        img(ng-src="icons/top.gif" jaggy)
+      h3 アイコン
       site
         a(href="http://neko.moo.jp/") 猫屋
 
