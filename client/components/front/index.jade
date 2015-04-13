@@ -1,7 +1,7 @@
 .artworks
   article
     form.logo(ng-submit="find(words)")
-      input(placeholder="{{'TITLE' | translate}}" ng-model="words")
+      input(placeholder="{{'TITLE_FULL' | translate}}" ng-model="words")
       footer(ng-show="words.length")
         p(ng-show="filtered.length")
           | {{filtered.length}} {{'FOUND'| translate}}

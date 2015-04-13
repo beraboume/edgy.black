@@ -1,0 +1,63 @@
+.help
+  h1 {{'HELP'| translate}}
+  p ドット絵を投稿・閲覧するための場を、深淵に作ろうとした結果できた、くどいほどジャギーに満ちあふれたWEBアプリケーションです
+  p このサイトでは現在、以下の機能が提供されています
+  
+  section
+    h2
+      img(ng-src="icons/mypage.gif" jaggy)
+      | アカウント
+    ul
+      li
+        img(ng-src="icons/authorize.gif" jaggy)
+        | ログイン・ログアウト（twitterアカウントによる）
+      li
+        img(ng-src="icons/quit.gif" jaggy)
+        | 即時退会・関連データの即時削除
+    
+    h2
+      img(ng-src="icons/image.gif" jaggy)
+      | ドット絵
+    ul
+      li
+        img(ng-src="icons/top.gif" jaggy)
+        | 検索（トップでロゴをクリックする）
+      li
+        img(ng-src="icons/add.gif" jaggy)
+        | 投稿
+      li
+        img(ng-src="icons/edit.gif" jaggy)
+        | 編集（ファイル以外）
+      li
+        img(ng-src="icons/remove.gif" jaggy)
+        | 削除
+
+    p 
+      | ご覧のとおり、EDGY.BLACKは
+      a(href="#" ng-click="location('https://github.com/59naga/edgy.black/commit/b944428fc22e808992b8008f710fef78ba540659')") 2014年4月6日
+      | に、世界を恨むように低い産声を上げて、この世に生を受けました
+
+    p
+      | 機能はエッジの効いた（EDGY）ものだけにするつもりで、実用性が薄いと感じたものは取り壊しが行われるかもしれません
+      | 早い、安い、ウマい。そんな場を提供したいと思っています
+
+  section
+    h2 やくそくごと
+    p このサイトはドット絵が好きな人ならだれでも使用することができます（※ただしtwitterアカウントに限る）
+    p でもあんまりエッチなやつとかグロテスクなやつは、検索避けを実装してインモラルな枠を設けると思いますが、現在は無法地帯のスラム街です
+    p そうこの場はαテスト中。使用者の良心とやらに委ねられていますので、著作権的にアウトーッな奴は、勝手に消えてる場合があります。ご了承ください
+
+  section
+    h2
+      | 不具合の報告
+    p
+      a(href="#" ng-click="location('https://twitter.com/horse_n_deer')") {{'Author'| translate}}
+      | か
+      a(href="#" ng-click="location('https://twitter.com/edgy_black')") @edgy_black
+      | までご連絡ください（中の人は同じです）
+    p 致命的なものは７日以内に直ると思います
+
+  footer
+    p
+      | 2015年4月13日 
+      a(href="#" ng-click="location('https://twitter.com/horse_n_deer')") {{'Author'| translate}}

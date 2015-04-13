@@ -278,6 +278,40 @@ main.mypage
         size 100%
         padding .5em
         theme_light()
+.guest
+  logo_size= 6vw
+  overlay()
+  > *
+    central()
+    font-size logo_size
+    width 12.5em
+    height 4em
+    padding 0
+    
+    header
+      text-align right
+    
+    h1
+    h2
+      font-family 'BMRizer',monospace
+      
+    h1
+      font-size logo_size
+    h2
+      font-size logo_size * .50
+    h3
+      font-size logo_size * .50
+    
+    nav
+      a
+        font-size logo_size * .50
+        
+        display block
+        margin .25em auto
+        padding .25em
+        width 10em
+        // &:focus
+        theme_sepia()
         
 .mypage_stats
   overlay()
@@ -349,3 +383,37 @@ main.mypage
     footer
       p
         text-align center
+
+.help
+  margin 1em
+  
+  section
+    margin .5em
+    padding .5em
+    theme_light()
+  footer
+    text-align right
+  ul
+    padding-left 1em
+    
+    li:before
+      content:'・'
+  
+  ul+h2
+    padding-top .5em
+  svg
+    size 1.25em
+    margin-right .25em
+    vertical-align middle
+  p
+  li
+    font-family 'PixelMplus10',monospace
+    line-height 1.2
+  
+  p:after
+    content:'▼'
+  p+p
+    padding-top .5em
+  
+  a
+    text-decoration underline

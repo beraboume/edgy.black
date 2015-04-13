@@ -46,18 +46,17 @@
         nav.danger
           a(ui-sref=".quit") {{'MYPAGE_QUIT'| translate}}
 
-  .artworks(ng-show="!user")
-    figcaption
+  .guest(ng-show="!user")
+    section
       header
-        h2 {{'MYPAGE_GUEST'| translate}}
-
-      section
-        dl
-          dt {{'MYPAGE_GUEST_MSG'| translate}}
-    figure
-      img(jaggy)
+        h1 {{'TITLE_FULL' | translate}}
+        h2 2015
+        h3: a(href="#" ng-click="location('https://twitter.com/horse_n_deer')") {{'Author'| translate}}
       nav
+        
         a(href="#" ng-click="location('/mypage/auth/')")
           | {{'MYPAGE_LOGIN_TWITTER'| translate}}
+        a(ui-sref="front.help")
+          | {{'HELP'| translate}}
 
 ui-view

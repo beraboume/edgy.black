@@ -28,7 +28,10 @@ app.constant 'components',
   'front.mypage.edit': '/edit'
   'front.mypage.quit': '/quit'
 
+  'front.help': '/help'
+
   'mypage.index': '/'
+
 app.constant 'mypageId',location.hostname.split('.')[0]
 
 (require './lib/i18n').client app

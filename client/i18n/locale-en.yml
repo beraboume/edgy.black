@@ -2,6 +2,12 @@
 
 TITLE:
   'E D G Y'
+TITLE_FULL:
+  'EDGY.BLACK'
+HELP:
+  'What is this?'
+Author:
+  '@59naga'
 I18N:
   '日本語へ'
 GLITCH:
@@ -72,7 +78,7 @@ MYPAGE:
 MYPAGE_GUEST:
   'Guset!'
 MYPAGE_GUEST_MSG:
-  'EDGY is Dependent to twitter-account.(at present)'
+  'EDGY is Dependent to twitter. (at present)'
 MYPAGE_LOGIN_TWITTER:
   'Login with twitter'
 MYPAGE_LOGOUT:
