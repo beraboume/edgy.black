@@ -45,6 +45,7 @@ app.run (
   $stateParams
 
   $window
+  $timeout
   $webcolorLoadingBar
 
   amMoment
@@ -77,7 +78,7 @@ app.run (
     $webcolorLoadingBar.start()
   $rootScope.$on '$stateChangeSuccess',->
     $webcolorLoadingBar.complete()
-    setTimeout (->pullToRefresh= no),1000
+    $timeout (->$rootScope.pullToRefresh= no),1000
   $rootScope.$on '$stateChangeError',(event,toState,toParams,fromState,fromParams,error)->
     $webcolorLoadingBar.complete()
     $state.go 'error' if error.status is 404
