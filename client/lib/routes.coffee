@@ -104,19 +104,11 @@ module.exports.client= (app)->
 module.exports.server= (app)->
   # Dependencies
   fs= require 'fs'
-  path= require 'path'
+  lookup= require "#{process.env.UTILS_ROOT}/lookup"
 
   # Setup components
   app.use (req,res,next)->
-    fileName= req.url.slice(1) or 'index'
-    fileName= path.join fileName,'index' if fileName.slice(-1) is '/'
-    fileName+= '.jade' if fileName.indexOf('.jade') is -1
-
-    filePath= fileName
-    filePath= path.join process.env.ROOT,process.env.PUBLIC,filePath
-
-    # console.log filePath
-
+    filePath= lookup req
     return next() if req.accepts().join() isnt 'text/html' # via ui-router
     return next() if not fs.existsSync filePath # notfound
 

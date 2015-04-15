@@ -35,6 +35,10 @@ module.exports.client= ->
     setTimeout noise,interval
 
 module.exports.server= (app)->
+  fs= require 'fs'
+  lookup= require "#{process.env.UTILS_ROOT}/lookup"
+
   app.use (req,res)->
-    res.status 404
+    filePath= lookup req
+    res.status 404 if not fs.existsSync filePath
     res.render 'index'

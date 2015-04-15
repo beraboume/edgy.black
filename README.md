@@ -10,6 +10,9 @@
   * __win/mac 動作保証ブラウザの明記__
 * <del>スペシャルサンクス 利用素材の明記</del>
 
+* クローラー
+  * 404返しちゃまずい所が結構ある
+
 # Setup for docker
 ```bash
 $ brew install boot2docker
