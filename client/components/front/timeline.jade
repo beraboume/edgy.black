@@ -28,7 +28,7 @@
               a(ng-click="location('http://'+comment.User.mypage_id+'.#{process.env.MYPAGE_HOST}/')")
                 storage(key="{{comment.User.storage_key}}")
               h3 {{comment.User.name}}
-              time(am-calendar="{{comment.created_at}}")
+              time(am-time-ago="comment.created_at")
             figcaption
               pre {{comment.body}}
               footer(ng-show="comment.Artwork.id")
@@ -46,4 +46,4 @@
               a(ng-click="location('http://'+comment.User.mypage_id+'.#{process.env.MYPAGE_HOST}/')")
                 storage(key="{{comment.User.storage_key}}")
               h3 {{comment.User.name}}
-              time(am-calendar="{{comment.created_at}}")
+              time(am-time-ago="comment.created_at")

@@ -16,21 +16,23 @@ module.exports.client= (app)->
       i18n= 'ja' if $windowProvider.$get().navigator.language.slice(0,2) is 'ja'
     $translateProvider.use i18n
 
-  app.constant 'angularMomentConfig',preprocess: 'utc'
-  app.directive 'amCalendar',($filter)->
+  app.directive 'published',($filter)->
     restrict: 'A'
     link: (scope,element,attrs)->
-      amCalendar= (utc)->
-        localed= $filter('amCalendar') utc
+      utc= attrs.published
+      format= (utc)->
+        localed= $filter('amDateFormat') utc,'llll'
+
         localed= localed.replace '前週','先週'
         localed= localed.replace '午前12時','午前0時'
         localed= localed.replace '午後12時','午前12時'
-        localed
-      utc= attrs.amCalendar
+
+        element.text localed
+        element.attr 'title',$filter('amTimeAgo') utc
       
-      element.text amCalendar utc
+      format utc
       scope.$on 'amMoment:timezoneChanged',->
-        element.text amCalendar utc
+        format utc
 
 module.exports.server= (app)->
   path= require 'path'
