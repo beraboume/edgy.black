@@ -19,6 +19,7 @@ app= angular.module 'app',[
 
 app.run (
   $rootScope
+  $templateCache
 
   $state
   $stateParams
@@ -61,6 +62,8 @@ app.run (
   $rootScope.$on '$stateChangeError',(event,toState,toParams,fromState,fromParams,error)->
     $webcolorLoadingBar.complete()
     $state.go 'error' if error.status is 404
+  $rootScope.$on '$viewContentLoaded',->
+    $templateCache.removeAll()
 
   $localStorage.i18n?= 'en'
   $localStorage.i18n?= 'ja' if navigator.language.slice(0,2) is 'ja'
