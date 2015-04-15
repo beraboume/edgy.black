@@ -24,7 +24,7 @@ YES:
 NO:
   'No'
 DROP_HERE:
-  'Drop here. (only gif,png,jpg)'
+  'Drop here. (gif,png,jpg)'
 FORM_INVALID:
   'Please inputs'
 FORM_VALID:
@@ -61,6 +61,8 @@ SHERE:
   'Shere'
 COMMENT:
   'Comment'
+COMMENT_PLACEHOLDER:
+  'What do you feel?'
 COMMENT_GUEST:
   'To comment you must be logged.'
 
@@ -68,6 +70,8 @@ WEBSITE:
   'Mypage'
 TIMELINE:
   'Timeline'
+TIMELINE_PLACEHOLDER:
+  What's not happening?
 FOR_ARTWORK:
   'for Artwork "'
 FOR_ARTWORK_SUF:

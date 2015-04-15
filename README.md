@@ -3,16 +3,12 @@
 # TODO
 * テストをていねいに書く
 * ng-messagesのインストールと実装
-  * マイページURLの重複チェック
-* バージョンアップ・障害情報
+* <del>バージョンアップ・障害情報</del>
 * <del>ng-translateのインストールと実装</del>
 
-* jpg,png,gif以外のアップロード
-  * -> image/canvasを経由して無理やりpngに変換する？
-
 * 動作確認
-  * win/mac 動作保証ブラウザの明記
-* スペシャルサンクス 利用素材の明記
+  * __win/mac 動作保証ブラウザの明記__
+* <del>スペシャルサンクス 利用素材の明記</del>
 
 # Setup for docker
 ```bash
@@ -48,4 +44,5 @@ $ npm test
 ```
 
 > https://registry.hub.docker.com/_/mysql/
+
 > https://docs.saucelabs.com/ci-integrations/travis-ci/

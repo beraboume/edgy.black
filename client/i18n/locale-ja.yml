@@ -61,6 +61,8 @@ SHERE:
   'シェア'
 COMMENT:
   'コメント'
+COMMENT_PLACEHOLDER:
+  'はげましのお便りを書こう！'
 COMMENT_GUEST:
   'コメントにはログインが必要です'
 
@@ -68,6 +70,8 @@ WEBSITE:
   'マイページ'
 TIMELINE:
   'タイムライン'
+TIMELINE_PLACEHOLDER:
+  'いまどうもしてない？'
 FOR_ARTWORK:
   ''
 FOR_ARTWORK_SUF:

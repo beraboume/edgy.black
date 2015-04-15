@@ -1,5 +1,5 @@
 .artworks
-  article
+  article(ng-reel="/front/artworks as artworks" ng-reel-stack)
     form.logo(ng-submit="find(words)")
       input(placeholder="{{'TITLE_FULL' | translate}}" ng-model="words")
       footer(ng-show="words.length")

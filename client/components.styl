@@ -152,7 +152,7 @@ main.mypage
   section
     margin 1em 0
     
-    h2+pre
+    h2+*
       margin .5em 0
 
     >footer
@@ -259,6 +259,8 @@ main.mypage
       padding 1em
     
   .stats
+    theme_light()
+    
     dd
     a
       font-family 'PixelMplus10',monospace
@@ -336,6 +338,12 @@ main.mypage
       display inline-block
       width calc(100% \/ 4)
       height calc(100% \/ 2 \- 3em)
+      
+      h4
+        span
+          display block
+          white-space nowrap
+          overflow hidden
       
       box-sizing-reset()
       p

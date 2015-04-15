@@ -4,8 +4,9 @@ module.exports.client= ($scope,$stateParams,days)->
   $scope.title= 'MYPAGE_STATS_'+$stateParams.type.toUpperCase()
 
 module.exports.resolve=
-  days: ($http,$stateParams)->
-    $http.get '/front/mypage/stats/'+$stateParams.type
+  days: ($http,$stateParams,$localStorage)->
+    console.log $stateParams.type,$localStorage.i18n
+    $http.get '/front/mypage/stats/'+$stateParams.type+'/?lang='+$localStorage.i18n
 
 module.exports.server= (app)->
   Promise= require 'sequelize/node_modules/bluebird'
@@ -15,16 +16,21 @@ module.exports.server= (app)->
   app.get '/front/mypage/stats/:type',(req,res)->
     {type}= req.params
 
+    # 'Asia/Tokyo'
+    UTC_TZ= '+ interval 9 hour'
+    # 'America/New_York'
+    UTC_TZ= '- interval 5 hour' if req.query.lang is 'en'
+
     queues= []
     switch type
       when 'add'
-        queues= totalAdd req,res
+        queues= totalAdd req,res,UTC_TZ
  
       when 'comment'
-        queues= totalComment req,res
+        queues= totalComment req,res,UTC_TZ
 
       when 'view'
-        queues= totalView req,res
+        queues= totalView req,res,UTC_TZ
 
     Promise.all queues
     .then (stats)->
@@ -33,7 +39,7 @@ module.exports.server= (app)->
       res.status 404
       res.json error.message
 
-  totalAdd= (req,res)->
+  totalAdd= (req,res,UTC_TZ)->
     queues= []
 
     user_id= req.session?.passport?.user?.id
@@ -46,7 +52,7 @@ module.exports.server= (app)->
           where:
             db.and [
               ['Artwork.user_id = ?',user_id]
-              ['date(Artwork.created_at) = date(from_unixtime(?))',(Date.now()-i*day)/1000]
+              ["date(Artwork.created_at #{UTC_TZ}) = date(from_unixtime(?))",(Date.now()-i*day)/1000]
             ]...
 
         promise= promise.then (count)->
@@ -59,7 +65,7 @@ module.exports.server= (app)->
 
     queues
 
-  totalComment= (req,res)->
+  totalComment= (req,res,UTC_TZ)->
     queues= []
 
     user_id= req.session?.passport?.user?.id
@@ -73,7 +79,7 @@ module.exports.server= (app)->
             db.and [
               {user_id: $ne: user_id}
               ['Artwork.user_id = ?',user_id]
-              ['date(Artwork.created_at) = date(from_unixtime(?))',(Date.now()-i*day)/1000]
+              ["date(Artwork.created_at #{UTC_TZ}) = date(from_unixtime(?))",(Date.now()-i*day)/1000]
             ]...
           include: [Artwork]
 
@@ -87,7 +93,7 @@ module.exports.server= (app)->
 
     queues
 
-  totalView= (req,res)->
+  totalView= (req,res,UTC_TZ)->
     queues= []
 
     user_id= req.session?.passport?.user?.id
@@ -100,7 +106,7 @@ module.exports.server= (app)->
           where:
             db.and [
               {user_id}
-              ['date(View.date) = date(from_unixtime(?))',(Date.now()-i*day)/1000]
+              ["date(View.date #{UTC_TZ}) = date(from_unixtime(?))",(Date.now()-i*day)/1000]
             ]...
 
         promise= promise.then (count)->

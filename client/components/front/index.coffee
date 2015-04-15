@@ -16,9 +16,12 @@ module.exports.server= (app)->
   db= require process.env.DB_ROOT
 
   app.get '/front/artworks',(req,res)->
+    {_start,_end}= req.query
+    
     {Artwork,Storage}= db.models
     Artwork.findAll
-      limit: 50
+      offset: _start
+      limit: _end-_start
       order: 'created_at desc'
       include: [Storage]
     .then (artworks)->
@@ -29,6 +32,7 @@ module.exports.server= (app)->
       res.json error.stack
 
   app.get '/front/artworks/:words',(req,res)->
+    {_start,_end}= req.query
     words= req.params.words.split /\s+/,3
 
     conditions= []
@@ -39,7 +43,8 @@ module.exports.server= (app)->
     {Artwork,Storage}= db.models
     Artwork.findAll
       where: db.or conditions...
-      limit: 50
+      offset: _start
+      limit: _end-_start
       order: 'created_at desc'
       include: [Storage]
     .then (artworks)->

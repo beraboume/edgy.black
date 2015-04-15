@@ -5,12 +5,35 @@
         a(
           ng-repeat="artwork in filtered= (artworks|filter:words)"
 
-          ng-click="location('#{process.env.PUBLIC_URL}'+artwork.id)"
+          href="{{'#{process.env.PUBLIC_URL}'+ artwork.id}}"
         )
           img(ng-src="{{artwork.Storage.url}}" jaggy)
   
   figure
-    a(href="#" ng-click="location(user.Storage.url)")
+    a(href="{{user.Storage.url}}")
       img(ng-src="{{user.Storage.url}}" jaggy)
     h2 {{user.name}}
     pre {{user.bio}}
+
+    //- h3 じっせき
+    //- dl
+      dt
+        img(ng-src="icons/add.gif" jaggy)
+        | {{'MYPAGE_STATS_ADD'| translate}}
+      dd
+        a(ui-sref=".stats({type:'add'})")
+          | {{stats.artworks | number:0}}
+
+      dt
+        img(ng-src="icons/comment.gif" jaggy)
+        | {{'MYPAGE_STATS_COMMENT'| translate}}
+      dd
+        a(ui-sref=".stats({type:'comment'})")
+          | {{stats.comments | number:0}}
+
+      dt
+        img(ng-src="icons/view.gif" jaggy)
+        | {{'MYPAGE_STATS_VIEW'| translate}}
+      dd
+        a(ui-sref=".stats({type:'view'})")
+          | {{stats.views | number:0}}

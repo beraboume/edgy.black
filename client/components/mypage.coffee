@@ -8,6 +8,9 @@ module.exports.client= (
     'mypage.index':
       icon: 'icons/mypage.gif'
       title: 'WEBSITE'
+    "i18n":
+      icon: 'icons/i18n.gif'
+      title: 'I18N'
     "#{process.env.PUBLIC_URL}":
       icon: 'icons/top.gif'
       title: 'TOP'

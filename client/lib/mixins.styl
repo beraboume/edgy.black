@@ -36,8 +36,8 @@ fig(contentFlex=2)
   
   figure
     flex 1
-    img
-    svg
+    >img
+    >svg
       display block // fix auto margin-top
       size 100%
   figcaption
@@ -64,6 +64,7 @@ form()
       display block
       font-size .5em
       line-height @height
+      overflow ellipsis
       svg
         size 100%
         max-height 50vh
@@ -118,7 +119,7 @@ chat()
 overlay()
   fixed 0
   margin auto
-  background-color alpha(#333,.50)
+  background-color alpha(#333,.75)
 
 active()
   theme_light()

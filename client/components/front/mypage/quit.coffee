@@ -10,7 +10,7 @@ module.exports.client= (
   $scope.submit= ->
     $http.delete '/mypage/user/'+$scope.mypage_id
     .then ->
-      alert '削除したよ'
+      alert 'Thankyou for your playing!'
       $state.go 'front.mypage',null,reload:yes
     .catch (message)->
       alert message
