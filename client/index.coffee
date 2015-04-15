@@ -13,6 +13,9 @@ app= angular.module 'app',[
   'pascalprecht.translate'
 ]
 
+app.constant 'angularMomentConfig',
+  preprocess: 'utc'
+
 app.constant 'components',
   'front.index': '/'
 
