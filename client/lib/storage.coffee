@@ -27,7 +27,7 @@ module.exports.server= (app)->
       where: {key}
     .then (storage)->
       {url,created_at}= storage
-      res.end "#{url}?#{created_at}"
+      res.end "#{url}?#{created_at.getTime()}"
     .catch (error)->
       res.status 404
       res.json error.message
