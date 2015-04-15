@@ -16,6 +16,7 @@ module.exports.client= (app)->
       i18n= 'ja' if $windowProvider.$get().navigator.language.slice(0,2) is 'ja'
     $translateProvider.use i18n
 
+  app.constant 'angularMomentConfig',preprocess: 'utc'
   app.directive 'amCalendar',($filter)->
     restrict: 'A'
     link: (scope,element,attrs)->

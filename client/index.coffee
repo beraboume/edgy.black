@@ -65,8 +65,12 @@ app.run (
   $rootScope.$on '$viewContentLoaded',->
     $templateCache.removeAll()
 
-  $localStorage.i18n?= 'en'
-  $localStorage.i18n?= 'ja' if navigator.language.slice(0,2) is 'ja'
+  if not $localStorage.i18n?
+    $localStorage.i18n=
+    if navigator.language.slice(0,2) is 'ja'
+      'ja'
+    else
+      'en'
   amMoment.changeLocale $localStorage.i18n
 
   timezone= 'America/New_York'
