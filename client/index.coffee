@@ -63,7 +63,7 @@ app.run (
     $webcolorLoadingBar.complete()
     $state.go 'error' if error.status is 404
   $rootScope.$on '$viewContentLoaded',->
-    $templateCache.removeAll()
+    # $templateCache.removeAll()
 
   if not $localStorage.i18n?
     $localStorage.i18n=
