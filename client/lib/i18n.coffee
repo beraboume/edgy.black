@@ -21,6 +21,7 @@ module.exports.client= (app)->
     link: (scope,element,attrs)->
       amCalendar= (utc)->
         localed= $filter('amCalendar') utc
+        localed= localed.replace '前週','先週'
         localed= localed.replace '午前12時','午前0時'
         localed= localed.replace '午後12時','午前12時'
         localed
