@@ -1,4 +1,25 @@
 module.exports.client= (app)->
+  app.constant 'components',
+    'front.index': '/'
+
+    'front.add': '/add'
+    'front.view': '/{id:[0-9]+}'
+    'front.edit': '/{id:[0-9]+}/edit'
+    'front.remove': '/{id:[0-9]+}/remove'
+    
+    'front.timeline': '/timeline'
+    
+    'front.mypage': '/mypage'
+    'front.mypage.stats': '/stats/:type'
+    'front.mypage.edit': '/edit'
+    'front.mypage.quit': '/quit'
+
+    'front.help': '/help'
+
+    'mypage.index': '/'
+
+  app.constant 'mypageId',location.hostname.split('.')[0]
+
   app.config ($locationProvider,$stateProvider,components)->
     $locationProvider.html5Mode true
 
@@ -38,7 +59,14 @@ module.exports.client= (app)->
       $stateProvider.state stateName,{url,controller,templateUrl,resolve}
 
     $stateProvider.state 'i18n',
-      templateProvider: ($state,$translate,amMoment,$localStorage)->
+      templateProvider: (
+        $localStorage
+
+        $translate
+        amMoment
+
+        $state
+      )->
         i18n= $localStorage.i18n
         if i18n isnt 'en'
           i18n= 'en'
@@ -48,6 +76,10 @@ module.exports.client= (app)->
         
         $translate.use i18n
         amMoment.changeLocale i18n
+
+        timezone= 'America/New_York'
+        timezone= 'Asia/Tokyo' if $localStorage.i18n is 'ja'
+        amMoment.changeTimezone timezone
 
         $state.reload()
 

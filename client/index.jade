@@ -9,7 +9,7 @@ html(lang="en" ng-app="app")
     link(rel="stylesheet" href="http://static.edgy.black/pixel_mplus10.css")
     link(rel="stylesheet" href="http://static.edgy.black/bmplamo.css")
     link(rel="stylesheet" href="http://static.edgy.black/bmrizer.css")
-    script(src="pkgs.min.js")
+    script(src=process.env.NODE_ENV=='production'? "pkgs.min.js": "pkgs.js")
 
     script.
       //- window.jaggy.options.debug= true;

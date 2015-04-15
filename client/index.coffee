@@ -13,30 +13,6 @@ app= angular.module 'app',[
   'pascalprecht.translate'
 ]
 
-app.constant 'angularMomentConfig',
-  preprocess: 'utc'
-
-app.constant 'components',
-  'front.index': '/'
-
-  'front.add': '/add'
-  'front.view': '/{id:[0-9]+}'
-  'front.edit': '/{id:[0-9]+}/edit'
-  'front.remove': '/{id:[0-9]+}/remove'
-  
-  'front.timeline': '/timeline'
-  
-  'front.mypage': '/mypage'
-  'front.mypage.stats': '/stats/:type'
-  'front.mypage.edit': '/edit'
-  'front.mypage.quit': '/quit'
-
-  'front.help': '/help'
-
-  'mypage.index': '/'
-
-app.constant 'mypageId',location.hostname.split('.')[0]
-
 (require './lib/i18n').client app
 (require './lib/storage').client app
 (require './lib/routes').client app
@@ -86,6 +62,10 @@ app.run (
     $webcolorLoadingBar.complete()
     $state.go 'error' if error.status is 404
 
-  locale= 'en'
-  locale= 'ja' if navigator.language.slice(0,2) is 'ja'
-  amMoment.changeLocale $localStorage.i18n or locale
+  $localStorage.i18n?= 'en'
+  $localStorage.i18n?= 'ja' if navigator.language.slice(0,2) is 'ja'
+  amMoment.changeLocale $localStorage.i18n
+
+  timezone= 'America/New_York'
+  timezone= 'Asia/Tokyo' if $localStorage.i18n is 'ja'
+  amMoment.changeTimezone timezone

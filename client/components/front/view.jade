@@ -7,7 +7,7 @@
       h2 {{artwork.title}}
       pre {{artwork.description}}
       footer
-        time(title="{{artwork.created_at| amDateFormat:'YYYY-MM-DD HH-mm-ss'}}" am-time-ago="artwork.created_at")
+        time(am-calendar="{{artwork.created_at}}")
         a(href="#" ng-click="location('http://'+artwork.User.mypage_id+'.#{process.env.MYPAGE_HOST}')")
           | {{artwork.User.name}}
           img(ng-src="{{artwork.Face.url}}" jaggy)
@@ -67,7 +67,7 @@
             figure.from
               storage(key="{{comment.User.storage_key}}")
               h3 {{comment.User.name}}
-              time(am-time-ago="comment.created_at")
+              time(am-calendar="{{comment.created_at}}")
             figcaption
               pre {{comment.body}}
             .to
@@ -78,4 +78,4 @@
             figure.from
               storage(key="{{comment.User.storage_key}}")
               h3 {{comment.User.name}}
-              time(am-time-ago="comment.created_at")
+              time(am-calendar="{{comment.created_at}}")
