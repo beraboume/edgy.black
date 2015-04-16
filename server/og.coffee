@@ -10,7 +10,7 @@ module.exports.artwork_view= (req,res,next)->
   bot= null
 
   ua= req.headers['user-agent']
-  bot?= ua.match key for key in ['Twitterbot','Google']
+  bot?= ua.match key for key in ['Twitterbot','Googlebot']
   bot?= req.query.bot?
   return next() if not bot
 
@@ -39,7 +39,7 @@ module.exports.storage= (req,res,next)->
   bot= null
 
   ua= req.headers['user-agent']
-  bot?= ua.match key for key in ['Twitterbot','Google']
+  bot?= ua.match key for key in ['Twitterbot','Googlebot']
   bot?= req.query.bot?
   return next() if not bot
 
