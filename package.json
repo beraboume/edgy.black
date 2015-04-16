@@ -4,21 +4,17 @@
   "scripts": {
     "prestart": "pm2 kill",
     "start": "pm2 start edgy.black.coffee --name edgy.black",
-    "watchstart": "pm2 start edgy.black.coffee --name edgy.black --watch --ignore-watch node_modules",
     "poststart": "pm2 list && pm2 logs",
 
-    "watch":"abigail test/**/*.coffee:test -e",
-    "pretest": "npm run build",
     "test": "jasminetea test --recursive --e2e '==baseUrl http://localhost:59798' --verbose --timeout 20000",
 
     "stop": "pm2 stop edgy.black",
     "poststop": "pm2 kill && pm2 flush",
 
     "deploy": "curl -d key=$APPS_KEY -d sha1=$(git log --format=format:%H -1) -d host=$(jqn package name) http://travis.edgy.black",
-    "deploy_local": "curl -d key=local -d sha1=$(git log --format=format:%H -1) -d host=$(jqn package name) -d force=true http://localhost:59999",
 
-    "build-dev": "onefile --json --output client/public/pkgs",
-    "build": "onefile --json --output client/public/pkgs -cms"
+    "build": "onefile --json --output client/public/pkgs -cms",
+    "build-dev": "onefile --json --output client/public/pkgs"
   },
   "dependencies": {
     "browserify": "^9.0.3",

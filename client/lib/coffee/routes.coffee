@@ -26,14 +26,14 @@ module.exports.client= (app)->
     $stateProvider.state 'front',
       abstruct: yes
       templateUrl: '/components/front.jade'
-      resolve: require('./components/front').resolve
-      controller: require('./components/front').client
+      resolve: require('components/front').resolve
+      controller: require('components/front').client
 
     $stateProvider.state 'mypage',
       abstruct: yes
       templateUrl: '/components/mypage.jade'
-      resolve: require('./components/mypage').resolve
-      controller: require('./components/mypage').client
+      resolve: require('components/mypage').resolve
+      controller: require('components/mypage').client
 
     area= 'front'
     area= 'mypage' if location.hostname.split('.').length > 2
@@ -42,7 +42,7 @@ module.exports.client= (app)->
       path.unshift 'components'
       templateUrl= '/'+path.join '/'
 
-      componentPath= '.'+templateUrl
+      componentPath= templateUrl.slice 1
       controller= undefined
       resolve= undefined
       try
@@ -99,7 +99,7 @@ module.exports.client= (app)->
     $stateProvider.state 'error',
       url: '*path'
       templateUrl: '/components/.error/index'
-      controller: require('./components/.error/index').client
+      controller: require('components/.error/index').client
 
 module.exports.server= (app)->
   # Dependencies

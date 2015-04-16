@@ -12,7 +12,7 @@
         pre {{artwork.description}}
         footer
           time(published="{{artwork.created_at}}")
-          a(href="#" ng-click="location('http://'+artwork.User.name+'.localhost:59798/')")
+          a
             img(ng-src="{{user.Storage.url}}" jaggy)
             | {{artwork.User.name}}
 

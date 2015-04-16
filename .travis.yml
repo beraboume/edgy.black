@@ -8,6 +8,8 @@ cache:
 language: node_js
 node_js:
   - '0.12'
+services:
+  - redis-server
 before_script:
   - mysql -uroot -e "create database edgy_test"
 

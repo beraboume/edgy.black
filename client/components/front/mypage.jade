@@ -39,7 +39,7 @@
 
         nav
           a(ui-sref=".edit") {{'MYPAGE_EDIT'| translate}}
-          a(href="#" ng-click="location('http://'+user.mypage_id+'.#{process.env.MYPAGE_HOST}')")
+          a(href="{{'http://'+user.mypage_id+'.#{process.env.MYPAGE_HOST}'}}")
             | {{'WEBSITE'| translate}} （α）
           a(href="#" ng-click="logout()") {{'MYPAGE_LOGOUT'| translate}}
           
@@ -51,7 +51,7 @@
       header
         h1 {{'TITLE_FULL' | translate}}
         h2 2015
-        h3: a(href="#" ng-click="location('https://twitter.com/horse_n_deer')") {{'Author'| translate}}
+        h3: a(href="https://twitter.com/horse_n_deer") {{'Author'| translate}}
       nav
         
         a(href="#" ng-click="location('/mypage/auth/')")

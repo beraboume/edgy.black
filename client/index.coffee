@@ -13,9 +13,9 @@ app= angular.module 'app',[
   'pascalprecht.translate'
 ]
 
-(require './lib/i18n').client app
-(require './lib/storage').client app
-(require './lib/routes').client app
+(require 'lib/coffee/i18n').client app
+(require 'lib/coffee/storage').client app
+(require 'lib/coffee/routes').client app
 
 app.run (
   $rootScope

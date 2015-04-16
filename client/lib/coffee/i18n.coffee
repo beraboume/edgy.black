@@ -6,7 +6,7 @@ module.exports.client= (app)->
   )->
     $translateProvider.useStaticFilesLoader
       prefix: 'i18n/locale-'
-      suffix: '.yml'
+      suffix: '.json'
     $translateProvider.preferredLanguage 'ja'
     $translateProvider.fallbackLanguage 'en'
 
@@ -39,7 +39,8 @@ module.exports.server= (app)->
   YAML= require 'yamljs'
 
   app.use '/i18n',(req,res,next)->
-    filePath= path.join process.env.ROOT,'client','i18n',req.url
+    filePath= process.env.ROOT+'/client/public/i18n'+req.url
+    filePath= filePath.replace '.json','.yml'# Avoid conflicts with express.static
     try
       res.json YAML.load filePath
     catch error

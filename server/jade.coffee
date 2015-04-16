@@ -49,8 +49,8 @@ jade.filters.coffeeify= (str,options)->
     expose= path.relative "./",component
     expose= expose.slice 0,expose.length-7 # .coffee
 
-    debug ' -r ./'+env.PUBLIC+'/'+component+':./'+expose
-    script+= ' -r ./'+env.PUBLIC+'/'+component+':./'+expose
+    debug ' -r ./'+env.PUBLIC+'/'+component+':'+expose
+    script+= ' -r ./'+env.PUBLIC+'/'+component+':'+expose
 
   execSync(script).toString()
 

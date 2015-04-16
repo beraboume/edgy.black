@@ -5,7 +5,6 @@ module.exports.client= ($scope,$stateParams,days)->
 
 module.exports.resolve=
   days: ($http,$stateParams,$localStorage)->
-    console.log $stateParams.type,$localStorage.i18n
     $http.get '/front/mypage/stats/'+$stateParams.type+'/?lang='+$localStorage.i18n
 
 module.exports.server= (app)->
