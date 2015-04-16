@@ -66,8 +66,9 @@ app.run (
     # $templateCache.removeAll()
 
   if not $localStorage.i18n?
+    language= navigator.language ? navigator.browserLanguage
     $localStorage.i18n=
-    if navigator.language.slice(0,2) is 'ja'
+    if language.slice(0,2) is 'ja'
       'ja'
     else
       'en'

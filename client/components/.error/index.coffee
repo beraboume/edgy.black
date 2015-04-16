@@ -12,9 +12,10 @@ module.exports.client= ->
     if targetContext.canvas.width isnt innerWidth or targetContext.canvas.height isnt innerHeight
       targetContext.canvas.width= innerWidth
       targetContext.canvas.height= innerHeight
-      targetContext.imageSmoothingEnabled= false
-      targetContext.mozImageSmoothingEnabled= false
-      targetContext.webkitImageSmoothingEnabled= false
+      targetContext.imageSmoothingEnabled= off
+      targetContext.msImageSmoothingEnabled= off
+      targetContext.mozImageSmoothingEnabled= off
+      targetContext.webkitImageSmoothingEnabled= off
       context.canvas.width= innerWidth/pixelSize
       context.canvas.height= innerHeight/pixelSize
 

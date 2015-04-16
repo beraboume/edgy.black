@@ -12,8 +12,10 @@ module.exports.client= (app)->
 
     {i18n}= $localStorageProvider.$get()
     if not i18n?
+      language= $windowProvider.$get().navigator.language ? $windowProvider.$get().navigator.browserLanguage
+
       i18n= 'en'
-      i18n= 'ja' if $windowProvider.$get().navigator.language.slice(0,2) is 'ja'
+      i18n= 'ja' if language.slice(0,2) is 'ja'
     $translateProvider.use i18n
 
   app.directive 'published',($filter)->
