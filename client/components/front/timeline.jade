@@ -1,50 +1,25 @@
 .timeline
-  figcaption
-    section.comments
-      header
-        .notify(ng-show="!user")
-          a(href="#" ng-click="location('/mypage/auth/')")
-            | {{'COMMENT_GUEST'| translate}}
-        form(name="add" ng-show="user" ng-submit="comment(body)")
-          input(
-            name="body"
-            ng-model="body"
-            ng-maxlength="{{fields.body._length}}"
-            placeholder="{{'TIMELINE_PLACEHOLDER'| translate}}"
-            required
-          )
+  header
+    .notify(ng-show="!user")
+      a(href="#" ng-click="location('/mypage/auth/')")
+        | {{'COMMENT_GUEST'| translate}}
+    form(name="add" ng-show="user" ng-submit="comment(body)")
+      input(
+        name="body"
+        ng-model="body"
+        ng-maxlength="{{fields.body._length}}"
+        placeholder="{{'TIMELINE_PLACEHOLDER'| translate}}"
+        required
+      )
 
-          button(
-            ng-disabled="add.$invalid"
-          )
-            | {{'COMMENT'| translate}}
+      button(
+        ng-disabled="add.$invalid"
+      )
+        | {{'COMMENT'| translate}}
 
-          footer(ng-show="add.$valid")
-            | {{fields.body._length - body.length}} / {{fields.body._length}}
+      footer(ng-show="add.$valid")
+        | {{fields.body._length - body.length}} / {{fields.body._length}}
 
-      ul(ng-reel="/front/timeline/ as comments" ng-reel-stack)
-        li(ng-repeat="comment in comments")
-          section(ng-show="comment.user_id != user.id")
-            figure.from
-              a(ng-click="location('http://'+comment.User.mypage_id+'.#{process.env.MYPAGE_HOST}/')")
-                storage(key="{{comment.User.storage_key}}")
-              h3 {{comment.User.name}}
-              time(am-time-ago="comment.created_at")
-            figcaption
-              pre {{comment.body}}
-              footer(ng-show="comment.Artwork.id")
-                a(ui-sref="^.view({id:comment.Artwork.id})")
-                  | {{'FOR_ARTWORK'| translate}}{{comment.Artwork.title}}{{'FOR_ARTWORK_SUF'| translate}} 
-            .to
-          section(ng-show="comment.user_id == user.id")
-            .to
-            figcaption
-              pre {{comment.body}}
-              footer(ng-show="comment.Artwork.id")
-                a(ui-sref="^.view({id:comment.Artwork.id})")
-                  | {{'FOR_ARTWORK'| translate}}{{comment.Artwork.title}}{{'FOR_ARTWORK_SUF'| translate}} 
-            figure.from
-              a(ng-click="location('http://'+comment.User.mypage_id+'.#{process.env.MYPAGE_HOST}/')")
-                storage(key="{{comment.User.storage_key}}")
-              h3 {{comment.User.name}}
-              time(am-time-ago="comment.created_at")
+  ul(ng-reel="/front/timeline/ as comments" ng-reel-stack)
+    li(ng-repeat="comment in comments")
+      include /lib/jade/timeline_comment

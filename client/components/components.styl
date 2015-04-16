@@ -95,41 +95,8 @@ main.mypage
     [ng-repeat].ng-enter
       animation fadeIn .5s
     
-    // layout for tile
-    
-    volume= 15
-
-    tile()
-    @media (orientation: portrait)
-      margin unit(volume/6,'vw')
-    @media (orientation: landscape)
-      margin unit(volume/6,'vh')
-      
-    a
-      margin unit(volume/3*0.1,'rem')
-      
-      position relative
-      svg
-      img
-        central()
-        object-fit contain
-    
-    @media (orientation: portrait)
-      a
-        size unit(volume,'vw')
-        svg
-        img
-          width unit(volume,'vw')
-          max-height unit(volume,'vw')
-      
-    @media (orientation: landscape)
-      a
-        size unit(volume,'vh')
-        svg
-        img
-          width unit(volume,'vh')
-          max-height unit(volume,'vh')
-
+    tile(15)
+  
 .artwork_add
   form
     form()
@@ -199,32 +166,11 @@ main.mypage
       padding .25em .5em
     
     form
-      footer_height= .5rem
-      button_fontsize= 50%
-      button_width= 5em
-      fig()
-      
-      pre
-        theme_light()
-      
-      button
-        font-size button_fontsize
-        min-width button_width
-        
-      relative 0
-      padding-bottom footer_height
-      footer
-        absolute false button_width 0 false
-        height footer_height
-        
-        font-size button_fontsize
+      letter()
 
   .notify
     a
-      theme_sepia()
-      display block
-      margin 1em
-      padding .5em
+      notify()
 
 .artwork_remove
   @extend .artwork_view
@@ -245,11 +191,25 @@ main.mypage
         margin-right .5em
 
 .timeline
-  @extend .artwork_view
-  section
-    footer
-      font-size 70%
-      padding-top .25em
+  padding 1em
+
+  header
+    .notify
+      a
+        notify()
+    
+    form
+      letter()
+      input
+      button
+        padding .5em
+        
+  ul
+    chat()
+    li
+      theme_light()
+      .to
+        background-color none
 
 .mypage
   >*

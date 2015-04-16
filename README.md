@@ -13,17 +13,29 @@
 * クローラー
   * 404返しちゃまずい所が結構ある
 
-# Setup for docker
+# Engine
+$ nodebrew use v0.12.0
+
+## Setup docker for OSX
 ```bash
 $ brew install boot2docker
 $ boot2docker init # may sudo
-$ boot2docker start
+$ boot2docker up # may sudo
+```
 
-$ docker run -d --name edgy.redis -p 6379:6379 dockerfile/redis
+## Setup redis by docker
+```bash
+$ docker run -d --name edgy.redis -p 6379:6379 redis
+# edgy.redis
+```
 
+## Setup mysql by docker
+```bash
 $ docker run --name edgy.black -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql
+# edgy.black
+
 $ docker exec -it edgy.black mysql -u root -p
-# root
+# Type: root
 
 mysql $ create database edgy_test;
 # Query OK, 1 row affected (0.00 sec)
@@ -33,7 +45,18 @@ mysql $ SET PASSWORD = PASSWORD('');
 
 mysql $ exit
 # Bye
+```
 
+## Setuped
+```bash
+$ docker ps -a
+# ... IMAGE        ... PORTS                  NAMES
+# ... redis:3      ... 0.0.0.0:6379->6379/tcp edgy.redis
+# ... mysql:latest ... 0.0.0.0:3306->3306/tcp edgy.black
+```
+
+## Setup password for test
+```bash
 # Set env a twitter login password
 $ echo -n 'rawpassword' | base64
 # ######
@@ -42,10 +65,10 @@ $ vim ~/.bash_profile
 # export EDGY_BLACK_TWITTER=######
 $ source ~/.bash_profile
 
-$ nodebrew use v0.12.0
 $ npm test
 ```
 
-> https://registry.hub.docker.com/_/mysql/
-
-> https://docs.saucelabs.com/ci-integrations/travis-ci/
+>
+  * https://registry.hub.docker.com/_/mysql/
+  * https://registry.hub.docker.com/_/redis/
+  * https://docs.saucelabs.com/ci-integrations/travis-ci/

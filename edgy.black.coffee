@@ -28,5 +28,5 @@ db.sync options
 .then ->
   app.listen env.PORT
 
-  debug 'Successfully setup.'
-  debug 'Server running at',env.PUBLIC_URL
+  console.log 'Successfully setup.'
+  console.log 'Server running at',env.PUBLIC_URL

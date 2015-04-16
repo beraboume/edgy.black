@@ -3,16 +3,16 @@ env= require './env'
 
 express= require 'express'
 multer= require 'multer'
-expressSession= require 'express-session'
-expressSessionStore= new (require('connect-redis') expressSession)
+session= require 'express-session'
+SessionStore= require('connect-redis') session
 passport= require './passport'
 og= require './og'
 
 # Setup express
 app= express()
 app.use multer inMemory:yes
-app.use expressSession
-  store: expressSessionStore
+app.use session
+  store: new SessionStore host:'192.168.59.104'
   secret: 'keyboard cat'
   httpOnly: no
   resave: yes

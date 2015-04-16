@@ -20,16 +20,52 @@ ng-hide(name='fade',time=.5s)
     animation name+'Out' time
 
 // display width height margin padding
-central()
+central(textAlign=center)
   absolute 0 0 0 0
   margin auto
-  text-align center
+  text-align textAlign
 
-tile()
+tile(volume=15)
   font-size 0
   a
     display inline-block
     font-size initial
+  
+  @media (orientation: portrait)
+    margin unit(volume/6,'vw')
+  @media (orientation: landscape)
+    margin unit(volume/6,'vh')
+    
+  a
+    margin unit(volume/3*0.1,'rem')
+    
+    position relative
+    svg
+    img
+      central()
+      object-fit contain
+  
+  @media (orientation: portrait)
+    a
+      size unit(volume,'vw')
+      svg
+      img
+        width unit(volume,'vw')
+        max-height unit(volume,'vw')
+    
+  @media (orientation: landscape)
+    a
+      size unit(volume,'vh')
+      svg
+      img
+        width unit(volume,'vh')
+        max-height unit(volume,'vh')
+
+notify()
+  theme_sepia()
+  display block
+  margin 1em
+  padding .5em
     
 fig(contentFlex=2)
   display flex
@@ -44,16 +80,9 @@ fig(contentFlex=2)
     flex contentFlex
     
 form()
-  central()
+  central(left)
   size 90vw 56vh
   min-height 14em
-  
-  h1
-  h2
-  h3
-  h4
-  h5
-    text-align left
 
   fig()
   
@@ -62,6 +91,7 @@ form()
     theme_sepia()
     a
       display block
+      text-align center
       font-size .5em
       line-height @height
       overflow ellipsis
@@ -78,6 +108,27 @@ form()
       
       > *
         margin-right .5em
+
+letter()
+  footer_height= .5rem
+  button_fontsize= 50%
+  button_width= 5em
+  fig()
+  
+  pre
+    theme_light()
+  
+  button
+    font-size button_fontsize
+    min-width button_width
+    
+  relative 0
+  padding-bottom footer_height
+  footer
+    absolute false button_width 0 false
+    height footer_height
+    
+    font-size button_fontsize
 
 chat()
   >*
@@ -104,7 +155,7 @@ chat()
         display block
         flex .5
         svg
-          height 1%
+          size 100%
       
       time
         font-size xx-small
