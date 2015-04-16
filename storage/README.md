@@ -1,15 +1,15 @@
-[/server/express.coffee](/server/express.coffee)
+[expressApp.get('/storage',...)](/server/express.coffee)
+
+# Generate storage url
+Case of [/client/components/front/add.coffee](/client/components/front/add.coffee)
+
++ process.env.STORAGE_URL
++ Sequelize.UUIDV1
++ .ext
+
+> = http://edgy.black/storage/78adfa50-dcd5-11e4-a4bd-d7599a517d12.png
 
 # Dependencies
-* [Sequelize](https://github.com/sequelize/sequelize)
-* [mime](https://github.com/broofa/node-mime)
-* [/server/env.coffee](/server/env.coffee)
-* [/server/db/Storage.coffee](/server/db/Storage.coffee)
-
-# Standard url
-+ {{env.STORAGE_URL}}
-+ [uuid](/client/components/front/add.coffee)
-+ [.ext]()
-+ = {{Storage.url}}
-
-example: http://edgy.black/5
+* [process.env.*](/server/env.coffee)
+* [Sequelize.UUIDV1](/server/db/Storage.coffee)
+* [.ext](https://github.com/broofa/node-mime)
