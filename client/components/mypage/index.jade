@@ -10,7 +10,7 @@
           img(ng-src="{{artwork.Storage.url}}" jaggy)
   
   figure
-    a(href="{{user.Storage.url}}")
+    a(href="#" ng-click="location(user.Storage.url)")
       img(ng-src="{{user.Storage.url}}" jaggy)
     h2 {{user.name}}
     pre {{user.bio}}

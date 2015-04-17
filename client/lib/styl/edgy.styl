@@ -21,10 +21,10 @@ edgy()
       +placeholder()
         line-height 2
         font-size 50%
-        font-family 'BMRizer',monospace
+        font-family 'BMRizer','misaki_gothic',monospace
   .guest h1
   .guest h2
-    font-family 'BMRizer',monospace
+    font-family 'BMRizer','misaki_gothic',monospace
   .close
     absolute 1em 1em false false
 
@@ -43,6 +43,10 @@ edgy()
   body ui-view.ng-leave
     absolute 0
     animation fadeOut .5s
+  
+  html
+    -ms-overflow-style scrollbar !important
+    // https://twitter.com/simevidas/status/585968924883341312
   
   h1
     font-size 200%
