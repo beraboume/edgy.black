@@ -15,7 +15,7 @@
     "ng-file-upload": "~3.2.4",
     "ngstorage": "~0.3.0",
     "animate.css": "~3.2.5",
-    "jaggy": "~0.1.16"
+    "jaggy": "~0.1.17-rc.1"
   },
   "overrides": {
     "moment": {

@@ -12,7 +12,7 @@ og= require './og'
 app= express()
 app.use multer inMemory:yes
 app.use session
-  store: new SessionStore host:'192.168.59.104'
+  store: new SessionStore# host:'192.168.59.104'
   secret: 'keyboard cat'
   httpOnly: no
   resave: yes
@@ -26,6 +26,9 @@ app.use (req,res,next)->
   next()
 
 app.use express.static env.PUBLIC+'/public'
+# app.use '/storage',(req,res,next)->
+#   res.setHeader 'Access-Control-Allow-Origin','*'
+#   next()
 app.use '/storage/:key',og.storage
 app.use '/storage',express.static env.STORAGE
 app.use '/:id',og.artwork_view
