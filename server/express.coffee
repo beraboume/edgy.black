@@ -12,7 +12,7 @@ og= require './og'
 app= express()
 app.use multer inMemory:yes
 app.use session
-  store: new SessionStore# host:'192.168.59.104'
+  store: new SessionStore host:env.DB.split(':')[0]
   secret: 'keyboard cat'
   httpOnly: no
   resave: yes
