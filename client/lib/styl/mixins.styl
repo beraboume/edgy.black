@@ -130,15 +130,15 @@ letter()
     
     font-size button_fontsize
 
-chat()
+chat(useTheme=true)
   >*
     &:nth-child(even)
-      theme_sepia()
-      figcaption
-        background-color inherit
+      if useTheme
+        theme_sepia()
+        figcaption
+          // background-color inherit
     
-    >section
-    >a
+    >*
       padding .5em 0
       
       fig()
@@ -156,6 +156,11 @@ chat()
         flex .5
         svg
           size 100%
+      
+      figcaption
+        font-size 65%
+      figcaption+figure
+        text-align right
       
       time
         font-size xx-small
