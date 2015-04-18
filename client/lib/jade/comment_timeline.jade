@@ -5,7 +5,7 @@ section(ng-show="comment.user_id != user.id")
     h3 {{comment.User.name}}
     time(am-time-ago="comment.created_at")
   figcaption
-    pre {{comment.body}}
+    pre(ng-model="comment.body" parse-url)
     footer(ng-show="comment.Artwork.id")
       a(ui-sref="^.view({id:comment.Artwork.id})")
         | {{'FOR_ARTWORK'| translate}}{{comment.Artwork.title}}{{'FOR_ARTWORK_SUF'| translate}} 
@@ -15,7 +15,7 @@ section(ng-show="comment.user_id == user.id")
     a(ui-sref=".remove({comment_id:comment.id})" ng-hide="$state.params.comment_id")
       | X
   figcaption
-    pre {{comment.body}}
+    pre(ng-model="comment.body" parse-url)
     footer(ng-show="comment.Artwork.id")
       a(ui-sref="^.view({id:comment.Artwork.id})")
         | {{'FOR_ARTWORK'| translate}}{{comment.Artwork.title}}{{'FOR_ARTWORK_SUF'| translate}} 

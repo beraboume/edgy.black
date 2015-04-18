@@ -16,6 +16,7 @@ app= angular.module 'app',[
 (require 'lib/coffee/i18n').client app
 (require 'lib/coffee/storage').client app
 (require 'lib/coffee/routes').client app
+(require 'lib/coffee/parse-url').client app
 
 app.run (
   $rootScope
