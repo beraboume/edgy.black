@@ -78,6 +78,32 @@ fig(contentFlex=2)
       size 100%
   figcaption
     flex contentFlex
+
+showcase()
+  figure
+    a
+      display block
+      cursor pointer
+  
+  @media (orientation: portrait)
+    figure
+      size 100vw
+      max-height calc(100vh \- menu_height)
+      a
+        size 100%
+    figcaption
+      padding .5em 0
+
+  @media (orientation: landscape)
+    fig()
+    figure
+      a
+      svg
+        max-height calc(100vh \- menu_height)
+      a
+        relative 0
+    figcaption
+      flex 2
     
 form()
   central(left)
@@ -130,47 +156,35 @@ letter()
     
     font-size button_fontsize
 
-chat(useTheme=true)
-  >*
-    &:nth-child(even)
-      if useTheme
-        theme_sepia()
-        figcaption
-          // background-color inherit
+comment()
+  fig()
+  figure
+  figcaption
+    footer
+      text-align right
+      
+  .from
+  .to
+    display block
+    flex .5
+    svg
+      size 100%
+  
+  figcaption
+    padding 0 .5em
+    font-size 65%
+  figcaption+figure
+    text-align right
+  
+  time
+    font-size xx-small
     
-    >*
-      padding .5em 0
-      
-      fig()
-      figure
-      figcaption
-        padding 0 .5em
-        
-        footer
-          text-align right
-          
-      .from
-      .to
-        padding 0 .5em
-        display block
-        flex .5
-        svg
-          size 100%
-      
-      figcaption
-        font-size 65%
-      figcaption+figure
-        text-align right
-      
-      time
-        font-size xx-small
-        
-      h3
-        font-size 50%
-        width 100%
-        overflow hidden
-        white-space nowrap
-        // overflow ellipsis
+  h3
+    font-size 50%
+    width 100%
+    overflow hidden
+    white-space nowrap
+    // overflow ellipsis
 
 overlay()
   fixed 0

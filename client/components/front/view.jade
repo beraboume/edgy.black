@@ -64,19 +64,4 @@
           href="#"
           ng-click="location('http://'+comment.User.mypage_id+'.#{process.env.MYPAGE_HOST}/')"
         )
-          a(ng-show="comment.user_id != artwork.user_id")
-            figure.from
-              storage(key="{{comment.User.storage_key}}")
-              h3 {{comment.User.name}}
-              time(am-time-ago="comment.created_at")
-            figcaption
-              pre {{comment.body}}
-            .to
-          a(ng-show="comment.user_id == artwork.user_id")
-            .to
-            figcaption
-              pre {{comment.body}}
-            figure.from
-              storage(key="{{comment.User.storage_key}}")
-              h3 {{comment.User.name}}
-              time(am-time-ago="comment.created_at")
+          include /lib/jade/comment

@@ -41,53 +41,23 @@ artwork_add()
       min-height 40vh
 
 artwork_view()
-  figcaption
+  showcase()
+      
+  >figcaption
     theme_light()
   
-  figure
-    a
-      display block
-      cursor pointer
-  
-  pre
-    padding 0
-    
-  section
-    margin 1em 0
-    
-    h2+*
-      margin .5em 0
-
-    >footer
-      text-align right
-      font-size .8em
-    
-    time
-      margin-right .5em
+    >section
+      padding 1em
+      h2+*
+        padding .5em 0
       
-    ul
-      chat()
+      >footer
+        text-align right
+        font-size .8em
+      
+      time
+        margin-right .5em
         
-  @media (orientation: portrait)
-    figure
-      size 100vw
-      max-height calc(100vh \- menu_height)
-      a
-        size 100%
-    figcaption
-      padding .5em 0
-
-  @media (orientation: landscape)
-    fig()
-    figure
-      a
-      svg
-        max-height calc(100vh \- menu_height)
-      a
-        relative 0
-    figcaption
-      flex 2
-      
   .shares
     nav
       text-align right
@@ -96,13 +66,27 @@ artwork_view()
         font-family 'BMplamo','misaki_gothic',monospace
   
   .comments
-    figure
-      size auto
-    input
-      padding .25em .5em
-    
+    theme_sepia()
+
     form
       letter()
+    
+      input
+        padding .25em .5em
+      button
+        theme_dark()
+      
+    ul
+      margin .5em
+      margin-bottom 0
+      li
+        section
+          comment()
+          figcaption
+            theme_light()
+      
+      li+li
+        margin-top .5em
 
   .notify
     a
@@ -130,6 +114,8 @@ timeline()
   margin 1em
 
   header
+    margin-bottom 1em
+    
     .notify
       a
         notify()
@@ -141,23 +127,25 @@ timeline()
         padding .5em
         
   ul
-    chat(false)
-    
-    .from
-    .to
-    figure
-      padding 0
-    
     li
-      figcaption
-        theme_light()
+      section
+        comment()
         
+        figcaption
+          theme_light()
+      
+    li+li
+      margin-top .5em
+
 front_mypage()
   >*
     fig()
   figcaption
     header
       padding 1em
+  
+  section
+    padding 0 1em
     
   .stats
     theme_light()

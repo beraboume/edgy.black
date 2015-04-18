@@ -1,0 +1,24 @@
+section(ng-show="comment.user_id != artwork.user_id")
+  figure.from
+    a(ng-click="location('http://'+comment.User.mypage_id+'.#{process.env.MYPAGE_HOST}/')")
+      storage(key="{{comment.User.storage_key}}")
+    h3 {{comment.User.name}}
+    time(am-time-ago="comment.created_at")
+  figcaption
+    pre {{comment.body}}
+    footer(ng-show="comment.Artwork.id")
+      a(ui-sref="^.view({id:comment.Artwork.id})")
+        | {{'FOR_ARTWORK'| translate}}{{comment.Artwork.title}}{{'FOR_ARTWORK_SUF'| translate}} 
+  .to
+section(ng-show="comment.user_id == artwork.user_id")
+  .to
+  figcaption
+    pre {{comment.body}}
+    footer(ng-show="comment.Artwork.id")
+      a(ui-sref="^.view({id:comment.Artwork.id})")
+        | {{'FOR_ARTWORK'| translate}}{{comment.Artwork.title}}{{'FOR_ARTWORK_SUF'| translate}} 
+  figure.from
+    a(ng-click="location('http://'+comment.User.mypage_id+'.#{process.env.MYPAGE_HOST}/')")
+      storage(key="{{comment.User.storage_key}}")
+    h3 {{comment.User.name}}
+    time(am-time-ago="comment.created_at")
