@@ -11,11 +11,30 @@ module.exports.client= (
 
   $scope.fields= fields.data
   $scope.artwork= artwork.data
+
+  $scope.fields= fields.data
+  $scope.files= []
+  $scope.$watch 'files',->
+    file= $scope.files?[0]
+    return if not file instanceof File
+
+    url= URL.createObjectURL file if file instanceof File
+    return if not url?
+    jaggy.createSVG url,(error,svg)->
+      throw error if error?
+      a= document.querySelector('[ng-model="files"] a')
+      a= angular.element a
+      a.empty()
+      a.append svg
   $scope.submit= ->
     {title,description}= $scope.artwork
+    {files}= $scope
+    file= files[0]
+    type= file.type
+    size= file.size
 
     data= new FormData
-    for key,value of {title,description}
+    for key,value of {title,description,file,type,size}
       data.append key,value
     $http.put '/front/artwork/'+$state.params.id,data,
       headers:'Content-type':undefined
@@ -34,18 +53,59 @@ module.exports.resolve=
 module.exports.server= (app)->
   db= require process.env.DB_ROOT
 
+  fs= require 'fs'
+  path= require 'path'
+  crypto= require 'crypto'
+
+  mime= require 'mime'
+  Promise= require 'sequelize/node_modules/bluebird'
+
+  unlink= (Storage)->
+    path= require 'path'
+    fs= require 'fs'
+    wanderer= require 'wanderer'
+
+    filePath= path.join process.env.STORAGE,Storage.key+'*'
+    fs.unlinkSync file for file in wanderer.seekSync filePath
+
   app.put '/front/artwork/:id',(req,res)->
     {id}= req.params
-    {title,description}= req.body
+    {title,description,type,size}= req.body
+    {file}= req.files
     user_id= req.session.passport.user?.id
 
-    {Artwork}= db.models
-    Artwork.find where: {id,user_id}
+    {Artwork,Storage}= db.models
+    Artwork.find
+      where: {id,user_id}
+      include: [Storage]
     .then (artwork)->
       artwork.title= title
       artwork.description= description
 
       artwork.save()
+    .then (artwork)->
+      return artwork if file is null
+
+      sha1= crypto.createHash('sha1').update(file.buffer.toString()).digest('hex')
+      Storage.find where: {sha1}
+      .then (duplicated)->
+        throw new Error 'Exists file' if duplicated?
+        throw new Error 'Over 1mb' if size>= Math.pow(2,20)
+
+        storage= artwork.Storage
+        storage.type= type
+
+        fileName= storage.key+'.'+(mime.extension type)
+        filePath= path.join process.env.STORAGE,fileName
+
+        unlink artwork.Storage
+        fs.writeFileSync filePath,file.buffer
+        
+        storage.sha1= sha1
+        storage.url= process.env.STORAGE_URL+fileName
+        storage.save()
+        .then ->
+          artwork
     .then (artwork)->
       res.json {artwork}
 

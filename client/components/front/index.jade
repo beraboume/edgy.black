@@ -13,4 +13,4 @@
 
         ui-sref="^.view({id:artwork.id})"
       )
-        img(ng-src="{{artwork.Storage.url}}" jaggy)
+        img(ng-src="{{artwork.Storage.url+'?'+artwork.Storage.updated_at}}" jaggy)

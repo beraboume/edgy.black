@@ -1,8 +1,15 @@
-.artwork_add
+.artwork_edit
   form(name="edit" ng-submit="submit()")
-    figure
+    figure(
+      ng-model="files"
+      accept="image/gif,image/png,image/jpg,image/jpeg"
+      ng-file-select
+      ng-file-drop
+    )
       a
-        img(ng-src="{{artwork.Storage.url}}" jaggy)
+        img(ng-src="{{artwork.Storage.url+'?'+artwork.Storage.updated_at}}" jaggy)
+        | {{'DROP_HERE'| translate}}
+
     figcaption
       h2: input(
         ng-model="artwork.title"

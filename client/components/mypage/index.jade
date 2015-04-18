@@ -7,11 +7,11 @@
 
           href="{{'#{process.env.PUBLIC_URL}'+ artwork.id}}"
         )
-          img(ng-src="{{artwork.Storage.url}}" jaggy)
+          img(ng-src="{{artwork.Storage.url+'?'+artwork.Storage.updated_at}}" jaggy)
   
   figure
     a(href="#" ng-click="location(user.Storage.url)")
-      img(ng-src="{{user.Storage.url}}" jaggy)
+      img(ng-src="{{user.Storage.url+'?'+user.Storage.updated_at}}" jaggy)
     h2 {{user.name}}
     pre {{user.bio}}
 

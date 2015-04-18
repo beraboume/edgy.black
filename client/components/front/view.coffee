@@ -97,7 +97,10 @@ module.exports.server= (app)->
     {Artwork,Storage,User,View}= db.models
     Artwork.find
       where: {id}
-      include: [Storage,User]
+      include: [Storage,{
+        model: User
+        include: [Storage]
+      }]
     .then (result)->
       throw new Error 'Notfound' if not result?
       artwork= result
@@ -122,16 +125,8 @@ module.exports.server= (app)->
         req.session.views.push view.id
 
       view.save()
-
     .then ->
-      Storage.find
-        where:
-          key: artwork.User?.storage_key
-
-    .then (face)->
-      plainObject= artwork.get plain: yes
-      plainObject.Face= face.get plain: yes if face?
-      res.json plainObject
+      res.json artwork
 
     .catch (error)->
       res.status 404

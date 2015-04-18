@@ -1,7 +1,7 @@
 section(ng-show="comment.user_id != artwork.user_id")
   figure.from
     a(ng-click="location('http://'+comment.User.mypage_id+'.#{process.env.MYPAGE_HOST}/')")
-      img(ng-src="{{comment.User.Storage.url}}" jaggy)
+      img(ng-src="{{comment.User.Storage.url+'?'+comment.User.Storage.updated_at}}" jaggy)
     h3 {{comment.User.name}}
     time(am-time-ago="comment.created_at")
   figcaption
@@ -21,6 +21,6 @@ section(ng-show="comment.user_id == artwork.user_id")
         | {{'FOR_ARTWORK'| translate}}{{comment.Artwork.title}}{{'FOR_ARTWORK_SUF'| translate}} 
   figure.from
     a(ng-click="location('http://'+comment.User.mypage_id+'.#{process.env.MYPAGE_HOST}/')")
-      img(ng-src="{{comment.User.Storage.url}}" jaggy)
+      img(ng-src="{{comment.User.Storage.url+'?'+comment.User.Storage.updated_at}}" jaggy)
     h3 {{comment.User.name}}
     time(am-time-ago="comment.created_at")
