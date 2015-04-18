@@ -1,3 +1,5 @@
+ui-view
+
 .artwork_view
   figure
     a(ng-click="location(artwork.Storage.url)" ng-style="{'top':scrollY+'px'}")
@@ -58,10 +60,5 @@
             | {{fields.body._length - body.length}} / {{fields.body._length}}
 
       ul(ng-reel="/front/comments/{{artwork.id}} as comments" ng-reel-stack)
-        li(
-          ng-repeat="comment in comments"
-
-          href="#"
-          ng-click="location('http://'+comment.User.mypage_id+'.#{process.env.MYPAGE_HOST}/')"
-        )
+        li(ng-repeat="comment in comments")
           include /lib/jade/comment

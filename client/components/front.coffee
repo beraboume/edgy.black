@@ -9,6 +9,10 @@ module.exports.client= ($scope,$state,user)->
       icon: 'icons/image.gif'
       title: 'VIEW'
       'ng-hide':'!$state.params.id'
+    'front.view.remove':
+      icon: 'icons/remove.gif'
+      title: 'DELETE'
+      'ng-hide':'!$state.params.comment_id'
     'front.edit':
       icon: 'icons/edit.gif'
       title: 'EDIT'
@@ -45,6 +49,10 @@ module.exports.client= ($scope,$state,user)->
     'front.timeline':
       icon: 'icons/comment.gif'
       title: 'COMMENT'
+    'front.timeline.remove':
+      icon: 'icons/remove.gif'
+      title: 'DELETE'
+      'ng-hide':'!$state.params.comment_id'
 
     "i18n":
       icon: 'icons/i18n.gif'

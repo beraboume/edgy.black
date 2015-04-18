@@ -1,0 +1,9 @@
+.timeline_remove
+  form(ng-submit="remove()")
+    include /lib/jade/comment_timeline
+  
+    footer
+      h2 {{'DELETE_VALID'| translate}}
+
+      button {{'DELETE_YES'| translate}}
+      button(type="button" ng-click="back()") {{'DELETE_NO'| translate}}

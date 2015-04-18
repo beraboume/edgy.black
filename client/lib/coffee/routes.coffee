@@ -4,10 +4,12 @@ module.exports.client= (app)->
 
     'front.add': '/add'
     'front.view': '/{id:[0-9]+}'
+    'front.view.remove': '/:comment_id/remove'
     'front.edit': '/{id:[0-9]+}/edit'
     'front.remove': '/{id:[0-9]+}/remove'
     
     'front.timeline': '/timeline'
+    'front.timeline.remove': '/:comment_id/remove'
     
     'front.mypage': '/mypage'
     'front.mypage.stats': '/stats/:type'

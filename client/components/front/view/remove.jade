@@ -1,0 +1,9 @@
+.artwork_view_remove
+  form(ng-submit="remove()")
+    include /lib/jade/comment
+  
+    footer
+      h2 {{'DELETE_VALID'| translate}}
+
+      button {{'DELETE_YES'| translate}}
+      button(type="button" ng-click="back()") {{'DELETE_NO'| translate}}

@@ -77,13 +77,16 @@ artwork_view()
         theme_dark()
       
     ul
-      margin .5em
+      margin .5em 0
       margin-bottom 0
       li
         section
           comment()
           figcaption
             theme_light()
+        .to
+          a
+            theme_dark()
       
       li+li
         margin-top .5em
@@ -92,6 +95,19 @@ artwork_view()
     a
       notify()
       theme_dark()
+
+artwork_view_remove()
+  overlay()
+  prompt()
+  
+  section
+    comment()
+    
+    figcaption
+      theme_sepia()
+  
+  footer
+    margin-top 1em
 
 artwork_remove()
   artwork_view()
@@ -132,11 +148,18 @@ timeline()
       section
         comment()
         
+        .to
+          a
+            theme_light()
+        
         figcaption
           theme_light()
       
     li+li
       margin-top .5em
+
+timeline_remove()
+  artwork_view_remove()
 
 front_mypage()
   >*
@@ -207,17 +230,8 @@ front_guest()
         theme_sepia()
  
 front_mypage_stats()
-  overlay()
-  > *
-    central()
-    size 80vw 56vh
-    min-height 12em
-    padding 1em
-    
-    text-align left
-
-    theme_light()
-    
+  prompt()
+  >*
     svg
       size 2em
   
