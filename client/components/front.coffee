@@ -12,7 +12,7 @@ module.exports.client= ($scope,$state,user)->
     'front.view.remove':
       icon: 'icons/remove.gif'
       title: 'DELETE'
-      'ng-hide':'!$state.params.comment_id'
+      'ng-hide':'!$state.is("front.view.remove")'
     'front.edit':
       icon: 'icons/edit.gif'
       title: 'EDIT'
@@ -52,7 +52,7 @@ module.exports.client= ($scope,$state,user)->
     'front.timeline.remove':
       icon: 'icons/remove.gif'
       title: 'DELETE'
-      'ng-hide':'!$state.params.comment_id'
+      'ng-hide':'!$state.is("front.timeline.remove")'
 
     "i18n":
       icon: 'icons/i18n.gif'
