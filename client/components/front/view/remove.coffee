@@ -29,10 +29,13 @@ module.exports.server= (app)->
     {id}= req.params
     user_id= req.session.passport.user.id
 
-    {Comment,Artwork,User}= db.models
+    {Comment,Artwork,User,Storage}= db.models
     Comment.find
       where: {id,user_id}
-      include: [Artwork,User]
+      include: [Artwork,{
+        model: User
+        include: [Storage]
+      }]
     .then (comment)->
       return res.status(404).json null if not comment?
       res.json comment
