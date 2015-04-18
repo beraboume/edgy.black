@@ -56,13 +56,16 @@ module.exports.server= (app)->
     debug 'TODO 匿名コメントの許可'
     debug 'TODO 連投の許容時間'
 
-    {Comment,User}= db.models
+    {Comment,User,Storage}= db.models
     Comment.findAndCountAll
       where: {artwork_id}
       order: 'created_at desc'
       offset: _start
       limit: _end-_start
-      include: [User]
+      include: [{
+        model: User
+        include: [Storage]
+      }]
     .then (result)->
       return res.json result.count if req.query.count?
       res.json result.rows

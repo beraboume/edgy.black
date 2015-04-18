@@ -24,12 +24,15 @@ module.exports.server= (app)->
   app.get '/front/timeline/',(req,res)->
     {_start,_end}= req.query
     
-    {Comment,User,Artwork}= db.models
+    {Comment,User,Storage,Artwork}= db.models
     Comment.findAll
       order: 'created_at desc'
       offset: _start
       limit: _end-_start
-      include: [User,Artwork]
+      include: [{
+        model: User
+        include: [Storage]
+      },Artwork]
     .then (comments)->
       res.json comments
     .catch (error)->
