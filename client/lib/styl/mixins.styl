@@ -74,6 +74,11 @@ tile(volume=15)
       central()
       object-fit contain
 
+overlay()
+  fixed 0
+  z-index 200
+  background-color alpha(#333,.75)
+
 prompt()
   overlay()
   > *
@@ -221,12 +226,6 @@ comment()
     overflow hidden
     white-space nowrap
     // overflow ellipsis
-
-overlay()
-  fixed 0
-  z-index 200
-  margin auto
-  background-color alpha(#333,.75)
 
 active()
   theme_light()

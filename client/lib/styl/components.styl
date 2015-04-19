@@ -105,7 +105,6 @@ artwork_view()
       theme_dark()
 
 artwork_view_remove()
-  overlay()
   prompt()
   
   section
@@ -177,6 +176,9 @@ timeline_remove()
 front_mypage()
   >*
     fig()
+  figure
+    >a
+      margin-top 0
   figcaption
     header
       padding 1em
@@ -321,7 +323,7 @@ front_mypage_stats()
       
       box-sizing-reset()
       p
-        font_head()
+        font_text()
         text-align right
         font-size 150%
       

@@ -1,12 +1,5 @@
 > [edgy.black](http://edgy.black/)
 
-# おわった
-* <del>コメント削除</del>
-* <del>storageディレクティブ遅い（リクエスト送りすぎ）</del>
-* <del>へんしゅうで画像のアップロードし直したい（jaggyキャッシュ消す）</del>
-* <del>文章内のURLへ、自動リンク生成</del>
-* <del>公開範囲（自分のみ／マイページのみ／すべて）</del>
-
 # TODO
 ## オレオレ要望（上ほど優先）
 
@@ -19,11 +12,6 @@
 * 日付叩いたらパーマリンク出して欲しい
 
 ## 下げられた優先度（めんどくさい）
-* IE10許すまじ
-  * <del>BitmapManiaフォントが使えない（代替フォントを指定する。可能であれば、eotで表示できるようにする）</del>
-  * <del>マイページでスクロールバーが二重に出る</del>
-  * <del>angular-webcolorで画面全体の座標が動く</del>
-
 * 連投できるけど大丈夫？
 
 * ng-messagesのインストールと実装
@@ -33,6 +21,17 @@
 
 > 昔作ったデザイン
 > https://dl.dropboxusercontent.com/u/22608895/edgy/index.html
+
+# おわった
+* <del>コメント削除</del>
+* <del>storageディレクティブ遅い（リクエスト送りすぎ）</del>
+* <del>へんしゅうで画像のアップロードし直したい（jaggyキャッシュ消す）</del>
+* <del>文章内のURLへ、自動リンク生成</del>
+* <del>公開範囲（自分のみ／マイページのみ／すべて）</del>
+* IE10許すまじ
+  * <del>BitmapManiaフォントが使えない（代替フォントを指定する。可能であれば、eotで表示できるようにする）</del>
+  * <del>マイページでスクロールバーが二重に出る</del>
+  * <del>angular-webcolorで画面全体の座標が動く</del>
 
 # Engine
 $ nodebrew use v0.12.0
