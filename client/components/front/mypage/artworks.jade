@@ -1,5 +1,9 @@
 .front_mypage_artworks
   nav(ng-reel="/front/mypage/artworks as artworks" ng-reel-stack)
+    .notify(ng-hide="::_artworks.length>0")
+      a(ui-sref="front.add")
+        | {{'MYPAGE_ARTWORKS_MSG'| translate}}
+      
     a(
       ng-repeat="artwork in _artworks||artworks"
 
@@ -12,7 +16,7 @@
         pre {{artwork.description}}
         footer
           p.show
-            {{'ADD_SHOW_'+artwork.show| translate}}
+            | {{'ADD_SHOW_'+artwork.show| translate}}
           //- ul.stats
             li
               | {{'9999'| number:0}}

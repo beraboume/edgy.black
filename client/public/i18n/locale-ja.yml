@@ -109,6 +109,8 @@ MYPAGE_EDIT:
   'プロフィール'
 MYPAGE_ARTWORKS:
   'さくひん'
+MYPAGE_ARTWORKS_MSG:
+  'あなたはさくひんをとうこうしていません'
 MYPAGE_NAME:
   'なまえ'
 MYPAGE_BIO:

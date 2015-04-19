@@ -6,6 +6,11 @@ module.exports.client= ($scope,artworks)->
     delete $scope._artworks if newValue?
 
 module.exports.resolve=
+  user: ($http,$state)->
+    $http.get '/mypage/user'
+    .then (result)->
+      return $state.go 'front.mypage' if result.data is null
+      result
   artworks: ($http)->
     $http.get REST
 
@@ -13,7 +18,7 @@ module.exports.server= (app)->
   db= require process.env.DB_ROOT
 
   app.get REST,(req,res)->
-    user_id= req.session.passport.user.id
+    user_id= req.session.passport.user?.id
     {_start,_end}= req.query
     _start?= 0
     _end?= 0

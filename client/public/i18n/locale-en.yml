@@ -109,6 +109,8 @@ MYPAGE_EDIT:
   'Profile'
 MYPAGE_ARTWORKS:
   'Artworks'
+MYPAGE_ARTWORKS_MSG:
+  'You can publish the pixel art.'
 MYPAGE_NAME:
   'Name'
 MYPAGE_BIO:
