@@ -121,19 +121,24 @@ artwork_remove()
   artwork_view()
   
   figcaption
-    header
-    footer
-      padding .5em 1em
-      padding-bottom 1em
     
-    section
-      theme_sepia()
+    form
+      header
+      footer
+        padding 1em
       
-      padding 1em
-    
-    footer
-      button
-        margin-right .5em
+      section
+        theme_dark()
+        margin .25em
+        padding 1em
+        footer
+          padding 0
+          text-align right
+          font-size .8em
+      
+      footer
+        button
+          margin-right .5em
 
 timeline()
   margin 1em

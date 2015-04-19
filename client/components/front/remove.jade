@@ -13,8 +13,8 @@
         footer
           time(published="{{artwork.created_at}}")
           a
-            img(ng-src="{{user.Storage.url}}" jaggy)
             | {{artwork.User.name}}
+            img(ng-src="{{user.Storage.url}}" jaggy)
 
       footer
         h2 {{'DELETE_VALID'| translate}}
