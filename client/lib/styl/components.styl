@@ -14,7 +14,6 @@ artworks()
       box-sizing-reset()
       size 100%
       // padding .25em 0
-      font-size 1em
       text-align center
     footer
       position absolute
@@ -71,8 +70,8 @@ artwork_view()
     nav
       text-align right
       a
+        font_share()
         font-size 150%
-        font-family 'BMplamo','misaki_gothic',monospace
   
   .comments
     theme_sepia()
@@ -185,7 +184,7 @@ front_mypage()
     
     dd
     a
-      font-family 'PixelMplus10',monospace
+      font_head()
     
     a
       text-decoration underline
@@ -218,7 +217,7 @@ front_guest()
     
     h1
     h2
-      font-family 'BMRizer',monospace
+      font_logo()
       
     h1
       font-size logo_size
@@ -261,9 +260,9 @@ front_mypage_stats()
       
       box-sizing-reset()
       p
+        font_head()
         text-align right
         font-size 150%
-        font-family 'PixelMplus10',monospace
       
       &:nth-of-type(2)
       &:nth-of-type(4)
