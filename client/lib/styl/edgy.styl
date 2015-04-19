@@ -43,13 +43,18 @@ edgy()
   [ui-view]
     display block
     size 100%
+  
+  ui-view+ui-view
+    top 0
 
   [ui-view].ng-enter
   body ui-view.ng-enter
     animation fadeIn .5s
+    &.front-mypage-artworks
+      animation slideInRight .5s
   [ui-view].ng-leave
   body ui-view.ng-leave
-    absolute 0
+    position absolute
     animation fadeOut .5s
   
   html

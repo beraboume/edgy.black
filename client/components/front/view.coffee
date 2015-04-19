@@ -49,54 +49,17 @@ module.exports.server= (app)->
 
   debug= (require 'debug') 'edgy:server'
 
-  app.get '/front/comments/:artwork_id',(req,res)->
-    {artwork_id}= req.params
-    {_start,_end}= req.query
-    
-    debug 'TODO 匿名コメントの許可'
-    debug 'TODO 連投の許容時間'
-
-    {Comment,User,Storage}= db.models
-    Comment.findAndCountAll
-      where: {artwork_id}
-      order: 'created_at desc'
-      offset: _start
-      limit: _end-_start
-      include: [{
-        model: User
-        include: [Storage]
-      }]
-    .then (result)->
-      return res.json result.count if req.query.count?
-      res.json result.rows
-    .catch (error)->
-      res.status 404
-      res.json null
-
-  app.post '/front/comments/:artwork_id',(req,res)->
-    {body}= req.body
-    {artwork_id}= req.params
-    user_id= req.session.passport.user.id
-
-    {Comment}= db.models
-    comment= Comment.build {artwork_id,user_id,body}
-    comment.save()
-    .then (result)->
-      res.json result
-    .catch ->
-      res.status 400
-      res.json null
-
   app.get '/front/artwork/:id',(req,res)->
     req.session.views= [] if not req.session.views?
     
     artwork= null
 
     {id}= req.params
+    user_id= req.session.passport.user?.id
 
     {Artwork,Storage,User,View}= db.models
     Artwork.find
-      where: {id}
+      where: Artwork.getWhereFromVisible id,user_id
       include: [Storage,{
         model: User
         include: [Storage]
@@ -131,3 +94,38 @@ module.exports.server= (app)->
     .catch (error)->
       res.status 404
       res.json error.message
+
+  app.get '/front/comments/:artwork_id',(req,res)->
+    {artwork_id}= req.params
+    {_start,_end}= req.query
+
+    {Comment,User,Storage}= db.models
+    Comment.findAndCountAll
+      where: {artwork_id}
+      order: 'created_at desc'
+      offset: _start
+      limit: _end-_start
+      include: [{
+        model: User
+        include: [Storage]
+      }]
+    .then (result)->
+      return res.json result.count if req.query.count?
+      res.json result.rows
+    .catch (error)->
+      res.status 404
+      res.json null
+
+  app.post '/front/comments/:artwork_id',(req,res)->
+    {body}= req.body
+    {artwork_id}= req.params
+    user_id= req.session.passport.user.id
+
+    {Comment}= db.models
+    comment= Comment.build {artwork_id,user_id,body}
+    comment.save()
+    .then (result)->
+      res.json result
+    .catch ->
+      res.status 400
+      res.json null

@@ -23,10 +23,15 @@
         placeholder="{{'EDIT_DESCRIPTION'| translate}}"
         ng-maxlength="{{fields.description._length}}"
       )
+      select(
+        ng-model="show"
+        required
+        ng-options="type.label for type in show_types track by type.value"
+      )
 
-      footer(ng-show="artwork.$invalid || files.length==0")
+      footer(ng-show="artwork.$invalid")
         p {{'FORM_INVALID'| translate}}
-      footer(ng-hide="artwork.$invalid || files.length==0")
+      footer(ng-hide="artwork.$invalid")
         p {{'FORM_VALID'| translate}}
         button {{'YES'| translate}}
         button(type="button" ng-click="back()") {{'NO'| translate}}

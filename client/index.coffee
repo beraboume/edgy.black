@@ -34,6 +34,8 @@ app.run (
 )->
   $rootScope.$state= $state
   $rootScope.$stateParams= $stateParams
+  $rootScope.$watch '$state.current.name',(newValue)->
+    $rootScope.$state.current.nameClass= $state.current.name.replace /\./g,'-'
 
   $rootScope.back= ->
     $window.history.back()

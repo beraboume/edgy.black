@@ -17,7 +17,7 @@ section(ng-show="comment.user_id == user.id")
   figcaption
     pre(ng-model="comment.body" parse-url)
     footer(ng-show="comment.Artwork.id")
-      a(ui-sref="^.view({id:comment.Artwork.id})")
+      a(ui-sref="front.view({id:comment.Artwork.id})")
         | {{'FOR_ARTWORK'| translate}}{{comment.Artwork.title}}{{'FOR_ARTWORK_SUF'| translate}} 
   figure.from
     a(ng-click="location('http://'+comment.User.mypage_id+'.#{process.env.MYPAGE_HOST}/')")

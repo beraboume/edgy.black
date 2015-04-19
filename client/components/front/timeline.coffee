@@ -20,12 +20,18 @@ module.exports.resolve=
 
 module.exports.server= (app)->
   db= require process.env.DB_ROOT
+  Sequelize= db.constructor
 
   app.get '/front/timeline/',(req,res)->
     {_start,_end}= req.query
     
     {Comment,User,Storage,Artwork}= db.models
     Comment.findAll
+      where:
+        Sequelize.or [
+          'Artwork.id is null'
+          ['Artwork.show in (?)', ['PUBLIC','PRIVATE']]
+        ]...
       order: 'created_at desc'
       offset: _start
       limit: _end-_start

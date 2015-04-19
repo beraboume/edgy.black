@@ -20,6 +20,8 @@ module.exports.server= (app)->
     
     {Artwork,Storage}= db.models
     Artwork.findAll
+      where:
+        show: 'PUBLIC'
       offset: _start
       limit: _end-_start
       order: 'created_at desc'

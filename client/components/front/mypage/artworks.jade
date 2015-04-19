@@ -1,0 +1,25 @@
+.front_mypage_artworks
+  nav(ng-reel="/front/mypage/artworks as artworks" ng-reel-stack)
+    a(
+      ng-repeat="artwork in _artworks||artworks"
+
+      ui-sref="front.view({id:artwork.id})"
+    )
+      figure
+        img(ng-src="{{artwork.Storage.url+'?'+artwork.Storage.updated_at}}" jaggy)
+      figcaption
+        h2 {{artwork.title}}
+        pre {{artwork.description}}
+        footer
+          p.show
+            {{'ADD_SHOW_'+artwork.show| translate}}
+          //- ul.stats
+            li
+              | {{'9999'| number:0}}
+              img(ng-src="icons/add.gif" jaggy)
+            li
+              | {{'9999'| number:0}}
+              img(ng-src="icons/comment.gif" jaggy)
+            li
+              | {{'9999'| number:0}}
+              img(ng-src="icons/view.gif" jaggy)

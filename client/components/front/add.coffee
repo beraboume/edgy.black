@@ -1,5 +1,21 @@
-module.exports.client= ($scope,$http,$state,fields)->
+module.exports.client= (
+  $scope
+  $http
+  $state
+
+  fields
+
+  $filter
+)->
   $scope.fields= fields.data
+
+  $scope.show_types=
+    for value in $scope.fields.show.values
+      value: value
+      label: $filter('translate') 'ADD_SHOW_'+value
+
+  $scope.show= $scope.show_types[0]
+
   $scope.files= []
   $scope.$watch 'files',->
     file= $scope.files?[0]
@@ -19,9 +35,10 @@ module.exports.client= ($scope,$http,$state,fields)->
     file= files[0]
     type= file.type
     size= file.size
+    show= $scope.show.value
 
     data= new FormData
-    for key,value of {title,description,file,type,size}
+    for key,value of {title,description,file,type,size,show}
       data.append key,value
     $http.post '/front/artworks/add/',data,headers:'Content-type':undefined
     .then (xhrResult)->
@@ -60,7 +77,7 @@ module.exports.server= (app)->
   execSync= (require 'child_process').execSync
 
   app.post '/front/artworks/add/',(req,res)->
-    {title,description,data,type,size}= req.body
+    {title,description,show,data,type,size}= req.body
     user_id= req.session.passport.user.id
     user_name= req.session.passport.user.name
     # file= new Buffer (data.slice 1+data.indexOf ','),'base64'# atob
@@ -93,10 +110,13 @@ module.exports.server= (app)->
       artwork.storage_key= storage.key
       artwork.title= title
       artwork.description= description
+      artwork.show= show
 
       artwork.save()
     .then (artwork)->
       res.json {artwork}
+
+      return if artwork.show isnt 'PUBLIC'
 
       # Notify for @edgy_black
       messageLimit= 140 - 40

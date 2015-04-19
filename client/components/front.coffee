@@ -33,6 +33,10 @@ module.exports.client= ($scope,$state,user)->
       icon: 'icons/license.gif'
       title: 'HELP'
       'ng-hide':'!$state.is("front.help")'
+    'front.mypage.artworks':
+      icon: 'icons/image.gif'
+      title: 'MYPAGE_ARTWORKS'
+      'ng-hide':'!$state.is("front.mypage.artworks")'
     'front.mypage.stats':
       icon: 'icons/gold.gif'
       title: 'MYPAGE_STATS'

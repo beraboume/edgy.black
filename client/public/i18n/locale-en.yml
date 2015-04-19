@@ -40,6 +40,12 @@ ADD_TITLE:
   'Title'
 ADD_DESCRIPTION:
   'Description'
+ADD_SHOW_PUBLIC:
+  'Public'
+ADD_SHOW_PRIVATE:
+  'at Portfolio'
+ADD_SHOW_SECRET:
+  'Private'
 EDIT:
   'Edit'
 EDIT_TITLE:
@@ -67,7 +73,7 @@ COMMENT_GUEST:
   'To comment you must be logged.'
 
 WEBSITE:
-  'Mypage'
+  'Portfolio'
 TIMELINE:
   'Timeline'
 TIMELINE_PLACEHOLDER:
@@ -101,6 +107,8 @@ MYPAGE_STATS_VIEW:
   'Total view'
 MYPAGE_EDIT:
   'Profile'
+MYPAGE_ARTWORKS:
+  'Artworks'
 MYPAGE_NAME:
   'Name'
 MYPAGE_BIO:
@@ -108,8 +116,8 @@ MYPAGE_BIO:
 MYPAGE_QUIT:
   'Resign EDGY'
 MYPAGE_QUIT_MSG:
-  'Please type in the name of the Mypage-url to confirm.'
+  'Please type in the name of the Portfolio URL to confirm.'
 MYPAGE_QUIT_CONFIRM:
   'There is no going back.'
 MYPAGE_URL:
-  'Mypage-url'
+  'Portfolio URL'

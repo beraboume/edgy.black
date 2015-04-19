@@ -21,10 +21,11 @@
         placeholder="{{'ADD_DESCRIPTION'| translate}}"
         ng-maxlength="{{fields.description._length}}"
       )
-      //- select
-        option 公開
-        option マイページだけ
-        option 非公開
+      select(
+        ng-model="show"
+        required
+        ng-options="type.label for type in show_types track by type.value"
+      )
 
       footer(ng-show="artwork.$invalid || files.length==0")
         p {{'FORM_INVALID'| translate}}

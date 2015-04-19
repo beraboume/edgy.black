@@ -12,6 +12,7 @@ module.exports.client= (app)->
     'front.timeline.remove': '/:comment_id/remove'
     
     'front.mypage': '/mypage'
+    'front.mypage.artworks': '/artworks'
     'front.mypage.stats': '/stats/:type'
     'front.mypage.edit': '/edit'
     'front.mypage.quit': '/quit'
@@ -38,7 +39,7 @@ module.exports.client= (app)->
       controller: require('components/mypage').client
 
     area= 'front'
-    # area= 'mypage' if location.hostname.split('.').length > 2
+    area= 'mypage' if location.hostname.split('.').length > 2
     for stateName,url of components when stateName.indexOf(area) is 0
       path= stateName.split '.'
       path.unshift 'components'

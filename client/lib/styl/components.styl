@@ -37,7 +37,7 @@ artwork_add()
     form()
     
     textarea
-      min-height 40vh
+      min-height 36vh
     
     select
       selectbox()
@@ -178,6 +178,10 @@ front_mypage()
   
   section
     padding 0 1em
+  a
+    display block
+    font-size 75%
+    margin 0.5em 0
     
   .stats
     theme_light()
@@ -187,6 +191,7 @@ front_mypage()
       font_text()
     
     a
+      margin 0
       text-decoration underline
   
   .danger
@@ -236,6 +241,51 @@ front_guest()
         width 10em
         // &:focus
         theme_sepia()
+
+front_mypage_artworks()
+  nav
+    a
+      theme_light()
+      &:nth-of-type(even)
+        theme_sepia()
+      
+      h2
+        font-size 120%
+      pre
+        font-size 80%
+      
+      fig()
+      figure
+        img
+        svg
+          theme_dark()
+      figure
+        vsize(30)
+      figcaption
+        padding .5em
+        padding-bottom 0
+        
+      padding-bottom .5em
+  
+  footer
+    text-align right
+  
+  .show
+    theme_dark()
+    text-align center
+    width 10em
+    display inline-block
+    
+  .stats
+    list-no-fontsize()
+    
+    li
+      display inline-block
+      img
+      svg
+        size 1.5em
+    li+li
+      margin-left .5em
  
 front_mypage_stats()
   prompt()

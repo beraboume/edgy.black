@@ -6,11 +6,22 @@ module.exports.client= (
 
   $http
   $state
+  $filter
 )->
   return $state.go('error',null,location:'replace') if user.data?.id isnt artwork.data.User?.id
 
   $scope.fields= fields.data
   $scope.artwork= artwork.data
+
+  $scope.show_types=
+    for value in $scope.fields.show.values
+      type= 
+        value: value
+        label: $filter('translate') 'ADD_SHOW_'+value
+
+      $scope.show= type if $scope.artwork.show is type.value
+
+      type
 
   $scope.fields= fields.data
   $scope.files= []
@@ -30,11 +41,12 @@ module.exports.client= (
     {title,description}= $scope.artwork
     {files}= $scope
     file= files[0]
-    type= file.type
-    size= file.size
+    type= file?.type
+    size= file?.size
+    show= $scope.show.value
 
     data= new FormData
-    for key,value of {title,description,file,type,size}
+    for key,value of {title,description,file,type,size,show}
       data.append key,value
     $http.put '/front/artwork/'+$state.params.id,data,
       headers:'Content-type':undefined
@@ -70,7 +82,7 @@ module.exports.server= (app)->
 
   app.put '/front/artwork/:id',(req,res)->
     {id}= req.params
-    {title,description,type,size}= req.body
+    {title,description,type,size,show}= req.body
     {file}= req.files
     user_id= req.session.passport.user?.id
 
@@ -81,10 +93,13 @@ module.exports.server= (app)->
     .then (artwork)->
       artwork.title= title
       artwork.description= description
+      artwork.show= show
 
       artwork.save()
     .then (artwork)->
-      return artwork if file is null
+      return artwork if not file?
+
+      console.log file
 
       sha1= crypto.createHash('sha1').update(file.buffer.toString()).digest('hex')
       Storage.find where: {sha1}

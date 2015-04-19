@@ -34,6 +34,25 @@ central(textAlign=center)
   margin auto
   text-align textAlign
 
+vsize(volume,containImage=true)
+  @media (orientation: portrait)
+    size unit(volume,'vw')
+    max-width unit(volume,'vw')
+    if containImage
+      svg
+      img
+        width unit(volume,'vw')
+        max-height unit(volume,'vw')
+    
+  @media (orientation: landscape)
+    size unit(volume,'vh')
+    max-width unit(volume,'vh')
+    if containImage
+      svg
+      img
+        width unit(volume,'vh')
+        max-height unit(volume,'vh')
+
 tile(volume=15)
   font-size 0
   a
@@ -46,6 +65,7 @@ tile(volume=15)
     margin unit(volume/6,'vh')
     
   a
+    vsize(volume)
     margin unit(volume/3*0.1,'rem')
     
     position relative
@@ -53,22 +73,6 @@ tile(volume=15)
     img
       central()
       object-fit contain
-  
-  @media (orientation: portrait)
-    a
-      size unit(volume,'vw')
-      svg
-      img
-        width unit(volume,'vw')
-        max-height unit(volume,'vw')
-    
-  @media (orientation: landscape)
-    a
-      size unit(volume,'vh')
-      svg
-      img
-        width unit(volume,'vh')
-        max-height unit(volume,'vh')
 
 prompt()
   overlay()
@@ -258,3 +262,8 @@ selectbox()
   text-overflow ""
   
   background #FFF no-repeat right
+
+list-no-fontsize(fontSize=initial)
+  font-size 0
+  >*
+    font-size fontSize

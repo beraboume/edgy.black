@@ -8,7 +8,10 @@ module.exports.server= (app)->
 
     {Artwork,Storage}= (require process.env.DB_ROOT).models
     Artwork.findAll
-      where: {user_id}
+      where:
+        user_id: user_id
+        show:
+          $ne: 'SECRET'
       include: [Storage]
     .then (artwork)->
       res.json artwork

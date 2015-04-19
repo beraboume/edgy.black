@@ -40,6 +40,12 @@ ADD_TITLE:
   'だいめい'
 ADD_DESCRIPTION:
   'いいのこしたいこと'
+ADD_SHOW_PUBLIC:
+  '公開'
+ADD_SHOW_PRIVATE:
+  'マイページだけ'
+ADD_SHOW_SECRET:
+  '非公開（自分のみ）'
 EDIT:
   'へんしゅう'
 EDIT_TITLE:
@@ -101,6 +107,8 @@ MYPAGE_STATS_VIEW:
   '累積えつらん'
 MYPAGE_EDIT:
   'プロフィール'
+MYPAGE_ARTWORKS:
+  'さくひん'
 MYPAGE_NAME:
   'なまえ'
 MYPAGE_BIO:

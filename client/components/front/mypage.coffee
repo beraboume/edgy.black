@@ -4,12 +4,16 @@ module.exports.client= (
 
   $http
   $state
+
+  $window
 )->
   $scope.stats= stats.data
   $scope.logout= ->
     $http.delete '/mypage/auth'
     .then ->
       $state.reload()
+  $scope.scrollHead= ->
+    $window.scrollTo 0,0
 
 module.exports.resolve=
   stats: ($http)->
