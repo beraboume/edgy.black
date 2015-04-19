@@ -1,14 +1,16 @@
 edgy()
   body
+    *
+      overflow hidden// fix IE10
     theme_dark()
     ::selection
       theme_highlight()
     
     *
-      font-family 'misaki_gothic',monospace
+      font_text()
     pre
     textarea
-      font-family 'PixelMplus10',monospace
+      font_head()
 
     @media (orientation:portrait)
       font-size 5vw
@@ -19,15 +21,15 @@ edgy()
   .logo
     input
       +placeholder()
+        font_logo()
         line-height 2
         font-size 50%
-        font-family 'BMRizer','misaki_gothic',monospace
   .guest
     h1
     h2
     h3
     h3 a
-      font-family 'BMRizer','misaki_gothic',monospace
+      font_logo()
     h3
     h3 a
       font-size 50%
@@ -135,6 +137,7 @@ edgy()
     display block
     
   button
+    theme_sepia()
+    
     display inline-block
     width auto
-    theme_sepia()

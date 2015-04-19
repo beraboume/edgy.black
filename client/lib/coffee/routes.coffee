@@ -38,7 +38,7 @@ module.exports.client= (app)->
       controller: require('components/mypage').client
 
     area= 'front'
-    area= 'mypage' if location.hostname.split('.').length > 2
+    # area= 'mypage' if location.hostname.split('.').length > 2
     for stateName,url of components when stateName.indexOf(area) is 0
       path= stateName.split '.'
       path.unshift 'components'
