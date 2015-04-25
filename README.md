@@ -67,6 +67,20 @@ mysql $ exit
 # Bye
 ```
 
+## Setup ./server/env_secret.coffee
+```coffee
+# Dependencies
+env= process.env
+
+# Setup environment
+env.consumerKey= ""
+env.consumerSecret= ""
+env.accessToken= ""
+env.accessSecret= ""
+
+module.exports= env
+```
+
 ## Setuped
 ```bash
 $ docker ps -a
