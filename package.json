@@ -41,7 +41,7 @@
     "jasminetea": "^0.1.27",
     "jqn": "0.0.3",
     "onefile": "^0.2.11",
-    "pm2": "^0.12.10"
+    "pm2": "^0.12.12"
   },
   "repository": {
     "type": "git",

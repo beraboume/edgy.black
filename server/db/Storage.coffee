@@ -15,6 +15,10 @@ Storage= db.define 'Storage',
   url:
     type: Sequelize.TEXT
     allowNull: no
+    get: ->
+      url= @getDataValue 'url'
+      url+= @getDataValue 'updated_at' if url?
+      url
 
   user_id: Sequelize.INTEGER
 

@@ -3,7 +3,7 @@ ui-view
 .artwork_view
   figure
     a(ng-click="location(artwork.Storage.url)" ng-style="{'top':scrollY+'px'}")
-      img(ng-src="{{artwork.Storage.url+'?'+artwork.Storage.updated_at}}" jaggy)
+      img(ng-src="{{artwork.Storage.url}}" jaggy)
   figcaption
     section
       h2 {{artwork.title}}
@@ -12,7 +12,7 @@ ui-view
         time(published="{{artwork.created_at}}")
         a(href="{{'http://'+artwork.User.mypage_id+'.#{process.env.MYPAGE_HOST}'}}")
           | {{artwork.User.name}}
-          img(ng-src="{{artwork.User.Storage.url+'?'+artwork.User.Storage.updated_at}}" jaggy)
+          img(ng-src="{{artwork.User.Storage.url}}" jaggy)
 
     section.shares
       h2 {{'SHERE'| translate}}
