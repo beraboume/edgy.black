@@ -26,9 +26,9 @@ app.use (req,res,next)->
   next()
 
 app.use express.static env.PUBLIC+'/public'
-# app.use '/storage',(req,res,next)->
-#   res.setHeader 'Access-Control-Allow-Origin','*'
-#   next()
+app.use '/storage',(req,res,next)->
+  res.setHeader 'Access-Control-Allow-Origin','*'
+  next()
 app.use '/storage/:key',og.storage
 app.use '/storage',express.static env.STORAGE
 app.use '/:id',og.artwork_view
