@@ -85,7 +85,7 @@ module.exports.client= (
   $scope.comment= (body)->
     data= new FormData
     data.append 'body',body
-    $http.post "/front/comments/#{artwork.data.artwork.id}",data,headers:'Content-type':undefined
+    $http.post "/front/comments/#{artwork.data.id}",data,headers:'Content-type':undefined
     .then (result)->
       $state.reload()
 
