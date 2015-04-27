@@ -1,6 +1,9 @@
 {
   "name": "edgy.black",
   "main": "edgy.black.coffee",
+  "version": "0.0.6",
+  "private": true,
+
   "scripts": {
     "prestart": "pm2 kill",
     "start": "pm2 start edgy.black.coffee --name edgy.black",

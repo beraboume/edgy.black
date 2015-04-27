@@ -1,5 +1,7 @@
 {
   "name": "edgy.black.client.public.pkgs",
+  "private": true,
+  
   "dependencies": {
     "moment": "~2.9.0",
     "moment-timezone": "~0.3.1",
@@ -15,7 +17,7 @@
     "ng-file-upload": "~3.2.4",
     "ngstorage": "~0.3.0",
     "animate.css": "~3.2.5",
-    "jaggy": "~0.1.17-rc.1"
+    "jaggy": "~0.1.17-rc.3"
   },
   "overrides": {
     "moment": {

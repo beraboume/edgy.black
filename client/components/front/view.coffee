@@ -4,6 +4,7 @@ module.exports.client= (
   $state
   user
   artwork
+  detail
   comment_count
 
   $window
@@ -12,8 +13,63 @@ module.exports.client= (
   fields
 )->
   $scope.artwork= artwork.data
+  $scope.detail= detail.data
   $scope.comment_count= comment_count.data
   $scope.fields= fields.data
+
+  $scope.image= null
+  $scope.colors= []
+  $scope.palette= (scope,element,attrs)->
+    image= element[0]
+    width= image.getAttribute 'width'
+    height= image.getAttribute 'height'
+
+    paths= image.querySelectorAll 'path'
+    for path in paths
+      color= {}
+      background= path.getAttribute 'fill'
+
+      values= []
+      rgb= sliceRGBA background
+      for value,i in rgb
+        break if i>2
+        values.push ('00'+value).slice -3
+      color.rgb= values.join(',')
+      color.rgba= background
+      color.opacity= rgb[3]
+
+      color.style=
+        background: background
+
+      $scope.colors.push color
+
+    $scope.detail.image= width+'x'+height
+    $scope.image= image
+  sliceRGBA= (fill)->
+    rgba= fill
+    rgba= rgba.slice 5
+    rgba= rgba.slice 0,rgba.length-1
+    rgba= rgba.split ','
+    rgba
+  darken= (fill)->
+    rgba= sliceRGBA fill
+    rgba[0]= parseInt(rgba[0]* .5)
+    rgba[1]= parseInt(rgba[1]* .5)
+    rgba[2]= parseInt(rgba[2]* .5)
+
+    "rgba(#{rgba.join(',')})"
+  $scope.focus= (color)->
+    paths= $scope.image.querySelectorAll 'path'
+    for path in paths
+      fill= path.getAttribute 'original-fill'
+      fill?= path.getAttribute 'fill'
+      if color.rgba is fill
+        if color.checked
+          path.setAttribute 'fill','white'
+          path.setAttribute 'original-fill',fill
+        else
+          path.setAttribute 'fill',fill
+          path.removeAttribute 'original-fill',fill
 
   $scope.share= (url,params={},name='share',featureString='width=465,height=465')->
     params.url= $window.location.href
@@ -29,7 +85,7 @@ module.exports.client= (
   $scope.comment= (body)->
     data= new FormData
     data.append 'body',body
-    $http.post "/front/comments/#{artwork.data.id}",data,headers:'Content-type':undefined
+    $http.post "/front/comments/#{artwork.data.artwork.id}",data,headers:'Content-type':undefined
     .then (result)->
       $state.reload()
 
@@ -41,6 +97,8 @@ module.exports.resolve=
     $http.get '/front/comments/'+$stateParams.id+'/?count=1&_start=0&end_0'
   artwork: ($http,$stateParams)->
     $http.get '/front/artwork/'+$stateParams.id
+  detail: ($http,$stateParams)->
+    $http.get '/front/artwork/'+$stateParams.id+'/detail'
   fields: ($http)->
     $http.get '/fields/Comment'
 
@@ -57,7 +115,7 @@ module.exports.server= (app)->
     {id}= req.params
     user_id= req.session.passport.user?.id
 
-    {Artwork,Storage,User,View}= db.models
+    {Artwork,Comment,Storage,User,View}= db.models
     Artwork.find
       where: Artwork.getWhereFromVisible id,user_id
       include: [Storage,{
@@ -68,7 +126,6 @@ module.exports.server= (app)->
       throw new Error 'Notfound' if not result?
       artwork= result
 
-      # TODO testを書け
       View.findOrCreate
         where:[
           ['date(`date`) = date(?)',new Date]
@@ -88,12 +145,38 @@ module.exports.server= (app)->
         req.session.views.push view.id
 
       view.save()
-    .then ->
+    .then (detail)->
       res.json artwork
 
     .catch (error)->
       res.status 404
       res.json error.message
+
+  app.get '/front/artwork/:artwork_id/detail',(req,res)->
+    {artwork_id}= req.params
+    user_id= req.session.passport.user?.id
+
+    {Comment,View}= db.models
+
+    detail=
+      image: 0
+      palette: 0
+      view: 0
+      comment: 0
+
+    View.sum 'count',
+      where:
+        {artwork_id}
+    .then (view)->
+      detail.view= view
+
+      Comment.count
+        where:
+          {artwork_id}
+    .then (comment)->
+      detail.comment= comment
+
+      res.json detail
 
   app.get '/front/comments/:artwork_id',(req,res)->
     {artwork_id}= req.params

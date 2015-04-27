@@ -46,15 +46,10 @@ app.run (
   $rootScope.location= (url)->
     $window.location.href= url
 
-  $rootScope.pullToRefresh= no
   $window.addEventListener 'scroll',->
     $rootScope.scrollY= $window.scrollY
     $rootScope.$apply()
 
-    if not $rootScope.pullToRefresh and $rootScope.scrollY < -60
-      $rootScope.pullToRefresh= yes
-
-      $state.reload()
   $rootScope.$on '$stateChangeStart',(event)->
 
     $webcolorLoadingBar.start()

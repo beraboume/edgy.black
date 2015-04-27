@@ -63,6 +63,16 @@ DELETE_YES:
 DELETE_NO:
   'あかん'
 
+DETAIL:
+  'くわしく'
+DETAIL_IMAGE:
+  'おおきさ'
+DETAIL_PALETTE:
+  'カラーパレット'
+DETAIL_VIEW:
+  'えつらん'
+DETAIL_COMMET:
+  'コメント'
 SHERE:
   'シェア'
 COMMENT:

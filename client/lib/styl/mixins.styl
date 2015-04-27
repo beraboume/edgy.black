@@ -22,6 +22,16 @@ theme_highlight()
   background-color cornsilk
 
 // keyframes
+pointer()
+  color inherit
+  text-decoration none
+  
+  cursor pointer
+  cursor hand
+  
+  &:hover
+    transition opacity .5s ease-out
+    opacity .5
 ng-hide(name='fade',time=.5s)
   &.ng-hide-remove
     animation name+'In' time
@@ -115,7 +125,6 @@ showcase()
   figure
     a
       display block
-      cursor pointer
   
   @media (orientation: portrait)
     >figure
@@ -123,7 +132,7 @@ showcase()
     figure
       max-height calc(100vh \- menu_height)
       a
-        size 100%
+        width 100%
     figcaption
       padding .5em 0
       padding-bottom 0
@@ -136,8 +145,12 @@ showcase()
         max-height calc(100vh \- menu_height)
       a
         relative 0
+      &.image
+        a
+          height auto
     figcaption
       flex 2
+    
     
 form()
   central(left)
@@ -202,7 +215,7 @@ comment()
     display block
     flex .5
     svg
-      size 100%
+      width 100%
   
   .to
     a

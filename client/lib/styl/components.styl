@@ -73,6 +73,36 @@ artwork_view()
         font_share()
         font-size 150%
   
+  .detail
+    dd
+      padding-left .5em
+
+    .palette
+      display block
+      text-align left
+      font-size 0
+      *
+        font-size 2rem
+      label
+      span
+        pointer()
+        
+        display inline-block
+        size 1em
+        
+        input
+          display none
+
+      :checked+span
+        border .1em solid white
+  
+  .image
+    a
+    svg
+      size 100%
+      path
+        transition all .5s ease-out
+
   .comments
     theme_sepia()
 
@@ -166,9 +196,15 @@ timeline()
         
         figcaption
           theme_light()
-      
+          
+          footer
+            opacity .75
+            font-size 75%
+
     li+li
       margin-top .5em
+  
+    
 
 timeline_remove()
   artwork_view_remove()

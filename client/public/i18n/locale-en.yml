@@ -63,6 +63,16 @@ DELETE_YES:
 DELETE_NO:
   'Cancel'
 
+DETAIL:
+  'Detail'
+DETAIL_IMAGE:
+  'Size'
+DETAIL_PALETTE:
+  'Palette'
+DETAIL_VIEW:
+  'View'
+DETAIL_COMMET:
+  'Comment'
 SHERE:
   'Shere'
 COMMENT:

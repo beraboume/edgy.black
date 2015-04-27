@@ -1,16 +1,16 @@
 ui-view
 
 .artwork_view
-  figure
+  figure.image
     a(ng-click="location(artwork.Storage.url)" ng-style="{'top':scrollY+'px'}")
-      img(ng-src="{{artwork.Storage.url}}" jaggy)
+      img(ng-src="{{artwork.Storage.url}}" jaggy jagged="palette")
   figcaption
     section
       h2 {{artwork.title}}
       pre {{artwork.description}}
       footer
         time(published="{{artwork.created_at}}")
-        a(href="{{'http://'+artwork.User.mypage_id+'.#{process.env.MYPAGE_HOST}'}}")
+        a(href="{{'http://'+artwork.User.mypage_id+'.#{process.env.HOST}'}}")
           | {{artwork.User.name}}
           img(ng-src="{{artwork.User.Storage.url}}" jaggy)
 
@@ -26,11 +26,42 @@ ui-view
         a(href="#" ng-click="share('https://getpocket.com/edit')")
           | P
     
+    section.detail
+      h2 {{'DETAIL'| translate}}
+      dl
+        dt
+          img(ng-src="icons/image.gif" jaggy)
+          | {{'DETAIL_IMAGE'| translate}}
+        dd {{detail.image}}
+
+        dt
+          img(ng-src="icons/palette.gif" jaggy)
+          | {{'DETAIL_PALETTE'| translate}}
+        dd
+          nav.palette
+            label(ng-repeat="color in colors")
+              input(
+                ng-model="color.checked"
+                ng-value="$index"
+                type="checkbox"
+                ng-change="focus(color)"
+              )
+              span(ng-style="color.style")
+          | {{colors.length | number:0}}
+
+        dt
+          img(ng-src="icons/view.gif" jaggy)
+          | {{'DETAIL_VIEW'| translate}}
+        dd {{detail.view | number:0}}
+
+        dt
+          img(ng-src="icons/comment.gif" jaggy)
+          | {{'DETAIL_COMMET'| translate}}
+        dd {{detail.comment}}
+
     section.comments
       h2
         | {{'COMMENT'| translate}}
-        span(ng-show="comment_count>0")
-          | ({{comment_count}})
       
       header
         .notify(ng-show="!user")
