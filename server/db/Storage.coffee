@@ -17,7 +17,7 @@ Storage= db.define 'Storage',
     allowNull: no
     get: ->
       url= @getDataValue 'url'
-      url+= '?'+@getDataValue 'updated_at' if url?
+      url+= '?'+@getDataValue('updated_at').getTime() if url?
       url
 
   user_id: Sequelize.INTEGER
