@@ -39,7 +39,7 @@ ui-view
           | {{'DETAIL_PALETTE'| translate}}
         dd
           nav.palette
-            label(ng-repeat="color in colors")
+            label(ng-repeat="(rgba,color) in colors")
               input(
                 ng-model="color.checked"
                 ng-value="$index"
@@ -47,7 +47,7 @@ ui-view
                 ng-change="focus(color)"
               )
               span(ng-style="color.style")
-          | {{colors.length | number:0}}
+          | {{colors | keyLength }}
 
         dt
           img(ng-src="icons/view.gif" jaggy)

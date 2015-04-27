@@ -18,7 +18,7 @@ module.exports.client= (
   $scope.fields= fields.data
 
   $scope.image= null
-  $scope.colors= []
+  $scope.colors= {}
   $scope.palette= (scope,element,attrs)->
     image= element[0]
     width= image.getAttribute 'width'
@@ -41,7 +41,7 @@ module.exports.client= (
       color.style=
         background: background
 
-      $scope.colors.push color
+      $scope.colors[color.rgba]= color
 
     $scope.detail.image= width+'x'+height
     $scope.image= image

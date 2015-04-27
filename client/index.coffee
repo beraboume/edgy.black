@@ -16,6 +16,9 @@ app= angular.module 'app',[
 (require 'lib/coffee/i18n').client app
 (require 'lib/coffee/routes').client app
 (require 'lib/coffee/parse-url').client app
+app.filter 'keyLength',->
+  (object)->
+    Object.keys(object).length
 
 app.run (
   $rootScope
