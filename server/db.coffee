@@ -4,8 +4,7 @@ Sequelize= require 'sequelize'
 
 # Setup sequelize
 db= new Sequelize env.DB_NAME,'root',null,
-  host: env.DB.split(':')[0]
-  port: env.DB.split(':')[1]
+  host: env.DOCKER_IP ? 'localhost'
 
   define:
     charset:'utf8'
