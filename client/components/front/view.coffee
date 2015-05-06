@@ -18,6 +18,13 @@ module.exports.client= (
   $scope.fields= fields.data
 
   $rootScope.meta['og:title']= artwork.data.title+' by '+artwork.data.User.name
+  $rootScope.meta['twitter:card']= 'summary'
+  $rootScope.meta['twitter:site']= '@edgy_black'
+  $rootScope.meta['twitter:creator']= artwork.data.User.name
+  $rootScope.meta['twitter:title']= artwork.data.title
+  $rootScope.meta['twitter:description']= artwork.data.description
+  $rootScope.meta['twitter:image:src']= artwork.data.Storage.url
+  $rootScope.meta['twitter:domain']= $window.location.hostname
 
   $scope.image= null
   $scope.colors= {}

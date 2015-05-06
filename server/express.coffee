@@ -21,8 +21,7 @@ app.use '/storage',(req,res,next)->
   next()
 app.use '/storage/:key',og.storage
 app.use '/storage',express.static env.STORAGE
-app.use '/:id',og.artwork_view
-app.use turnout timeout:20000
+app.use turnout timeout:10000
 
 # Setup session
 app.use session
