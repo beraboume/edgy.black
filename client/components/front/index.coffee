@@ -1,4 +1,9 @@
-module.exports.client= ($scope,$http,artworks)->
+module.exports.client= (
+  $scope
+  $http
+  artworks
+)->
+  $scope.$root.meta['og:title']= '卍'
   $scope.artworks= artworks.data
 
   $scope.find= (words)->

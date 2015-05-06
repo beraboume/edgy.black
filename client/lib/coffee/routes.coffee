@@ -113,6 +113,6 @@ module.exports.server= (app)->
   app.use (req,res,next)->
     filePath= lookup req
     return next() if req.accepts().join() isnt 'text/html' # via ui-router
-    return next() if not fs.existsSync filePath # notfound
+    return next() unless fs.existsSync filePath # notfound
 
     res.render filePath

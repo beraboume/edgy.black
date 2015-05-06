@@ -17,6 +17,8 @@ module.exports.client= (
   $scope.comment_count= comment_count.data
   $scope.fields= fields.data
 
+  $rootScope.meta['og:title']= artwork.data.title+' by '+artwork.data.User.name
+
   $scope.image= null
   $scope.colors= {}
   $scope.palette= (scope,element,attrs)->

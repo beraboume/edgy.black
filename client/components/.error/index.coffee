@@ -41,5 +41,5 @@ module.exports.server= (app)->
 
   app.use (req,res)->
     filePath= lookup req
-    res.status 404 if not fs.existsSync filePath
+    res.status 404 unless fs.existsSync filePath
     res.render 'index'

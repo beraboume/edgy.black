@@ -26,6 +26,7 @@
     "debug": "^2.1.3",
     "express": "^4.12.3",
     "express-session": "^1.10.4",
+    "express-turnout": "0.0.1-beta.0",
     "jade": "^1.9.2",
     "kouto-swiss": "^0.11.9",
     "mime": "^1.3.4",

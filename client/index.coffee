@@ -30,6 +30,7 @@ app.run (
   $window
   $timeout
   $webcolorLoadingBar
+  $location
 
   amMoment
   $localStorage
@@ -62,8 +63,20 @@ app.run (
   $rootScope.$on '$stateChangeError',(event,toState,toParams,fromState,fromParams,error)->
     $webcolorLoadingBar.complete()
     $state.go 'error' if error.status is 404
+
+  $rootScope.title= 'EDGY.BLACK(α)'
+  $rootScope.$on '$viewContentLoading',->
+    $rootScope.meta= {}
   $rootScope.$on '$viewContentLoaded',->
-    # $templateCache.removeAll()
+    renderedTemplate= $window.document.body.innerHTML.trim().length>0
+    if renderedTemplate
+      $rootScope.meta['og:site_name']?= $rootScope.title
+      $rootScope.meta['og:title']?= $state.current.name
+      $rootScope.meta['og:url']?= $location.absUrl()
+      $rootScope.meta['og:type']?= 'article'
+      $rootScope.meta['og:description']?= angular.element($window.document.body).text()
+
+      $window.expressTurnoutRendered()
 
   if not $localStorage.i18n?
     language= navigator.language ? navigator.browserLanguage
