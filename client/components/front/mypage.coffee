@@ -23,15 +23,26 @@ module.exports.server= (app)->
   app.get '/front/stats',(req,res)->
     user_id= req.session?.passport?.user?.id
 
-    artworks= views= comments= 0
+    artworks= views= favorites= comments= 0
 
     db= require process.env.DB_ROOT
-    {Artwork,Comment,View}= db.models
+    {Artwork,View,Favorite,Comment}= db.models
     Artwork.count
       where:
         {user_id}
     .then (count)->
       artworks= count
+
+      Artwork.count
+        include: [Favorite]
+        where: 
+          $and: [
+            user_id: user_id
+            ['Favorites.user_id <> ?',user_id]
+          ]
+
+    .then (count)->
+      favorites= count
 
       View.sum 'count',
         where:
@@ -49,7 +60,7 @@ module.exports.server= (app)->
           ]
         include: [Artwork]
     .then (comments)->
-      res.json {artworks,views,comments}
+      res.json {artworks,views,favorites,comments}
 
     .catch (error)->
       console.error error.stack

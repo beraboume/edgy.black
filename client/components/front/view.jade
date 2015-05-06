@@ -50,6 +50,14 @@ ui-view
           | {{colors | keyLength }}
 
         dt
+          img(ng-src="icons/favorited.gif" jaggy)
+          | {{'DETAIL_FAVORITE'| translate}}
+        dd
+          nav.favorite
+            a(ng-repeat="favorite in artwork.Favorites" href="{{'http://'+favorite.User.mypage_id+'.#{process.env.HOST}'}}")
+              img(ng-src="{{favorite.User.Storage.url}}" jaggy)
+          | {{detail.favorite | number:0}}
+        dt
           img(ng-src="icons/view.gif" jaggy)
           | {{'DETAIL_VIEW'| translate}}
         dd {{detail.view | number:0}}

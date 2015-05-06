@@ -34,6 +34,8 @@ TOP:
   'Top'
 VIEW:
   'Artwork'
+FAVORITE:
+  'Favorite'
 ADD:
   'New'
 ADD_TITLE:
@@ -71,6 +73,8 @@ DETAIL_PALETTE:
   'Palette'
 DETAIL_VIEW:
   'View'
+DETAIL_FAVORITE:
+  'Favorite'
 DETAIL_COMMET:
   'Comment'
 SHERE:
@@ -113,6 +117,10 @@ MYPAGE_STATS_ADD:
   'Total artwork'
 MYPAGE_STATS_COMMENT:
   'Total receive comment'
+MYPAGE_STATS_FAVORITE:
+  'Total favorite'
+MYPAGE_STATS_FAVORITED:
+  'Total favorite'
 MYPAGE_STATS_VIEW:
   'Total view'
 MYPAGE_EDIT:
@@ -121,6 +129,10 @@ MYPAGE_ARTWORKS:
   'Artworks'
 MYPAGE_ARTWORKS_MSG:
   'You can publish the pixel art.'
+MYPAGE_FAVORITES:
+  'Favorites'
+MYPAGE_FAVORITE_MSG:
+  'Find Your favorite.'
 MYPAGE_NAME:
   'Name'
 MYPAGE_BIO:

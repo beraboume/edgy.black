@@ -1,4 +1,4 @@
-REST= '/front/mypage/artworks'
+REST= '/front/mypage/favorites'
 
 module.exports.client= ($scope,artworks)->
   $scope._artworks= artworks.data
@@ -23,13 +23,16 @@ module.exports.server= (app)->
     _start?= 0
     _end?= 0
 
-    {Artwork,Storage}= db.models
+    {Artwork,Storage,Favorite}= db.models
     Artwork.findAll
-      where: {user_id}
+      where:
+        $and: [
+          ['Favorites.user_id = ?',user_id]
+        ]
       offset: _start
       limit: _end-_start
       order: 'created_at desc'
-      include: [Storage]
+      include: [Storage,Favorite]
     .then (artworks)->
       res.json artworks
     .catch (error)->

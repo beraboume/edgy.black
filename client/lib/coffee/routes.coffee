@@ -13,6 +13,7 @@ module.exports.client= (app)->
     
     'front.mypage': '/mypage'
     'front.mypage.artworks': '/artworks'
+    'front.mypage.favorites': '/favorites'
     'front.mypage.stats': '/stats/:type'
     'front.mypage.edit': '/edit'
     'front.mypage.quit': '/quit'

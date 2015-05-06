@@ -1,5 +1,7 @@
-module.exports.client= ($scope,$state,user)->  
+module.exports.client= ($scope,$state,user,$parse)->  
   $scope.user= user.data
+  $scope.$parse= $parse
+
   $scope.states= 
     'front.index':
       icon: 'icons/top.gif'
@@ -21,6 +23,14 @@ module.exports.client= ($scope,$state,user)->
       icon: 'icons/remove.gif'
       title: 'DELETE'
       'ng-hide':'!$state.params.id || isOtherPage'
+    'front.view.favorite':
+      icon: 'icons/favorite.gif'
+      title: 'FAVORITE'
+      'ng-hide':'!user.id || !$state.is("front.view") || favorited'
+    'front.view.unfavorite':
+      icon: 'icons/favorited.gif'
+      title: 'FAVORITE'
+      'ng-hide':'!user.id || !$state.is("front.view") || !favorited'
     'front.add':
       icon: 'icons/add.gif'
       title: 'ADD'
@@ -37,6 +47,10 @@ module.exports.client= ($scope,$state,user)->
       icon: 'icons/image.gif'
       title: 'MYPAGE_ARTWORKS'
       'ng-hide':'!$state.is("front.mypage.artworks")'
+    'front.mypage.favorites':
+      icon: 'icons/favorited.gif'
+      title: 'MYPAGE_FAVORITES'
+      'ng-hide':'!$state.is("front.mypage.favorites")'
     'front.mypage.stats':
       icon: 'icons/gold.gif'
       title: 'MYPAGE_STATS'

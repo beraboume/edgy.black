@@ -28,6 +28,9 @@ module.exports.server= (app)->
       when 'comment'
         queues= totalComment req,res,UTC_TZ
 
+      when 'favorited'
+        queues= totalFavorite req,res,UTC_TZ
+
       when 'view'
         queues= totalView req,res,UTC_TZ
 
@@ -81,6 +84,35 @@ module.exports.server= (app)->
               ["date(Artwork.created_at #{UTC_TZ}) = date(from_unixtime(?))",(Date.now()-i*day)/1000]
             ]...
           include: [Artwork]
+
+        promise= promise.then (count)->
+          title= i
+          title= Date.now()-i*day if i>0
+
+          {title,count}
+
+        queues.push promise
+
+    queues
+
+  totalFavorite= (req,res,UTC_TZ)->
+    queues= []
+
+    user_id= req.session?.passport?.user?.id
+    for i in days
+      do (i)->
+        db= require process.env.DB_ROOT
+        {Artwork,Favorite}= db.models
+
+        promise= Artwork.count
+          where:
+            $and: [
+              user_id: user_id
+              'Favorites.id is not null'
+              ['Favorites.user_id <> ?',user_id]
+              ["date(Favorites.created_at #{UTC_TZ}) = date(from_unixtime(?))",(Date.now()-i*day)/1000]
+            ]
+          include: [Favorite]
 
         promise= promise.then (count)->
           title= i

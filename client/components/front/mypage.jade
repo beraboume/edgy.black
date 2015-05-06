@@ -23,6 +23,13 @@ ui-view(class="{{$state.current.nameClass}}")
                 | {{stats.comments | number:0}}
 
             dt
+              img(ng-src="icons/favorited.gif" jaggy)
+              | {{'MYPAGE_STATS_FAVORITE'| translate}}
+            dd
+              a(ui-sref=".stats({type:'favorited'})")
+                | {{stats.favorites | number:0}}
+
+            dt
               img(ng-src="icons/view.gif" jaggy)
               | {{'MYPAGE_STATS_VIEW'| translate}}
             dd
@@ -42,6 +49,7 @@ ui-view(class="{{$state.current.nameClass}}")
             a(href="{{'http://'+user.mypage_id+'.#{process.env.MYPAGE_HOST}'}}")
               | {{'WEBSITE'| translate}} （α）
             a(ui-sref=".artworks" ng-click="scrollHead()") {{'MYPAGE_ARTWORKS'| translate}}
+            a(ui-sref=".favorites" ng-click="scrollHead()") {{'MYPAGE_FAVORITES'| translate}}
             a(href="#" ng-click="logout()") {{'MYPAGE_LOGOUT'| translate}}
             
           nav.danger

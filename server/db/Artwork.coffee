@@ -19,6 +19,7 @@ Artwork= db.define 'Artwork',
 Artwork.belongsTo require './User'
 Artwork.belongsTo require './Storage'
 Artwork.hasMany require './View'
+Artwork.hasMany require './Favorite'
 
 # Methods
 Artwork.getWhereFromVisible= (id,user_id)->

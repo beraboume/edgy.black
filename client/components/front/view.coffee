@@ -17,6 +17,12 @@ module.exports.client= (
   $scope.comment_count= comment_count.data
   $scope.fields= fields.data
 
+  $rootScope.user= user.data
+  $rootScope.favorited= no
+  for favorite in artwork.data.Favorites when favorite.user_id is user.data.id
+    $rootScope.favorited= yes
+  $rootScope.isOtherPage= user.data?.id isnt artwork.data.User?.id
+
   $rootScope.meta['og:title']= artwork.data.title+' by '+artwork.data.User.name
   $rootScope.meta['twitter:card']= 'summary'
   $rootScope.meta['twitter:site']= '@edgy_black'
@@ -98,9 +104,6 @@ module.exports.client= (
     .then (result)->
       $state.reload()
 
-  $rootScope.user= user.data
-  $rootScope.isOtherPage= user.data?.id isnt artwork.data.User?.id
-
 module.exports.resolve=
   comment_count: ($http,$stateParams)->
     $http.get '/front/comments/'+$stateParams.id+'/?count=1&_start=0&end_0'
@@ -124,13 +127,26 @@ module.exports.server= (app)->
     {id}= req.params
     user_id= req.session.passport.user?.id
 
-    {Artwork,Comment,Storage,User,View}= db.models
+    {Artwork,Comment,Storage,User,Favorite,View}= db.models
     Artwork.find
       where: Artwork.getWhereFromVisible id,user_id
-      include: [Storage,{
-        model: User
-        include: [Storage]
-      }]
+      include: [
+        Storage
+        {
+          model: User
+          include: [Storage]
+        }
+        {
+          model: Favorite
+          as: 'Favorites'
+          include: [
+            {
+              model: User
+              include: [Storage]
+            }
+          ]
+        }
+      ]
     .then (result)->
       throw new Error 'Notfound' if not result?
       artwork= result
@@ -165,12 +181,13 @@ module.exports.server= (app)->
     {artwork_id}= req.params
     user_id= req.session.passport.user?.id
 
-    {Comment,View}= db.models
+    {Comment,View,Favorite}= db.models
 
     detail=
       image: 0
       palette: 0
       view: 0
+      favorite: 0
       comment: 0
 
     View.sum 'count',
@@ -178,6 +195,12 @@ module.exports.server= (app)->
         {artwork_id}
     .then (view)->
       detail.view= view
+
+      Favorite.count
+        where:
+          {artwork_id}
+    .then (favorite)->
+      detail.favorite= favorite
 
       Comment.count
         where:
