@@ -27,6 +27,14 @@ module.exports.server= (app)->
     Artwork.findAll
       where:
         $and: [
+          $or: [
+            {show: 'PUBLIC'}
+            {show: 'PRIVATE'}
+            {
+              show: 'SECRET'
+              user_id: user_id
+            }
+          ]
           ['Favorites.user_id = ?',user_id]
         ]
       offset: _start

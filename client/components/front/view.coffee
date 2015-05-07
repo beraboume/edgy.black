@@ -19,7 +19,7 @@ module.exports.client= (
 
   $rootScope.user= user.data
   $rootScope.favorited= no
-  for favorite in artwork.data.Favorites when favorite.user_id is user.data.id
+  for favorite in artwork.data.Favorites when favorite.user_id is user.data?.id
     $rootScope.favorited= yes
   $rootScope.isOtherPage= user.data?.id isnt artwork.data.User?.id
 
