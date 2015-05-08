@@ -3,8 +3,8 @@ module.exports.client= (
 
   user
 )->
-  $scope.$root.meta['og:title']= user.data.name
-  $scope.$root.meta['og:description']= user.data.bio.replace /"/,'&quot;'
+  $scope.$root.og['title']= user.data.name
+  $scope.$root.og['description']= user.data.bio.replace /"/,'&quot;'
 
   $scope.user= user.data
   $scope.states= 
