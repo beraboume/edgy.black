@@ -3,7 +3,7 @@ module.exports.client= (
   $http
   artworks
 )->
-  $scope.$root.meta['og:title']= '卍'
+  $scope.$root.og['title']= '卍'
   $scope.artworks= artworks.data
 
   $scope.find= (words)->

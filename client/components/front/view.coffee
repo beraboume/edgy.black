@@ -23,14 +23,15 @@ module.exports.client= (
     $rootScope.favorited= yes
   $rootScope.isOtherPage= user.data?.id isnt artwork.data.User?.id
 
-  $rootScope.meta['og:title']= artwork.data.title+' by '+artwork.data.User.name
-  $rootScope.meta['twitter:card']= 'summary'
-  $rootScope.meta['twitter:site']= '@edgy_black'
-  $rootScope.meta['twitter:creator']= artwork.data.User.name
-  $rootScope.meta['twitter:title']= artwork.data.title
-  $rootScope.meta['twitter:description']= artwork.data.description
-  $rootScope.meta['twitter:image:src']= artwork.data.Storage.url
-  $rootScope.meta['twitter:domain']= $window.location.hostname
+  $rootScope.og['title']= artwork.data.title+' by '+artwork.data.User.name
+  $rootScope.og['image']= artwork.data.Storage.url
+  $rootScope.twitter['card']= 'summary'
+  $rootScope.twitter['site']= '@edgy_black'
+  $rootScope.twitter['creator']= artwork.data.User.name
+  $rootScope.twitter['title']= artwork.data.title
+  $rootScope.twitter['description']= artwork.data.description
+  $rootScope.twitter['image:src']= artwork.data.Storage.url
+  $rootScope.twitter['domain']= $window.location.hostname
 
   $scope.image= null
   $scope.colors= {}

@@ -3,8 +3,9 @@ html(lang="en" ng-app="app")
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no")
-    title {{meta['og:title'] + ' | ' + title}}
-    meta(content="{{value}}" name="{{key}}" property="{{key}}" ng-repeat="(key,value) in meta")
+    title {{og['title'] + ' | ' + title}}
+    meta(name="{{'twitter:'+key}}" content="{{value}}" ng-repeat="(key,value) in twitter")
+    meta(property="{{'og:'+key}}" content="{{value}}" ng-repeat="(key,value) in og")
 
     base(href="/")
     link(rel="stylesheet" href="http://static.edgy.black/misaki_gothic.css")
