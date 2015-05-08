@@ -120,7 +120,7 @@ module.exports.server= (app)->
 
       # Notify for @edgy_black
       messageLimit= 140 - 40
-      message= " by #{user_name} #{process.env.PUBLIC_URL}#{artwork.id} #pixelart"
+      message= " by #{user_name} #{process.env.PUBLIC_URL}#{artwork.id} #ドット絵 #pixelart"
       messageArtwork= "#{artwork.title} #{artwork.description}"
       if messageArtwork.length+ message.length< messageLimit
         message= messageArtwork + message
