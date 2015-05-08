@@ -4,7 +4,7 @@ html(lang="en" ng-app="app")
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no")
     title {{meta['og:title'] + ' | ' + title}}
-    meta(content="{{value}}" property="{{key}}" ng-repeat="(key,value) in meta")
+    meta(content="{{value}}" name="{{key}}" property="{{key}}" ng-repeat="(key,value) in meta")
 
     base(href="/")
     link(rel="stylesheet" href="http://static.edgy.black/misaki_gothic.css")
