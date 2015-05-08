@@ -74,7 +74,7 @@ app.run (
       $rootScope.meta['og:site_name']?= $rootScope.title
       $rootScope.meta['og:title']?= $state.current.name
       $rootScope.meta['og:url']?= $location.absUrl()
-      # $rootScope.meta['og:type']?= 'article'
+      $rootScope.meta['og:type']?= 'article'
       $rootScope.meta['og:description']?= angular.element($window.document.body).text()
 
       $window.expressTurnoutRendered()
