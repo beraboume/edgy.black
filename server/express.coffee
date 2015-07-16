@@ -36,4 +36,9 @@ app.use passport.session()
 # Setup multipart/form-data
 app.use multer inMemory:yes
 
+# Setup error handler
+app.use (err,req,res,next)->
+  console.error err
+  res.status(500).send '500 Internal Server Error'
+
 module.exports= app

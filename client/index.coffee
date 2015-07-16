@@ -2,7 +2,7 @@ app= angular.module 'app',[
   'ui.router'
   
   'ngAnimate'
-  'angularFileUpload'
+  'ngFileUpload'
   'angularMoment'
 
   'ngReel'

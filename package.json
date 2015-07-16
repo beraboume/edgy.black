@@ -7,8 +7,8 @@
   "scripts": {
     "start": "coffee edgy.black.coffee",
 
-    "build": "onefile --json --output client/public/pkgs -cms",
-    "build-dev": "onefile --json --output client/public/pkgs"
+    "build": "onefile --output client/public/pkgs -ms",
+    "build-dev": "onefile --output client/public/pkgs"
   },
 
   "dependencies": {
@@ -33,7 +33,6 @@
     "yamljs": "^0.2.3"
   },
   "devDependencies": {
-    "onefile": "^0.2.14-rc.1",
     "pm2": "^0.14.0"
   },
   

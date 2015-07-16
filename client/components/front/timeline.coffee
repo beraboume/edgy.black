@@ -22,16 +22,17 @@ module.exports.server= (app)->
   db= require process.env.DB_ROOT
   Sequelize= db.constructor
 
-  app.get '/front/timeline/',(req,res)->
+  app.get '/front/timeline/',(req,res,next)->
     {_start,_end}= req.query
     
     {Comment,User,Storage,Artwork}= db.models
     Comment.findAll
       where:
-        Sequelize.or [
-          'Artwork.id is null'
+        $or: [
+          ['Artwork.id is null']
           ['Artwork.show in (?)', ['PUBLIC','PRIVATE']]
-        ]...
+        ]
+        
       order: 'created_at desc'
       offset: _start
       limit: _end-_start
@@ -41,11 +42,9 @@ module.exports.server= (app)->
       },Artwork]
     .then (comments)->
       res.json comments
-    .catch (error)->
-      res.status 404
-      res.json null
+    .catch next
 
-  app.post '/front/timeline/',(req,res)->
+  app.post '/front/timeline/',(req,res,next)->
     {body}= req.body
     user_id= req.session.passport.user.id
 
@@ -54,6 +53,4 @@ module.exports.server= (app)->
     comment.save()
     .then (result)->
       res.json result
-    .catch ->
-      res.status 400
-      res.json null
+    .catch next

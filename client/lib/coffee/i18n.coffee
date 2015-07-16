@@ -4,6 +4,7 @@ module.exports.client= (app)->
     $translateProvider
     $windowProvider
   )->
+    $translateProvider.useSanitizeValueStrategy null
     $translateProvider.useStaticFilesLoader
       prefix: 'i18n/locale-'
       suffix: '.json'
