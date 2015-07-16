@@ -10,7 +10,7 @@ ui-view
       pre {{artwork.description}}
       footer
         time(published="{{artwork.created_at}}")
-        a(href="{{'http://'+artwork.User.mypage_id+'.#{process.env.HOST}'}}")
+        a(href="{{'http://'+artwork.User.mypage_id+'.#{process.env.MYPAGE_HOST}'}}")
           | {{artwork.User.name}}
           img(ng-src="{{artwork.User.Storage.url}}" jaggy)
 
@@ -54,7 +54,7 @@ ui-view
           | {{'DETAIL_FAVORITE'| translate}}
         dd
           nav.favorite
-            a(ng-repeat="favorite in artwork.Favorites" href="{{'http://'+favorite.User.mypage_id+'.#{process.env.HOST}'}}")
+            a(ng-repeat="favorite in artwork.Favorites" href="{{'http://'+favorite.User.mypage_id+'.#{process.env.MYPAGE_HOST}'}}")
               img(ng-src="{{favorite.User.Storage.url}}" jaggy)
           | {{detail.favorite | number:0}}
         dt

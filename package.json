@@ -5,48 +5,38 @@
   "private": true,
 
   "scripts": {
-    "prestart": "pm2 kill",
-    "start": "pm2 start edgy.black.coffee --name edgy.black",
-    "poststart": "pm2 list && pm2 logs",
-
-    "test": "jasminetea test --recursive --e2e '==baseUrl http://localhost:59798' --verbose --timeout 20000",
-
-    "stop": "pm2 stop edgy.black",
-    "poststop": "pm2 kill && pm2 flush",
-
-    "deploy": "curl -d key=$APPS_KEY -d sha1=$(git log --format=format:%H -1) -d host=$(jqn package name) http://travis.edgy.black",
+    "start": "coffee edgy.black.coffee",
 
     "build": "onefile --json --output client/public/pkgs -cms",
     "build-dev": "onefile --json --output client/public/pkgs"
   },
+
   "dependencies": {
-    "browserify": "^9.0.3",
-    "coffeeify": "^1.0.0",
-    "connect-redis": "^2.2.0",
-    "debug": "^2.1.3",
-    "express": "^4.12.3",
-    "express-session": "^1.10.4",
-    "express-turnout": "0.0.3-beta.0",
-    "jade": "^1.9.2",
-    "kouto-swiss": "^0.11.9",
+    "browserify": "^10.2.6",
+    "coffeeify": "^1.1.0",
+    "connect-redis": "^2.4.0",
+    "debug": "^2.2.0",
+    "express": "^4.13.1",
+    "express-session": "^1.11.3",
+    "express-turnout": "0.0.3",
+    "jade": "^1.11.0",
+    "kouto-swiss": "^0.11.13",
     "mime": "^1.3.4",
     "multer": "^0.1.8",
-    "mysql": "^2.6.0",
-    "oauth": "^0.9.12",
-    "passport": "^0.2.1",
+    "mysql": "^2.8.0",
+    "oauth": "^0.9.13",
+    "passport": "^0.2.2",
     "passport-twitter": "^1.0.3",
-    "sequelize": "^2.0.5",
-    "stylus": "^0.50.0",
+    "sequelize": "^3.3.2",
+    "stylus": "^0.51.1",
     "wanderer": "0.0.2",
-    "yamljs": "^0.2.1"
+    "yamljs": "^0.2.3"
   },
   "devDependencies": {
-    "abigail": "0.0.7",
-    "jasminetea": "^0.1.27",
-    "jqn": "0.0.3",
-    "onefile": "^0.2.11",
-    "pm2": "^0.12.12"
+    "onefile": "^0.2.14-rc.1",
+    "pm2": "^0.14.0"
   },
+  
   "repository": {
     "type": "git",
     "url": "https://github.com/59naga/edgy.black.git"
