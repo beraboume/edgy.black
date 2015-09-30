@@ -1,5 +1,7 @@
 > [edgy.black](http://edgy.black/)
 
+![2015-09-30 16 29 56](https://cloud.githubusercontent.com/assets/1548478/10187062/8ce96de2-6790-11e5-9e77-a147c6f98077.png)
+
 # TODO
 ## やばいやつ
 * スラム街の整備（ドキュメントをしっかり書く）
